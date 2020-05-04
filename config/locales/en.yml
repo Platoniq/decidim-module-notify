@@ -4,3 +4,13 @@ en:
     components:
       notify:
         name: Notify
+        settings:
+          global:
+            some_setting: some setting
+          step:
+            some_setting: some setting
+    notify:
+      conversations:
+        index:
+          conversations: Conversations
+          update: Update

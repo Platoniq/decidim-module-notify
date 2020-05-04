@@ -2,8 +2,23 @@
   <div class="row">
     <div class="columns">
       <div class="section">
-				Notify
+				<h1><%= t ".conversations" %></h1>
+
+				<%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note" }) do |f| %>
+				  <%= render partial: "form", object: f %>
+
+				  <div class="button--double form-general-submit">
+				      <%= f.submit t(".update") %>
+				  </div>
+				<% end %>
+
+				<div id="notify-notes">
+					<%= render partial: "note", collection: @notes %>
+				</div>
+
 			</div>
 		</div>
 	</div>
 </div>
+
+<%= render partial: "script.js", locals: { id: current_component.id } %>

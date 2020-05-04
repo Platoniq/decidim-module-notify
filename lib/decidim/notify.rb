@@ -9,5 +9,10 @@ module Decidim
   # This namespace holds the logic of the `Notify` component. This component
   # allows users to create notify in a participatory space.
   module Notify
+    class << self
+      def server
+        ActionCable.server
+      end
+    end
   end
 end
