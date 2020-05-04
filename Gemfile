@@ -8,6 +8,7 @@ gem "decidim", git: "https://github.com/decidim/decidim"
 gem "decidim-notify", path: "."
 
 gem "puma", ">= 4.3"
+gem "bootsnap", "~> 1.4"
 gem "uglifier", "~> 4.1"
 
 group :development, :test do
