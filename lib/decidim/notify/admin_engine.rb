@@ -11,12 +11,12 @@ module Decidim
 
       routes do
         # Add admin engine routes here
-        # resources :notify do
+        resources :conversations do
         #   collection do
         #     resources :exports, only: [:create]
         #   end
-        # end
-        # root to: "notify#index"
+        end
+        root to: "conversations#index"
       end
 
       def load_seed

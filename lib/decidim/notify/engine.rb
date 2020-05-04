@@ -11,8 +11,8 @@ module Decidim
 
       routes do
         # Add engine routes here
-        # resources :notify
-        # root to: "notify#index"
+        resources :conversations
+        root to: "conversations#index"
       end
 
       initializer "decidim_notify.assets" do |app|
