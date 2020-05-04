@@ -1,0 +1,6 @@
+---
+en:
+  decidim:
+    components:
+      notify:
+        name: Notify
