@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-# require "cable_ready"
-
 module Decidim
   module Notify
     class ConversationsController < ApplicationController
       include FormFactory
 
       def index
-        @notes = Note.all.order(created_at: :desc)
+        @notes = Note.for(current_component)
         @form = form(NoteForm).from_params(params)
       end
 
       def create
         @form = form(NoteForm).from_params(params)
-        # note = Note.create(@form.attributes)
-        note = Note.new(@form.attributes)
+        note = Note.create!(@form.attributes)
+        # note = Note.new(@form.attributes)
 
         broadcast note
         redirect_to conversations_path
