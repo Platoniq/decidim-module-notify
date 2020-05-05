@@ -15,7 +15,7 @@ module Decidim
 
       default_scope { order(created_at: :desc) }
 
-      def for(component)
+      def self.for(component)
       	where(component: component)
       end
 

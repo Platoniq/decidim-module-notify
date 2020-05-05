@@ -4,7 +4,9 @@ module Decidim
   module Notify
     module Admin
       class ConversationsController < Admin::ApplicationController
-        def index; end
+        def index
+        	@form = form(UsersForm).instance
+        end
       end
     end
   end

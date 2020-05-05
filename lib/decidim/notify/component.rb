@@ -15,14 +15,11 @@ Decidim.register_component(:notify) do |component|
   # component.actions = %w()
 
   component.settings(:global) do |settings|
-    # Add your global settings
-    # Available types: :integer, :boolean
-    settings.attribute :some_setting, type: :integer, default: 0
+    settings.attribute :announcement, type: :text, translated: true, editor: true
   end
 
   component.settings(:step) do |settings|
-    # Add your settings per step
-    settings.attribute :some_setting, type: :integer, default: 0
+    settings.attribute :announcement, type: :text, translated: true, editor: true
   end
 
   # component.register_resource(:some_resource) do |resource|

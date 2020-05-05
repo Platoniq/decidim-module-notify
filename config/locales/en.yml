@@ -6,10 +6,16 @@ en:
         name: Notify
         settings:
           global:
-            some_setting: some setting
+            announcement: Announcement
           step:
-            some_setting: some setting
+            announcement: Announcement
     notify:
+      admin:
+        conversations:
+          index:
+            title: Configure the conversation
+        actions:
+          new_group: New group
       conversations:
         index:
           conversations: Conversations

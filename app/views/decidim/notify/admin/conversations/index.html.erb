@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t(".title") %>
+      <div class="button--title">
+        <%= link_to t("actions.new_group", scope: "decidim.notify.admin"), "#", class: "button tiny button--simple" %>
+      </div>
+    </h2>
+  </div>
+
+    <div class="card-section">
+    	<%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form note_takers" }) do |f| %>
+    		<%= f.text_area :users, autofocus: true, rows: 4 %>
+    	<% end %>
+    </div>
+  </div>
+</div>

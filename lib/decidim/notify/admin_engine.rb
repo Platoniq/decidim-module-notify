@@ -11,11 +11,7 @@ module Decidim
 
       routes do
         # Add admin engine routes here
-        resources :conversations do
-          #   collection do
-          #     resources :exports, only: [:create]
-          #   end
-        end
+        resources :conversations
         root to: "conversations#index"
       end
 
