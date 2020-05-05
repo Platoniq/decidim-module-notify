@@ -4,15 +4,27 @@ module Decidim
   module Notify
     # The data store for a Author in the Decidim::Notify component.
     class Author < ApplicationRecord
-      self.table_name = :decidim_notify_users
+      self.table_name = :decidim_notify_authors
 
-	    belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User", optional: true
-	    belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
+      belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User", optional: true
+      belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
 
-	    validates :component, presence: true
-			validates :code, numericality: { greater_than_or_equal_to: 0 }
+      validates :component, presence: true
+      validates :user, uniqueness: { scope: :decidim_component_id }
+      validates :code, numericality: { greater_than_or_equal_to: 1 }, uniqueness: { scope: :decidim_component_id }
 
       validate :component_is_notify
+
+      delegate :name, to: :user
+      delegate :nickname, to: :user
+
+      default_scope { order(code: :asc) }
+
+      scope :note_takers, -> { where(admin: true) }
+
+      def self.for(component)
+        where(component: component)
+      end
 
       private
 

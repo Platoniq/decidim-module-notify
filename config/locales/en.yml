@@ -12,8 +12,11 @@ en:
     notify:
       admin:
         conversations:
+          success: "Configuration saved successfully"
+          error: "Error saving configuration [%{message}]"
           index:
-            title: Configure the conversation
+            title: Participants for the conversation
+            save: Save changes
         actions:
           new_group: New group
       conversations:

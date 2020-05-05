@@ -8,10 +8,16 @@
     </h2>
   </div>
 
-    <div class="card-section">
-    	<%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form note_takers" }) do |f| %>
-    		<%= f.text_area :users, autofocus: true, rows: 4 %>
-    	<% end %>
-    </div>
+  <div class="card-section multiusers-select-container">
+  	<%= decidim_form_for(@form, url: conversations_path, html: { class: "form users" }) do |f| %>
+
+      <%= render partial: "form", object: f %>
+
+      <div class="button--double form-conversations-submit">
+        <%= f.submit t(".save") %>
+      </div>
+  	<% end %>
   </div>
 </div>
+
+<%= javascript_include_tag "decidim/notify/select2" %>

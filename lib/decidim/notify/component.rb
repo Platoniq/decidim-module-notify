@@ -6,6 +6,8 @@ Decidim.register_component(:notify) do |component|
   component.engine = Decidim::Notify::Engine
   component.admin_engine = Decidim::Notify::AdminEngine
   component.icon = "decidim/notify/icon.svg"
+  component.stylesheet = "decidim/notify/notify"
+  component.admin_stylesheet = "decidim/notify/admin"
 
   # component.on(:before_destroy) do |instance|
   #   # Code executed before removing the component

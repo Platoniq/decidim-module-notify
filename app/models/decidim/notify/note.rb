@@ -8,7 +8,7 @@ module Decidim
 
       belongs_to :author, foreign_key: "decidim_notify_author_id", class_name: "Decidim::Notify::Author"
       belongs_to :creator, foreign_key: "decidim_user_id", class_name: "Decidim::User"
-	    belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
+      belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
 
       validates :author, :creator, :component, presence: true
       validate :component_is_notify
@@ -16,7 +16,7 @@ module Decidim
       default_scope { order(created_at: :desc) }
 
       def self.for(component)
-      	where(component: component)
+        where(component: component)
       end
 
       private
