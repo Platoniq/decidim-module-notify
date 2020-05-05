@@ -21,8 +21,12 @@ module Decidim
 
       initializer "decidim_notify.cable" do |_app|
         Decidim::Core::Engine.routes do
-          mount Decidim::Notify.server => "/cable"
+          mount Decidim::Notify.server => Decidim::Notify.config.cable_mount_path
         end
+      end
+
+      initializer "decidim_notify.cable.logger" do
+        Decidim::Notify.cable.logger ||= ::Rails.logger
       end
     end
   end

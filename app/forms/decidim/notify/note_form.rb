@@ -3,9 +3,10 @@
 module Decidim
   module Notify
     class NoteForm < Decidim::Form
+      attribute :code, Integer
       attribute :body, String
 
-      validates :body, presence: true
+      validates :code, :body, presence: true
     end
   end
 end

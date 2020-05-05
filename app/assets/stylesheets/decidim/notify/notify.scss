@@ -1,1 +1,10 @@
-//
+.form-conversations-submit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+
+  .info {
+    margin-left: 1rem;
+    display: none;
+  }
+}

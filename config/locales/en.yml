@@ -1,5 +1,10 @@
 ---
 en:
+  activemodel:
+    attributes:
+      note:
+        code: Author
+        body: Statement
   decidim:
     components:
       notify:
@@ -20,6 +25,10 @@ en:
         actions:
           new_group: New group
       conversations:
+        statement: Write the statement...
+        author: Author, use the number or name
+        error: "Error saving the note [%{message}]"
         index:
           conversations: Conversations
-          update: Update
+          send: Send
+

@@ -1,8 +1,10 @@
 @import "select2";
 @import "select2-foundation-theme";
 
-form label {
-  margin-bottom: 1rem;
+.multiusers-select-container {
+  form label {
+    margin-bottom: 1rem;
+  }
 }
 
 .select2-container--foundation .select2-selection--multiple .select2-selection__choice {

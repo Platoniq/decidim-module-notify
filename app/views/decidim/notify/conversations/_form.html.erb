@@ -1,7 +1,6 @@
-<div class="card">
-  <div class="card-section">
-    <div class="row column  hashtags__container">
-      <%= form.text_area :body, autofocus: true, placeholder: "Write your statement", rows: 3 %>
-    </div>
-  </div>
+<div class="row column">
+  <%= form.text_field :code, autofocus: true, placeholder: t("author", scope: "decidim.notify.conversations") %>
+</div>
+<div class="row column">
+  <%= form.text_area :body, placeholder: t("statement", scope: "decidim.notify.conversations"), rows: 3 %>
 </div>

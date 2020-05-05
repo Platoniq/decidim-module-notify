@@ -2,10 +2,12 @@
 
 App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::NotesChannel", id: window.Notify && window.Notify.id }, {
   connected: function() {
+    console.log("connected", window.Notify.id)
     // Called when the subscription is ready for use on the server
   },
 
   disconnected: function() {
+    console.log("disconnected", window.Notify.id)
     // Called when the subscription has been terminated by the server
   },
 

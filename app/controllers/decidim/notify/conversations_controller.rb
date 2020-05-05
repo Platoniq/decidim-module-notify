@@ -2,26 +2,28 @@
 
 module Decidim
   module Notify
-    class ConversationsController < ApplicationController
+    class ConversationsController < Decidim::Notify::ApplicationController
       include FormFactory
 
       def index
         @notes = Note.for(current_component)
-        @form = form(NoteForm).from_params(params)
+        @form = form(NoteForm).instance
       end
 
       def create
         @form = form(NoteForm).from_params(params)
-        note = Note.create!(@form.attributes)
-        # note = Note.new(@form.attributes)
-
-        broadcast note
-        redirect_to conversations_path
+        CreateNote.call(@form) do
+          on(:ok) do |note|
+            broadcast_note note
+            render json: { message: "✔" }
+          end
+          on(:invalid) do |message|
+            render json: { message: I18n.t("decidim.notify.conversations.error", message: message) }, status: :unprocessable_entity
+          end
+        end
       end
 
-      private
-
-      def broadcast(note)
+      def broadcast_note(note)
         html = render_to_string(partial: "note", locals: { note: note })
         Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", html)
       end

@@ -6,7 +6,11 @@ module Decidim
       identified_by :session_id
 
       def connect
-        self.session_id = request.session_id
+        self.session_id = request.session.id
+
+        logger.add_tags(session_id)
+
+        logger.info "Connected to notify"
       end
     end
   end
