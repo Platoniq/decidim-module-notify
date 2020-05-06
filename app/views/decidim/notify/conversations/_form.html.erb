@@ -1,5 +1,5 @@
 <div class="row column">
-  <%= form.text_field :code, autofocus: true, placeholder: t("author", scope: "decidim.notify.conversations") %>
+  <%= form.select :code, [], {}, placeholder: t("author", scope: "decidim.notify.conversations"), class: "user-select" %>
 </div>
 <div class="row column">
   <%= form.text_area :body, placeholder: t("statement", scope: "decidim.notify.conversations"), rows: 3 %>

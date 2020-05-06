@@ -28,7 +28,7 @@ module Decidim
             format.json do
               if (term = params[:term].to_s).present?
                 query = current_organization.users.order(name: :asc)
-                query = query.where("name ILIKE :term or nickname ILIKE :term or email ILIKE :term", term: "%#{term}%")
+                query = query.where("name ILIKE :term OR nickname ILIKE :term OR email ILIKE :term", term: "%#{term}%")
 
                 render json: query.all.collect { |u| { id: u.id, text: format_user_name(u) } }
               else

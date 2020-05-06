@@ -18,4 +18,24 @@ $(() => {
       theme: "foundation"
     });
   });
+
+  $('.user-select').each(function() {
+    const action = $(this).closest("form").attr("action")
+    const url =  action.substr(0, action.indexOf("?")).replace("/conversations", "/users");
+    const placeholder = $(this).attr("placeholder");
+    $(this).select2({
+      ajax: {
+        url: url,
+        delay: 100,
+        dataType: "json",
+        processResults: (data) => {
+          return {
+            results: data
+          }
+        }
+      },
+      placeholder: placeholder,
+      theme: "foundation"
+    });
+  });
 });

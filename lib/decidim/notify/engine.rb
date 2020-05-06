@@ -12,6 +12,7 @@ module Decidim
       routes do
         # Add engine routes here
         resources :conversations
+        get :users, to: "conversations#users"
         root to: "conversations#index"
       end
 

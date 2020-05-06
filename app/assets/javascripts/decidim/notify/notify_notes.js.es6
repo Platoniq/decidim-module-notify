@@ -1,3 +1,5 @@
+//= require decidim/notify/select2
+
 $(() => {
   const $info = $(".form-conversations-submit .info");
 
