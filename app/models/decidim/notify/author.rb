@@ -15,8 +15,8 @@ module Decidim
 
       validate :component_is_notify
 
-      delegate :name, to: :user
-      delegate :nickname, to: :user
+      delegate :name, :nickname, :organization, :avatar, to: :user
+      delegate :profile_url, :avatar_url, to: :user, allow_nil: true
 
       default_scope { order(code: :asc) }
 

@@ -28,6 +28,10 @@ module Decidim
       initializer "decidim_notify.cable.logger" do
         Decidim::Notify.cable.logger ||= ::Rails.logger
       end
+
+      initializer "decidim.notify.add_cells_view_paths" do
+        Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Notify::Engine.root}/app/cells")
+      end
     end
   end
 end

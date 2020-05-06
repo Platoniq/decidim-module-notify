@@ -16,10 +16,12 @@ module Decidim
         return @cable if @cable
 
         @cable = ActionCable::Server::Configuration.new
-        @cable.mount_path = config.cable_mount_path,
-                            @cable.connection_class = -> { Decidim::Notify::Connection }
+        @cable.mount_path = config.cable_mount_path
+        @cable.connection_class = -> { Decidim::Notify::Connection }
+        @cable.url = config.cable_url
         @cable.cable = {
-          "adapter" => config.cable_adapter
+          "adapter" => config.cable_adapter,
+          "channel_prefix" => config.cable_channel_prefix
         }
         @cable
       end
@@ -37,12 +39,18 @@ module Decidim
       "/cable"
     end
 
+    # Not recommended to use "async", event for development
     config_accessor :cable_adapter do
       "postgresql"
     end
 
-    config_accessor :cable_adapter_url do
+    # Next 2 values are only important if cable_adapter is "redis"
+    config_accessor :cable_url do
       "redis://localhost:6379/1"
+    end
+
+    config_accessor :cable_channel_prefix do
+      "notify_"
     end
   end
 end

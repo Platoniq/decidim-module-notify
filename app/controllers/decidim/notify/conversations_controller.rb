@@ -7,6 +7,7 @@ module Decidim
 
       def index
         @notes = Note.for(current_component)
+        @participants = Author.for(current_component)
         @form = form(NoteForm).instance
       end
 

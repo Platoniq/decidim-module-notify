@@ -1,3 +1,12 @@
-<div class="card">
-	<%= note.body %>
+<div class="media-object">
+  <div class="media-object-section">
+    <div class="thumbnail">
+       <%= image_tag note.author.avatar_url(:thumb) %>
+    </div>
+  </div>
+  <div class="media-object-section main-section">
+    <h4><b><%= note.author.code %></b> <%= note.author.name %> (<%= note.author.nickname %>)</h4>
+    <p><%= note.body %></p>
+    <em><%= l note.created_at, format: :decidim_short %></em>
+  </div>
 </div>
