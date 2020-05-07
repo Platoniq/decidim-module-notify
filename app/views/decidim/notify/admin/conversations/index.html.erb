@@ -9,14 +9,14 @@
   </div>
 
   <div class="card-section multiusers-select-container">
-  	<%= decidim_form_for(@form, url: conversations_path, html: { class: "form users" }) do |f| %>
+    <%= decidim_form_for(@form, url: conversations_path, html: { class: "form users" }) do |f| %>
 
       <%= render partial: "form", object: f %>
 
       <div class="button--double form-conversations-submit">
         <%= f.submit t(".save") %>
       </div>
-  	<% end %>
+    <% end %>
   </div>
 </div>
 

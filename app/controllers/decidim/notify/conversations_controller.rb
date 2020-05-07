@@ -4,6 +4,7 @@ module Decidim
   module Notify
     class ConversationsController < Decidim::Notify::ApplicationController
       include FormFactory
+      include NeedsAjaxRescue
 
       def index
         @notes = Note.for(current_component)
@@ -12,6 +13,8 @@ module Decidim
       end
 
       def create
+        enforce_permission_to :create, :notes
+
         @form = form(NoteForm).from_params(params)
         CreateNote.call(@form) do
           on(:ok) do |note|
@@ -25,6 +28,8 @@ module Decidim
       end
 
       def users
+        enforce_permission_to :create, :notes
+
         respond_to do |format|
           format.json do
             if (term = params[:term].to_s).present?

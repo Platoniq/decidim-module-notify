@@ -8,6 +8,9 @@ module Decidim
     # Note that it inherits from `Decidim::Components::BaseController`, which
     # override its layout and provide all kinds of useful methods.
     class ApplicationController < Decidim::Components::BaseController
+      def permission_class_chain
+        [::Decidim::Notify::Permissions] + super
+      end
     end
   end
 end

@@ -1,9 +1,8 @@
 // = require select2
 
 $(() => {
-  $('.multiusers-select').each(function() {
-    const action = $(this).closest("form").attr("action")
-    const url =  action.substr(0, action.indexOf("?")).replace("/conversations", "/users");
+  $('select.multiusers-select').each(function() {
+    const url = $(this).attr("data-url");
     $(this).select2({
       ajax: {
         url: url,
@@ -19,10 +18,11 @@ $(() => {
     });
   });
 
-  $('.user-select').each(function() {
-    const action = $(this).closest("form").attr("action")
-    const url =  action.substr(0, action.indexOf("?")).replace("/conversations", "/users");
+  $('select.user-select').each(function() {
+    const url = $(this).attr("data-url");
     const placeholder = $(this).attr("placeholder");
+
+    console.log("url",url)
     $(this).select2({
       ajax: {
         url: url,

@@ -1,5 +1,5 @@
 <div class="row column">
-  <%= form.select :code, [], {}, placeholder: t("author", scope: "decidim.notify.conversations"), class: "user-select" %>
+  <%= form.select :code, [], {}, placeholder: t("author", scope: "decidim.notify.conversations"), class: "user-select", data: {url: users_path} %>
 </div>
 <div class="row column">
   <%= form.text_area :body, placeholder: t("statement", scope: "decidim.notify.conversations"), rows: 3 %>

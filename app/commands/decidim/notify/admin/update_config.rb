@@ -24,7 +24,7 @@ module Decidim
             remove_users
             update_users
 
-            broadcast(:ok)
+            broadcast(:ok, @participants)
           rescue ActiveRecord::RecordInvalid => e
             broadcast(:invalid, e.message)
           end
@@ -35,6 +35,7 @@ module Decidim
         private
 
         def update_users
+          @participants = []
           all_users.each_with_index do |id, idx|
             user = Decidim::User.find_by(id: id, organization: current_organization)
             next unless user
@@ -46,6 +47,7 @@ module Decidim
             author.code = idx + 1
             author.admin = form.note_takers.include?(user.id.to_s)
             author.save!
+            @participants << author
           end
         end
 

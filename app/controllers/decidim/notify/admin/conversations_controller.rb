@@ -4,6 +4,8 @@ module Decidim
   module Notify
     module Admin
       class ConversationsController < Admin::ApplicationController
+        include NeedsAjaxRescue
+
         def index
           @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
           @note_takers = Author.for(current_component).note_takers.map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
@@ -13,8 +15,9 @@ module Decidim
         def create
           @form = form(ConfigForm).from_params(params)
           UpdateConfig.call(@form) do
-            on(:ok) do
+            on(:ok) do |participants|
               flash[:notice] = I18n.t("decidim.notify.admin.conversations.success")
+              broadcast_participants participants
             end
             on(:invalid) do |message|
               flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message: message)
@@ -39,6 +42,11 @@ module Decidim
         end
 
         private
+
+        def broadcast_participants(participants)
+          html = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants)
+          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", html)
+        end
 
         def format_user_name(user)
           text = "#{user.name} (@#{user.nickname})"

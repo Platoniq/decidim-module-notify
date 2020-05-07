@@ -1,8 +1,7 @@
 <div class="row column">
-  <%= form.select :users, options_from_collection_for_select(@users, :id, :text, proc { true }), {include_blank: false}, {class: "multiusers-select", multiple: true} %>
+  <%= form.select :users, options_from_collection_for_select(@users, :id, :text, proc { true }), {include_blank: false}, {class: "multiusers-select", multiple: true, data: {url: users_path}} %>
 </div>
 
 <div class="row column">
-  <%= form.select :note_takers, options_from_collection_for_select(@note_takers, :id, :text, proc { true }), {include_blank: false}, {class: "multiusers-select", multiple: true} %>
+  <%= form.select :note_takers, options_from_collection_for_select(@note_takers, :id, :text, proc { true }), {include_blank: false}, {class: "multiusers-select", multiple: true, data: {url: users_path}} %>
 </div>
-

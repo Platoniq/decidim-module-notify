@@ -4,32 +4,34 @@
   <div class="columns small-9">
     <div class="section">
 
-			<div class="card">
-			  <div class="card-section">
-					<%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note" }) do |f| %>
-					  <%= render partial: "form", object: f %>
+      <% if allowed_to? :create, :notes %>
+        <div class="card">
+          <div class="card-section">
+            <%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note" }) do |f| %>
+              <%= render partial: "form", object: f %>
 
-					  <div class="button--double form-conversations-submit">
-					      <%= f.submit t(".send") %>
-					      <div class="info">✔</div>
-					  </div>
-					<% end %>
-				</div>
-			</div>
+              <div class="button--double form-conversations-submit">
+                  <%= f.submit t(".send") %>
+                  <div class="info">✔</div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
-			<div class="card">
-				<div class="card-section" id="notify-notes">
-					<%= render partial: "note", collection: @notes %>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="card">
+        <div class="card-section" id="notify-notes">
+          <%= render partial: "note", collection: @notes %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="columns small-3">
-		<div class="card">
-			<div class="card-section" id="notify-participants">
-				<%= render partial: "participant", collection: @participants %>
-			</div>
-		</div>
+    <div class="card">
+      <div class="card-section" id="notify-participants">
+        <%= render partial: "participant", collection: @participants %>
+      </div>
+    </div>
   </div>
 </div>
 
