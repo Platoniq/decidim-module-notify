@@ -21,7 +21,7 @@ module Decidim
 
         begin
           note = Note.create!(
-            author: Author.find_by(code: form.code, component: current_component),
+            author: Author.find_by(code: form.code, component: current_component).user,
             body: form.body,
             creator: current_user,
             component: current_component

@@ -10,6 +10,9 @@ module Decidim
       included do
         rescue_from ::Decidim::ActionForbidden, with: :user_has_no_permission
 
+        class ::Decidim::ActionForbidden < StandardError
+        end
+
         # Overrides original user permissions handling to take into account ajax
         def user_has_no_permission
           return super unless request.xhr?

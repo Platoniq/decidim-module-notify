@@ -1,0 +1,12 @@
+<div class="media-object">
+  <div class="media-object-section">
+    <div class="thumbnail">
+       <%= image_tag author.avatar_url(:thumb) if author %>
+    </div>
+  </div>
+  <div class="media-object-section main-section">
+    <h4><b><%= notify_author&.code %></b> <%= author&.name %> (<%= author&.nickname %>)</h4>
+    <p><%= body %></p>
+    <em><%= l created_at, format: :decidim_short %></em>
+  </div>
+</div>

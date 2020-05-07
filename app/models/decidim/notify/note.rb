@@ -6,11 +6,11 @@ module Decidim
     class Note < ApplicationRecord
       self.table_name = :decidim_notify_notes
 
-      belongs_to :author, foreign_key: "decidim_notify_author_id", class_name: "Decidim::Notify::Author"
-      belongs_to :creator, foreign_key: "decidim_user_id", class_name: "Decidim::User"
+      belongs_to :author, foreign_key: "decidim_author_id", class_name: "Decidim::User", optional: true
+      belongs_to :creator, foreign_key: "decidim_creator_id", class_name: "Decidim::User"
       belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
 
-      validates :author, :creator, :component, presence: true
+      validates :creator, :component, presence: true
       validate :component_is_notify
 
       default_scope { order(created_at: :desc) }
