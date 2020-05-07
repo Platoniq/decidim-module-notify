@@ -5,6 +5,7 @@ module Decidim
     module Admin
       class ConversationsController < Admin::ApplicationController
         include NeedsAjaxRescue
+        include Broadcasts
 
         def index
           @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
@@ -42,11 +43,6 @@ module Decidim
         end
 
         private
-
-        def broadcast_participants(participants)
-          html = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants)
-          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", html)
-        end
 
         def format_user_name(user)
           text = "#{user.name} (@#{user.nickname})"

@@ -27,7 +27,11 @@ en:
       conversations:
         statement: Write the statement...
         author: Author, use the number or name
-        error: "Error saving the note [%{message}]"
+        create:
+          error: "Error saving the note [%{message}]"
+        destroy:
+          sure: "Are you sure to delete this note?"
+          error: "Error deleteing the note"
         index:
           conversations: Conversations
           send: Send

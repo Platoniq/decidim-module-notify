@@ -15,7 +15,9 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
     // Called when there's incoming data on the websocket for this channel
     console.log("received",data);
 
-    $("#notify-notes").prepend(data);
+    if(data.create) $("#notify-notes").prepend(data.create);
+    if(data.update) $(`#notify-note-${data.id}`).replaceWith(data.update);
+    if(data.destroy) $(`#notify-note-${data.destroy}`).remove();
   }
 });
 

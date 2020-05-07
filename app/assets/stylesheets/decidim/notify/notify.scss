@@ -19,6 +19,8 @@
   }
 
   .media-object {
+    display: flex;
+
     h4, p, em{
       font-size: 1rem;
       line-height: 1.1rem;
@@ -42,6 +44,16 @@
   .media-object-section {
     .thumbnail {
       width: 70px;
+    }
+    &.main-section {
+      flex: 1;
+    }
+
+  }
+  &.notify-note {
+    .button.tiny {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
   }
 }

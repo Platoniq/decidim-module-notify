@@ -1,4 +1,4 @@
-<div class="media-object">
+<div class="media-object notify-note" id="notify-note-<%= id %>">
   <div class="media-object-section">
     <div class="thumbnail">
        <%= image_tag author.avatar_url(:thumb) if author %>
@@ -9,4 +9,11 @@
     <p><%= body %></p>
     <em><%= l created_at, format: :decidim_short %></em>
   </div>
+  <% if note_taker? %>
+    <div class="media-object-section buttons">
+      <%= button_to delete_path, method: :delete, remote: true, data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
+        <%= icon "trash" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
