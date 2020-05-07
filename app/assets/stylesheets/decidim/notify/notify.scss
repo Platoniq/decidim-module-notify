@@ -1,7 +1,43 @@
 @import "select2";
 @import "select2-foundation-theme";
+@import "hexagon";
+
+// we need to hide the original select otherwise focus is lost
+.select2-hidden-accessible {
+  display: none;
+}
+.select2-container--foundation {
+  .select2-dropdown {
+    border-radius: 4px;
+  }
+  .select2-search--dropdown .select2-search__field {
+    border-radius: 4px;
+    &:focus {
+      border-color:#333;
+    }
+  }
+ .select2-selection {
+    border-radius: 4px;
+  }
+}
 
 .notify-container {
+  .hexagon {
+    @include hexagon();
+  }
+  .notify-participant {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+
+  .card--notes-editor {
+    background: #eee;
+    border: #cacaca solid 1px;
+    textarea {
+      border: 1px solid #cacaca;
+      border-radius: 4px;
+    }
+  }
   input, textarea {
     &::placeholder {
       color: #333;
@@ -47,13 +83,29 @@
     }
     &.main-section {
       flex: 1;
+      p {
+        white-space: pre-line;
+      }
     }
 
   }
-  &.notify-note {
-    .button.tiny {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+
+  .notify-note {
+    button {
+      &.tiny {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      &.delete {
+        svg {
+          fill: var(--alert);
+        }
+      }
+      &.edit {
+        svg {
+          fill: var(--secondary);
+        }
+      }
     }
   }
 }

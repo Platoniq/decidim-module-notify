@@ -1,48 +1,9 @@
-<div class="column">
-  <article class="card card--member">
-    <div class="card__content">
-      <div class="card__header collapse">
-        <div class="author-data author-data--big">
-          <div class="author-data__main">
-            <div class="author author--flex">
-              <% if has_profile? %>
-                <%= link_to profile_url, class: "author__avatar" do %>
-                  <%= image_tag model.avatar_url(:big), alt: "member-avatar" %>
-                <% end %>
-                <div>
-                  <div class="author__name--container">
-                    <%= link_to profile_url, class: "author__name" do %>
-                      <%= name %>
-                    <% end %>
-                  </div>
-                  <% if nickname.present? %>
-                    <%= link_to profile_url, class: "author__nickname" do %>
-                      <%= nickname %>
-                    <% end %>
-                  <% else %>
-                    <div class="author__nickname">&nbsp;</div>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class="author__avatar"><%= image_tag asset_path("decidim/default-avatar.svg"), alt: "member-avatar" %></div>
-                <div>
-                  <div class="author__name--container">
-                    <div class="author__name">
-                      <%= name %>
-                    </div>
-                  </div>
-                  <div class="author__nickname"><%= nickname.presence || "&nbsp;" %></div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card__text card--picture-offset">
-        <div>
-          <small><strong><%= code %></strong></small>
-        </div>
-      </div>
-    </div>
-  </article>
+<div class="notify-participant" title="<%= name %>">
+  <div class="hexagon" style="background-image: url(<%= avatar_url %>)">
+    <div class="hex1"></div>
+    <div class="hex2"></div>
+    <% if code %>
+      <div class="code"><%= code %></div>
+    <% end %>
+  </div>
 </div>

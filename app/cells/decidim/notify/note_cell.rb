@@ -14,7 +14,7 @@ module Decidim
       property :created_at
 
       def notify_author
-        Author.find_by(user: model.author)
+        Author.find_by(user: model.author, component: model.component)
       end
 
       def note_taker?
@@ -23,7 +23,7 @@ module Decidim
         Author.for(model.component).note_takers.find_by(user: current_user)
       end
 
-      def delete_path
+      def edit_path
         EngineRouter.main_proxy(model.component).conversation_path(model.id)
       end
     end

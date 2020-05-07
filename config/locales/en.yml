@@ -27,8 +27,12 @@ en:
       conversations:
         statement: Write the statement...
         author: Author, use the number or name
+        tip: "Tip: use CTRL + Enter to publish your note"
+        reset: Reset
         create:
-          error: "Error saving the note [%{message}]"
+          error: "Error creating the note [%{message}]"
+        update:
+          error: "Error updating the note [%{message}]"
         destroy:
           sure: "Are you sure to delete this note?"
           error: "Error deleteing the note"

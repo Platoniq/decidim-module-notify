@@ -14,6 +14,9 @@ $(() => {
           }
         }
       },
+      escapeMarkup: (markup) => markup,
+      templateSelection: (item) => '<b>' + item.id + '</b> ' + (item.name || item.text),
+      minimumInputLength: 1,
       theme: "foundation"
     });
   });
@@ -22,7 +25,6 @@ $(() => {
     const url = $(this).attr("data-url");
     const placeholder = $(this).attr("placeholder");
 
-    console.log("url",url)
     $(this).select2({
       ajax: {
         url: url,
@@ -34,8 +36,14 @@ $(() => {
           }
         }
       },
+      minimumInputLength: 1,
+      escapeMarkup: (markup) => markup,
+      templateSelection: (item) => '<b>' + item.id + '</b> ' + (item.name || item.text),
       placeholder: placeholder,
-      theme: "foundation"
+      theme: "foundation",
+      selectOnClose: true
     });
+
+    $(this).on('select2:close', () => $('#note_body').select());
   });
 });

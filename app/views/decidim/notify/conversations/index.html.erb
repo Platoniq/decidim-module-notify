@@ -5,11 +5,16 @@
     <div class="section">
 
       <% if allowed_to? :create, :notes %>
-        <div class="card">
+        <div class="card card--notes-editor">
           <div class="card-section">
-            <%= decidim_form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note" }) do |f| %>
+            <%= form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note", data: nil }) do |f| %>
+              <input type="hidden" name="_method" value="post">
               <%= render partial: "form", object: f %>
 
+              <div class="float-right text-right">
+                <p class="help-text"><%= t("decidim.notify.conversations.tip") %></p>
+                <button type="reset" class="button secondary small"><%= t("decidim.notify.conversations.reset") %></button>
+              </div>
               <div class="button--double form-conversations-submit">
                   <%= f.submit t(".send") %>
                   <div class="info">✔</div>

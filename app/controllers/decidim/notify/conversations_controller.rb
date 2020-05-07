@@ -28,6 +28,21 @@ module Decidim
         end
       end
 
+      def update
+        enforce_permission_to :create, :notes
+
+        @form = form(NoteForm).from_params(params)
+        UpdateNote.call(@form) do
+          on(:ok) do |note|
+            broadcast_update_note note
+            render json: { message: "✔" }
+          end
+          on(:invalid) do |message|
+            render json: { message: I18n.t("decidim.notify.conversations.update.error", message: message) }, status: :unprocessable_entity
+          end
+        end
+      end
+
       def destroy
         enforce_permission_to :destroy, :notes
 

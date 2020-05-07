@@ -2,7 +2,7 @@
 
 module Decidim
   module Notify
-    class CreateNote < Rectify::Command
+    class UpdateNote < Rectify::Command
       # Public: Initializes the command.
       #
       # form - A config form
@@ -20,12 +20,10 @@ module Decidim
         return broadcast(:invalid) if form.invalid?
 
         begin
-          note = Note.create!(
-            author: Author.find_by(code: form.code, component: current_component)&.user,
-            body: form.body,
-            creator: current_user,
-            component: current_component
-          )
+          note = Note.find(form.id)
+          note.author = Author.find_by(code: form.code, component: current_component).user
+          note.body = form.body
+          note.save!
 
           broadcast(:ok, note)
         rescue ActiveRecord::ActiveRecordError => e

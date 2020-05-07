@@ -4,15 +4,18 @@ module Decidim
   module Notify
     # This cell renders the card for an instance of a Notify Participant
     class ParticipantCell < Decidim::ViewModel
-      property :code
-      property :name
-      property :nickname
-      property :profile_url
+      def code
+        return model.code if model.is_a? Author
 
-      private
+        Author.find_by(user: model)&.code if model
+      end
 
-      def has_profile?
-        model.profile_url.present?
+      def name
+        model&.name
+      end
+
+      def avatar_url
+        model&.avatar_url(:profile)
       end
     end
   end

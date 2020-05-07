@@ -13,7 +13,7 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log("received",data);
+    console.log("note received",data);
 
     if(data.create) $("#notify-notes").prepend(data.create);
     if(data.update) $(`#notify-note-${data.id}`).replaceWith(data.update);
@@ -25,7 +25,7 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
 App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::ParticipantsChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log("received",data);
+    console.log("participants received",data);
 
     $("#notify-participants").html(data);
   }

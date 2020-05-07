@@ -1,18 +1,19 @@
 <div class="media-object notify-note" id="notify-note-<%= id %>">
   <div class="media-object-section">
-    <div class="thumbnail">
-       <%= image_tag author.avatar_url(:thumb) if author %>
-    </div>
+    <%= cell("decidim/notify/participant", author) %>
   </div>
   <div class="media-object-section main-section">
-    <h4><b><%= notify_author&.code %></b> <%= author&.name %> (<%= author&.nickname %>)</h4>
-    <p><%= body %></p>
+    <h4 class="note-name"><b class="note-code"><%= notify_author&.code %></b> - <%= author&.name %> (<%= author&.nickname %>)</h4>
+    <p class="note-body"><%= body %></p>
     <em><%= l created_at, format: :decidim_short %></em>
   </div>
   <% if note_taker? %>
     <div class="media-object-section buttons">
-      <%= button_to delete_path, method: :delete, remote: true, data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
+      <%= button_to edit_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
         <%= icon "trash" %>
+      <% end %>
+      <%= link_to edit_path, class: "edit" do %>
+        <%= icon "pencil" %>
       <% end %>
     </div>
   <% end %>
