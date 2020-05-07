@@ -19,8 +19,26 @@
  .select2-selection {
     border-radius: 4px;
   }
+ .select2-results__option--highlighted[aria-selected] {
+    background-color: rgba(var(--secondary-rgb), 0.5);
+  }
+  .select2-result-repository {
+    display: flex;
+    &__avatar {
+      @include hexagon();
+    }
+    &__meta {
+      flex: 1;
+      align-self: center;
+      margin-left: 1rem;
+      color: black;
+      font-weight: bold;
+      word-wrap: break-word;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+  }
 }
-
 .notify-container {
   .hexagon {
     @include hexagon();

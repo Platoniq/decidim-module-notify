@@ -15,7 +15,7 @@ $(() => {
         }
       },
       escapeMarkup: (markup) => markup,
-      templateSelection: (item) => '<b>' + item.id + '</b> ' + (item.name || item.text),
+      templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
       minimumInputLength: 1,
       theme: "foundation"
     });
@@ -37,11 +37,21 @@ $(() => {
         }
       },
       minimumInputLength: 1,
-      escapeMarkup: (markup) => markup,
-      templateSelection: (item) => '<b>' + item.id + '</b> ' + (item.name || item.text),
       placeholder: placeholder,
       theme: "foundation",
-      selectOnClose: true
+      selectOnClose: true,
+      escapeMarkup: (markup) => markup,
+      templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
+      templateResult: function(item) {
+        return `<div class="select2-result-repository">
+          <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar})">
+            <div class="hex1"></div><div class="hex2"></div>
+          </div>
+          <div class="select2-result-repository__meta">
+            <b>${item.id}</b> - ${item.text}
+          </div>
+        </div>`;
+      }
     });
 
     $(this).on('select2:close', () => $('#note_body').select());
