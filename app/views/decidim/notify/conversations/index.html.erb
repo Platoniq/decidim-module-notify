@@ -1,7 +1,7 @@
 <%= render partial: "decidim/shared/component_announcement" %>
 
 <div class="row notify-container">
-  <div class="columns small-9">
+  <div class="columns smallmedium-9">
     <div class="section">
 
       <% if allowed_to? :create, :notes %>
@@ -13,7 +13,7 @@
 
               <div class="float-right text-right">
                 <p class="help-text"><%= t("decidim.notify.conversations.tip") %></p>
-                <button type="reset" class="button secondary small"><%= t("decidim.notify.conversations.reset") %></button>
+                <button type="reset" class="button secondary tiny"><%= t("decidim.notify.conversations.reset") %></button>
               </div>
               <div class="button--double form-conversations-submit">
                   <%= f.submit t(".send") %>
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <div class="columns small-3">
+  <div class="columns smallmedium-3">
     <div class="card">
       <div class="card-section" id="notify-participants">
         <%= render partial: "participant", collection: @participants %>

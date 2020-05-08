@@ -2,9 +2,14 @@
 
 source "https://rubygems.org"
 
-ruby RUBY_VERSION
+$LOAD_PATH.push File.expand_path("lib", __dir__)
+require "decidim/notify/version"
 
-gem "decidim", git: "https://github.com/decidim/decidim"
+ruby RUBY_VERSION
+# DECIDIM_VERSION = { git: "https://github.com/decidim/decidim" }
+DECIDIM_VERSION = Decidim::Notify::DECIDIM_VERSION
+
+gem "decidim", DECIDIM_VERSION
 gem "decidim-notify", path: "."
 
 gem "bootsnap", "~> 1.4"
@@ -14,7 +19,7 @@ gem "uglifier", "~> 4.1"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "decidim-dev", git: "https://github.com/decidim/decidim"
+  gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do

@@ -19,14 +19,20 @@ $(() => {
   $('#notify-notes').on('click', 'a.edit', (e) => {
     e.preventDefault();
     const $a = $(e.currentTarget);
-    const code = $a.closest('.notify-note').find('.note-code').text();
+    const code = $a.closest('.notify-note').data('author-code');
     const name = $a.closest('.notify-note').find('.note-name').text();
     const body = $a.closest('.notify-note').find('.note-body').text();
 
-    $("#note_code").append(`<option value="${code}" selected>${name}</option>`);
-    $("#note_body").val(body);
     $form.find('[name="_method"]').val("patch");
     $form.attr("action", $(e.currentTarget).attr('href'));
+    $("#note_body").val(body);
+    if(code) {
+      $("#note_code").append(`<option value="${code}" selected>${name}</option>`);
+      $("#note_body").select();
+    } else {
+      $("#note_code").select2("open");
+    }
+    
     location = "#new_note";
 
     console.log("edit",$(e.currentTarget).attr('href'),code,body)

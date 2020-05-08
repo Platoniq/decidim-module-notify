@@ -21,8 +21,9 @@ module Decidim
 
         begin
           note = Note.find(form.id)
-          note.author = Author.find_by(code: form.code, component: current_component).user
+          note.author = Author.find_by(code: form.code, component: current_component)&.user
           note.body = form.body
+          note.creator = current_user unless note.creator
           note.save!
 
           broadcast(:ok, note)

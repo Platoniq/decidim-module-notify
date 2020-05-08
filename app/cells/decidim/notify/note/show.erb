@@ -1,9 +1,9 @@
-<div class="media-object notify-note" id="notify-note-<%= id %>">
+<div class="media-object notify-note" id="notify-note-<%= id %>" data-author-code="<%= notify_author&.code %>">
   <div class="media-object-section">
     <%= cell("decidim/notify/participant", author) %>
   </div>
   <div class="media-object-section main-section">
-    <h4 class="note-name"><b class="note-code"><%= notify_author&.code %></b> - <%= author&.name %> (<%= author&.nickname %>)</h4>
+    <h4 class="note-name"><%= author&.name %> (@<%= author&.nickname %>)</h4>
     <p class="note-body"><%= body %></p>
     <em><%= l created_at, format: :decidim_short %></em>
   </div>

@@ -25,7 +25,7 @@
   .select2-result-repository {
     display: flex;
     &__avatar {
-      @include hexagon();
+      @include responsive_hexagon();
     }
     &__meta {
       flex: 1;
@@ -41,7 +41,7 @@
 }
 .notify-container {
   .hexagon {
-    @include hexagon();
+    @include responsive_hexagon();
   }
   .notify-participant {
     display: inline-block;

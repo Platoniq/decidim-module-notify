@@ -1,3 +1,13 @@
+@mixin responsive_hexagon() {
+  @include hexagon(71px);
+  @media only screen and (max-width: 596px) {
+    @include hexagon(35px, 1px);
+    .code {
+      font-size: 0.8em;
+      padding-top: 1px;
+    }
+  }
+}
 
 @mixin hexagon($width: 71px, $borderWidth: 2px, $borderColor: #000, $shadow: 0 0 10px rgba(0,0,0,0.5), $color: #fff) {
   // $width works best with even numbers - browser rounding effs up with odds
