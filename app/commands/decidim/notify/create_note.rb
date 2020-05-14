@@ -28,7 +28,7 @@ module Decidim
             component: current_component
           )
 
-          broadcast(:ok, note)
+          broadcast(:ok, note, @new_chapter)
         rescue ActiveRecord::ActiveRecordError => e
           broadcast(:invalid, e.message)
         end
@@ -41,10 +41,11 @@ module Decidim
       def create_chapter
         return nil unless form.chapter
 
-        @chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
-        @chapter.title = form.chapter
-        @chapter.save!
-        @chapter
+        chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
+        @new_chapter = chapter unless chapter.id
+        chapter.title = form.chapter
+        chapter.save!
+        chapter
       end
     end
   end

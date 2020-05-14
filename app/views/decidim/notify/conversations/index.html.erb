@@ -24,12 +24,9 @@
         </div>
       <% end %>
 
-      <div id="notify-notes">
-        <% @notes.group_by(&:chapter).each do |chapter, notes| %>
-          <%= render layout: "chapter", locals: { chapter: chapter } do %>
-            <%= render partial: "note", collection: notes %>
-          <% end %>
-        <% end %>
+      <div id="notify-chapters">
+        <%= render partial: "chapter", collection: chapters %>
+        <%= render partial: "chapter", locals: { chapter: @unclassified } %>
       </div>
     </div>
   </div>

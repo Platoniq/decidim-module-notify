@@ -15,6 +15,9 @@ module Decidim
       validates :creator, presence: true
 
       default_scope { order(decidim_notify_chapter_id: :asc, created_at: :desc) }
+
+      scope :orphan, -> { where(author: nil) }
+      scope :unclassified, -> { where(chapter: nil) }
     end
   end
 end

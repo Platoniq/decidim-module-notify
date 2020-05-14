@@ -8,6 +8,10 @@ module Decidim
 
       self.table_name = :decidim_notify_chapters
 
+      has_many :notes,
+               foreign_key: "decidim_notify_chapter_id",
+               class_name: "Decidim::Notify::Note"
+
       validates :title, presence: true
       validates :title, uniqueness: { scope: :decidim_component_id }
 

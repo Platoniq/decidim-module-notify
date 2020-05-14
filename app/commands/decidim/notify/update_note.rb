@@ -24,15 +24,29 @@ module Decidim
           note.author = Author.find_by(code: form.code, component: current_component)&.user
           note.body = form.body
           note.creator = current_user unless note.creator
+          chapter = create_chapter
+          note.chapter = chapter
           note.save!
 
-          broadcast(:ok, note)
+          broadcast(:ok, note, @new_chapter)
         rescue ActiveRecord::ActiveRecordError => e
           broadcast(:invalid, e.message)
         end
       end
 
+      private
+
       attr_reader :form
+
+      def create_chapter
+        return nil unless form.chapter
+
+        chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
+        @new_chapter = chapter unless chapter.id
+        chapter.title = form.chapter
+        chapter.save!
+        chapter
+      end
     end
   end
 end

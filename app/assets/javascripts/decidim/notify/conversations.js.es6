@@ -20,12 +20,16 @@ $(() => {
     e.preventDefault();
     const $a = $(e.currentTarget);
     const code = $a.closest('.notify-note').data('author-code');
+    const chapter = $a.closest('.notify-note').data('chapter');
     const name = $a.closest('.notify-note').find('.note-name').text();
     const body = $a.closest('.notify-note').find('.note-body').text();
 
     $form.find('[name="_method"]').val("patch");
     $form.attr("action", $(e.currentTarget).attr('href'));
     $("#note_body").val(body);
+    $("#note_chapter").val(chapter);
+    $('#note_chapter').trigger('change');
+
     if(code) {
       $("#note_code").append(`<option value="${code}" selected>${name}</option>`);
       $("#note_body").select();

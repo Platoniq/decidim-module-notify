@@ -10,7 +10,7 @@ module Decidim
       helper_method :chapters
 
       def index
-        @notes = Note.for(current_component)
+        @unclassified = Chapter.new(notes: unclassified_notes)
         @participants = Author.for(current_component)
         @form = form(NoteForm).instance
       end
@@ -20,8 +20,10 @@ module Decidim
 
         @form = form(NoteForm).from_params(params)
         CreateNote.call(@form) do
-          on(:ok) do |note|
+          on(:ok) do |note, new_chapter|
+            broadcast_create_chapter new_chapter if new_chapter
             broadcast_create_note note
+
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
@@ -35,8 +37,10 @@ module Decidim
 
         @form = form(NoteForm).from_params(params)
         UpdateNote.call(@form) do
-          on(:ok) do |note|
+          on(:ok) do |note, new_chapter|
+            broadcast_create_chapter new_chapter if new_chapter
             broadcast_update_note note
+
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
@@ -77,10 +81,6 @@ module Decidim
       end
 
       private
-
-      def chapters
-        @chapters ||= Chapter.for(current_component).all
-      end
 
       def format_user_name(user)
         "#{user.name} (@#{user.nickname})"

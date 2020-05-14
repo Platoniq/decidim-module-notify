@@ -72,25 +72,27 @@
     }
   }
 
-  h3.notify-chapter {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin:1rem 0 1rem 0;
-    text-transform: uppercase;
-    &:before,&:after {
-      content: '';
-      border-top: 2px solid;
-      margin: 0 1rem 0 0;
-      flex: 1 0 1rem;
-    }
-    &:after {
-      margin: 0 0 0 1rem;
-    }
-    &.active {
-      color: var(--primary);
+  .notify-chapter {
+    h3 {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin:1rem 0 1rem 0;
+      text-transform: uppercase;
+      &:before,&:after {
+        content: '';
+        border-top: 2px solid;
+        margin: 0 1rem 0 0;
+        flex: 1 0 1rem;
+      }
+      &:after {
+        margin: 0 0 0 1rem;
+      }
+      &.active {
+        color: var(--primary);
+      }
     }
   }
 

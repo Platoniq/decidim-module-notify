@@ -11,6 +11,7 @@ module Decidim
       property :author
       property :creator
       property :user
+      property :chapter
       property :created_at
 
       def notify_author
