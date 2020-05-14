@@ -5,6 +5,7 @@ en:
       note:
         code: Author
         body: Statement
+        chapter: Chapter
   decidim:
     components:
       notify:
@@ -25,8 +26,10 @@ en:
         actions:
           new_group: New group
       conversations:
-        statement: Write the statement...
-        author: Author, use the number or name
+        placeholders:
+          statement: Write the statement...
+          author: Author, use the number or name
+          chapter: Set the chapter
         tip: "Tip: use CTRL + Enter to publish your note"
         reset: Reset
         create:

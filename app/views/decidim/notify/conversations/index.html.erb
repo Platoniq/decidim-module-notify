@@ -24,10 +24,12 @@
         </div>
       <% end %>
 
-      <div class="card">
-        <div class="card-section" id="notify-notes">
-          <%= render partial: "note", collection: @notes %>
-        </div>
+      <div id="notify-notes">
+        <% @notes.group_by(&:chapter).each do |chapter, notes| %>
+          <%= render layout: "chapter", locals: { chapter: chapter } do %>
+            <%= render partial: "note", collection: notes %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

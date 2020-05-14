@@ -1,0 +1,8 @@
+<% if chapter %>
+  <h3 class="notify-chapter<%= " active" if chapter.active %>"><%= chapter.title %></h3>
+<% end %>
+<div class="card" id="notify-chapter-<%= chapter&.id %>">
+  <div class="card-section">
+    <%= yield %>
+  </div>
+</div>

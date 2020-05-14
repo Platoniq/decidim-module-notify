@@ -44,13 +44,38 @@ $(() => {
       templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
       templateResult: function(item) {
         return `<div class="select2-result-repository">
-          <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar})">
-            <div class="hex1"></div><div class="hex2"></div>
-          </div>
-          <div class="select2-result-repository__meta">
-            <b>${item.id}</b> - ${item.text}
-          </div>
+        <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar})">
+        <div class="hex1"></div><div class="hex2"></div>
+        </div>
+        <div class="select2-result-repository__meta">
+        <b>${item.id}</b> - ${item.text}
+        </div>
         </div>`;
+      }
+    });
+    
+    $(this).on('select2:close', () => $('#note_body').select());
+  });
+  
+  $('select.chapter-select').each(function() {
+    const placeholder = $(this).attr("placeholder");
+
+    $(this).select2({
+      selectOnClose: true,
+      tags: true,
+      theme: "foundation",
+      placeholder: placeholder,
+      createTag: function (params) {
+        var term = $.trim(params.term);
+    
+        if (term === '') {
+          return null;
+        }
+        var n = {
+          id: term,
+          text: term
+        }
+        return n;
       }
     });
 

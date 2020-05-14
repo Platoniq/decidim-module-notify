@@ -7,6 +7,8 @@ module Decidim
       include NeedsAjaxRescue
       include Broadcasts
 
+      helper_method :chapters
+
       def index
         @notes = Note.for(current_component)
         @participants = Author.for(current_component)
@@ -75,6 +77,10 @@ module Decidim
       end
 
       private
+
+      def chapters
+        @chapters ||= Chapter.for(current_component).all
+      end
 
       def format_user_name(user)
         "#{user.name} (@#{user.nickname})"

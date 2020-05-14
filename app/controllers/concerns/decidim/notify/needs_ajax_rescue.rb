@@ -8,6 +8,9 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
+        class ::Decidim::ActionForbidden < StandardError
+        end
+
         rescue_from ::Decidim::ActionForbidden, with: :user_has_no_permission
 
         # Overrides original user permissions handling to take into account ajax

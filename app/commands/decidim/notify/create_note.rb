@@ -24,6 +24,7 @@ module Decidim
             author: Author.find_by(code: form.code, component: current_component)&.user,
             body: form.body,
             creator: current_user,
+            chapter: create_chapter,
             component: current_component
           )
 
@@ -33,7 +34,18 @@ module Decidim
         end
       end
 
+      private
+
       attr_reader :form
+
+      def create_chapter
+        return nil unless form.chapter
+
+        @chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
+        @chapter.title = form.chapter
+        @chapter.save!
+        @chapter
+      end
     end
   end
 end
