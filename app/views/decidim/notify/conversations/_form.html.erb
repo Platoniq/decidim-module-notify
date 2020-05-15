@@ -1,5 +1,5 @@
 <div class="row column">
-  <%= form.select :chapter, options_from_collection_for_select(chapters, :title, :title), {include_blank: true}, placeholder: t("placeholders.chapter", scope: "decidim.notify.conversations"), class: "chapter-select" %>
+  <%= form.select :chapter, options_from_collection_for_select(chapters, :title, :title, active_chapter&.title), {include_blank: true}, placeholder: t("placeholders.chapter", scope: "decidim.notify.conversations"), class: "chapter-select" %>
 </div>
 <div class="row column">
   <%= form.select :code, [], {}, placeholder: t("placeholders.author", scope: "decidim.notify.conversations"), class: "user-select", data: {url: users_path} %>

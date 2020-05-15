@@ -7,7 +7,7 @@ module Decidim
       include NeedsAjaxRescue
       include Broadcasts
 
-      helper_method :chapters
+      helper_method :chapters, :active_chapter
 
       def index
         @unclassified = Chapter.new(notes: unclassified_notes)
@@ -81,6 +81,18 @@ module Decidim
       end
 
       private
+
+      def chapters
+        @chapters ||= Chapter.for(current_component).all
+      end
+
+      def active_chapter
+        chapters.find(&:active)
+      end
+
+      def unclassified_notes
+        @unclassified_notes ||= Note.for(current_component).unclassified
+      end
 
       def format_user_name(user)
         "#{user.name} (@#{user.nickname})"

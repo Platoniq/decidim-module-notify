@@ -36,12 +36,13 @@ module Decidim
           Decidim::Notify.server.broadcast("notify-chapters-#{current_component.id}", data)
         end
 
-        def chapters
-          @chapters ||= Chapter.for(current_component).all
-        end
-
-        def unclassified_notes
-          @unclassified_notes ||= Note.for(current_component).unclassified
+        def broadcast_update_chapter(chapter)
+          data = {
+            id: chapter.id,
+            active: chapter.active,
+            update: chapter.title
+          }
+          Decidim::Notify.server.broadcast("notify-chapters-#{current_component.id}", data)
         end
       end
     end

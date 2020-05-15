@@ -93,6 +93,24 @@
       &.active {
         color: var(--primary);
       }
+
+      >button {
+        font-size: 1rem;
+        color: var(--primary);
+        display: inline-block;
+        margin: 0 -0.5rem 0 0.5rem;
+      }
+      >.dropdown-pane {
+        margin-left: -3em;
+        border: 1px solid #333;
+        box-shadow: #999 0px 0px 15px;
+        text-align: left;
+
+        .delete {
+          float: right;
+          color: var(--primary);
+        }
+      }
     }
   }
 

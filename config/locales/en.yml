@@ -16,6 +16,11 @@ en:
           step:
             announcement: Announcement
     notify:
+      chapter:
+        edit: "Edit chapter"
+        update: "Update"
+        delete: "Delete"
+        active: "Active"
       admin:
         conversations:
           success: "Configuration saved successfully"

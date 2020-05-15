@@ -36,9 +36,29 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
     console.log("chapter received",data);
 
     if(data.create) {
-      $(`#notify-chapters`).prepend(data.create);
+      $("#notify-chapters").prepend(data.create);
       if (!$(`#note_chapter [value="${data.title}"]`).length) {
-        $("#note_chapter").append(`<option value="${data.title}" selected>${data.title}</option>`);
+        var newOption = new Option(data.title, data.title, true, true);
+        $("#note_chapter").append(newOption).trigger("change");
+      }
+    }
+
+    if(data.update) {
+      var $chapter = $(`#notify-chapter-${data.id} .chapter-title`);
+      if($chapter.length) {
+        var old = $chapter.text();
+        $chapter.text(data.update);
+        if(data.active) {
+          $(".notify-chapter h3").removeClass("active");
+          $(`.toggle-chapter-active .switch-input:not(#chapter_active-${data.id})`).prop("checked", false);
+          $chapter.closest("h3").addClass("active");
+        }
+        var activate = $('#note_body').val()=="" && data.active;
+        var newOption = new Option(data.update, data.update, activate, activate);
+        $(`#note_chapter [value="${old}"]`).remove();
+        $('#note_chapter').append(newOption).trigger('change');
+      } else {
+        console.error("Chapter not found", data);
       }
     }
   }
