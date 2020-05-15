@@ -101,14 +101,20 @@
         margin: 0 -0.5rem 0 0.5rem;
       }
       >.dropdown-pane {
+        font-family: $body-font-family;
         margin-left: -3em;
         border: 1px solid #333;
         box-shadow: #999 0px 0px 15px;
         text-align: left;
 
+        .button {
+          margin-bottom: 0;
+        }
         .delete {
-          float: right;
           color: var(--primary);
+          position: absolute;
+          bottom: 1em;
+          right: 1rem;
         }
       }
     }

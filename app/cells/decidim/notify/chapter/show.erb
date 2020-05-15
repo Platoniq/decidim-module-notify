@@ -18,9 +18,9 @@
           </div>
 
           <%= form.submit t(".update"), class: "button small" %>
-          <%= button_to update_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.chapters.destroy.sure") } do %>
-            <%= icon "trash" %>
-          <% end %>
+        <% end %>
+        <%= button_to update_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.chapters.destroy.sure") } do %>
+          <%= icon "trash" %>
         <% end %>
       </div>
 

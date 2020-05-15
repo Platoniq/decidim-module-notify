@@ -32,10 +32,6 @@ module Decidim
       def update_path
         EngineRouter.main_proxy(model.component).chapter_path(model.id)
       end
-
-      def destroy_path
-        EngineRouter.main_proxy(model.component).chapter_path(model.id)
-      end
     end
   end
 end
