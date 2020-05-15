@@ -37,7 +37,9 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
 
     if(data.create) {
       $(`#notify-chapters`).prepend(data.create);
-      $("#note_chapter").append(`<option value="${data.title}" selected>${data.title}</option>`);
+      if (!$(`#note_chapter [value="${data.title}"]`).length) {
+        $("#note_chapter").append(`<option value="${data.title}" selected>${data.title}</option>`);
+      }
     }
   }
 });

@@ -16,7 +16,7 @@ $(() => {
   $form.find('[type="reset"]').on('click', resetForm);
 
   // edit button in notes
-  $('#notify-notes').on('click', 'a.edit', (e) => {
+  $('#notify-chapters').on('click', 'a.edit', (e) => {
     e.preventDefault();
     const $a = $(e.currentTarget);
     const code = $a.closest('.notify-note').data('author-code');
@@ -36,7 +36,7 @@ $(() => {
     } else {
       $("#note_code").select2("open");
     }
-    
+
     location = "#new_note";
 
     console.log("edit",$(e.currentTarget).attr('href'),code,body)
