@@ -25,6 +25,16 @@ module Decidim
 
       def destroy
         enforce_permission_to :destroy, :notes
+
+        DeleteChapter.call(params[:id]) do
+          on(:ok) do
+            broadcast_destroy_chapter params[:id]
+            render json: { message: "✔" }
+          end
+          on(:invalid) do |message|
+            render json: { message: I18n.t("decidim.notify.chapters.destroy.error", message: message) }, status: :unprocessable_entity
+          end
+        end
       end
     end
   end

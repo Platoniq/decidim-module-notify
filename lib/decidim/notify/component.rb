@@ -9,9 +9,10 @@ Decidim.register_component(:notify) do |component|
   component.stylesheet = "decidim/notify/notify"
   component.admin_stylesheet = "decidim/notify/admin"
 
-  # component.on(:before_destroy) do |instance|
-  #   # Code executed before removing the component
-  # end
+  component.on(:before_destroy) do |instance|
+    # Code executed before removing the component
+    raise StandardEerror, "Can't remove this component, there's notes in it!" if Decidim::Notify::Note.for(instance).any?
+  end
 
   # These actions permissions can be configured in the admin panel
   # component.actions = %w()

@@ -3,9 +3,9 @@ en:
   activemodel:
     attributes:
       note:
-        code: Author
         body: Statement
         chapter: Chapter
+        code: Author
   decidim:
     components:
       notify:
@@ -16,35 +16,40 @@ en:
           step:
             announcement: Announcement
     notify:
-      chapter:
-        edit: "Edit chapter"
-        update: "Update"
-        delete: "Delete"
-        active: "Active"
       admin:
-        conversations:
-          success: "Configuration saved successfully"
-          error: "Error saving configuration [%{message}]"
-          index:
-            title: Participants for the conversation
-            save: Save changes
         actions:
           new_group: New group
-      conversations:
-        placeholders:
-          statement: Write the statement...
-          author: Author, use the number or name
-          chapter: Set the chapter
-        tip: "Tip: use CTRL + Enter to publish your note"
-        reset: Reset
-        create:
-          error: "Error creating the note [%{message}]"
-        update:
-          error: "Error updating the note [%{message}]"
+        conversations:
+          error: Error saving configuration [%{message}]
+          index:
+            save: Save changes
+            title: Participants for the conversation
+          success: Configuration saved successfully
+      chapter:
+        active: Active
+        delete: Delete
+        edit: Edit chapter
+        update: Update
+      chapters:
         destroy:
-          sure: "Are you sure to delete this note?"
-          error: "Error deleteing the note"
+          error: Error deleting the chapter
+          sure: Are you sure to delete this chapter?
+        update:
+          error: Error updating the chapter [%{message}]
+      conversations:
+        create:
+          error: Error creating the note [%{message}]
+        destroy:
+          error: Error deleting the note
+          sure: Are you sure to delete this note?
         index:
           conversations: Conversations
           send: Send
-
+        placeholders:
+          author: Author, use the number or name
+          chapter: Set the chapter
+          statement: Write the statement...
+        reset: Reset
+        tip: 'Tip: use CTRL + Enter to publish your note'
+        update:
+          error: Error updating the note [%{message}]

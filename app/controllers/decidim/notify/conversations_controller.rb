@@ -53,7 +53,7 @@ module Decidim
         enforce_permission_to :destroy, :notes
 
         DeleteNote.call(params[:id]) do
-          on(:ok) do |_note|
+          on(:ok) do
             broadcast_destroy_note params[:id]
             render json: { message: "✔" }
           end

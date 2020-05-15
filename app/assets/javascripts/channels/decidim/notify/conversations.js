@@ -1,5 +1,7 @@
 // = require cable
 
+jQuery.fn.reverse = [].reverse;
+
 App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::NotesChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
@@ -11,7 +13,7 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
       $old = $note.closest(".notify-chapter-notes");
       $new = $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`);
       if($old[0] != $new[0]) {
-        // TODO: put it in the right place
+        // TODO: put it in the right place by time of creation
         $note.detach().prependTo($new);
       }
       $note.replaceWith(data.update);
@@ -33,10 +35,11 @@ App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decid
 App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::ChaptersChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log("chapter received",data);
+    // console.log("chapter received",data);
 
     if(data.create) {
       $("#notify-chapters").prepend(data.create);
+      $(document).foundation();      
       if (!$(`#note_chapter [value="${data.title}"]`).length) {
         var newOption = new Option(data.title, data.title, true, true);
         $("#note_chapter").append(newOption).trigger("change");
@@ -60,6 +63,16 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
       } else {
         console.error("Chapter not found", data);
       }
+    }
+
+    if(data.destroy) {
+      // Move notes to the unclassified
+      $unclassified = $("#notify-chapter-notes-unclassified");
+      $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each(function() {
+        $(this).detach().prependTo($unclassified);
+      });
+
+      $(`#notify-chapter-${data.destroy}`).remove();
     }
   }
 });

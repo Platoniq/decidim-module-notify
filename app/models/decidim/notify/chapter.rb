@@ -10,7 +10,8 @@ module Decidim
 
       has_many :notes,
                foreign_key: "decidim_notify_chapter_id",
-               class_name: "Decidim::Notify::Note"
+               class_name: "Decidim::Notify::Note",
+               dependent: :nullify
 
       validates :title, presence: true
       validates :title, uniqueness: { scope: :decidim_component_id }
