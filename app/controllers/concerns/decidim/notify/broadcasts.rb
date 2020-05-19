@@ -31,7 +31,8 @@ module Decidim
           data = {
             id: chapter.id,
             title: chapter.title,
-            create: render_to_string(partial: "decidim/notify/conversations/chapter", locals: { chapter: OpenStruct.new(title: chapter.title, id: chapter.id, component: chapter.component) })
+            create: render_to_string(partial: "decidim/notify/conversations/chapter",
+                                     locals: { chapter: OpenStruct.new(title: chapter.title, id: chapter.id, component: chapter.component) })
           }
           Decidim::Notify.server.broadcast("notify-chapters-#{current_component.id}", data)
         end

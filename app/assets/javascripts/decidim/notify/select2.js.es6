@@ -53,10 +53,10 @@ $(() => {
         </div>`;
       }
     });
-    
+
     $(this).on('select2:close', () => $('#note_body').select());
   });
-  
+
   $('select.chapter-select').each(function() {
     const placeholder = $(this).attr("placeholder");
 
@@ -67,7 +67,7 @@ $(() => {
       placeholder: placeholder,
       createTag: function (params) {
         var term = $.trim(params.term);
-    
+
         if (term === '') {
           return null;
         }

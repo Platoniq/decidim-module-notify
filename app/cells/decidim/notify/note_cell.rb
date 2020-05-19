@@ -24,6 +24,12 @@ module Decidim
         Author.for(model.component).note_takers.find_by(user: current_user)
       end
 
+      def note_author_class
+        return "by-note-taker" if note_taker?
+
+        "by-participant"
+      end
+
       def edit_path
         EngineRouter.main_proxy(model.component).conversation_path(model.id)
       end

@@ -120,6 +120,18 @@
         }
       }
     }
+
+    .notify-chapter-notes {
+      padding:0.5rem;
+      .notify-note {
+        padding: 0.5rem;
+        border-radius: 4px;
+
+        &.by-note-taker {
+          background-color:rgba(var(--primary-rgb), 0.1);
+        }
+      }
+    }
   }
 
   .media-object {
