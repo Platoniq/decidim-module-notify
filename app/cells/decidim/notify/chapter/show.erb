@@ -23,12 +23,11 @@
           <%= icon "trash" %>
         <% end %>
       </div>
-
     </h3>
+  <% else %>
+    <h3></h3>
   <% end %>
   <div class="card">
-    <div class="card-section notify-chapter-notes" id="notify-chapter-notes-<%= id %>">
-      <%= cell "decidim/notify/note", collection: notes %>
-    </div>
+    <div class="card-section notify-chapter-notes" id="notify-chapter-notes-<%= id %>" data-empty="<%= t ".empty" %>"><%= cell "decidim/notify/note", collection: notes %></div>
   </div>
 </div>

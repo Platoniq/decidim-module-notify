@@ -46,7 +46,7 @@ module Decidim
 
         def format_user_name(user)
           text = "#{user.name} (@#{user.nickname})"
-          text = "#{user.code} - #{text}" if defined? user.code
+          text = "<b>#{user.code}</b> - #{text}" if defined? user.code
           text
         end
       end

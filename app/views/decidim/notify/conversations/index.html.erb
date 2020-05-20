@@ -31,6 +31,13 @@
     </div>
   </div>
   <div class="columns smallmedium-3">
+    <h5><%= t ".note_takers" %></h5>
+    <div class="card">
+      <div class="card-section by-note-taker" id="notify-note_takers">
+        <%= render partial: "participant", collection: @note_takers %>
+      </div>
+    </div>
+    <h5><%= t ".participants" %></h5>
     <div class="card">
       <div class="card-section" id="notify-participants">
         <%= render partial: "participant", collection: @participants %>

@@ -24,8 +24,7 @@ module Decidim
           note.author = Author.find_by(code: form.code, component: current_component)&.user
           note.body = form.body
           note.creator = current_user unless note.creator
-          chapter = create_chapter
-          note.chapter = chapter
+          note.chapter = create_chapter
           note.save!
 
           broadcast(:ok, note, @new_chapter)
@@ -39,7 +38,7 @@ module Decidim
       attr_reader :form
 
       def create_chapter
-        return nil unless form.chapter
+        return nil if form.chapter.blank?
 
         chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
         @new_chapter = chapter unless chapter.id

@@ -15,7 +15,7 @@ $(() => {
         }
       },
       escapeMarkup: (markup) => markup,
-      templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
+      templateSelection: (item) => `${item.text}`,
       minimumInputLength: 1,
       theme: "foundation"
     });
@@ -39,6 +39,7 @@ $(() => {
       minimumInputLength: 1,
       placeholder: placeholder,
       theme: "foundation",
+      allowClear: true,
       selectOnClose: true,
       escapeMarkup: (markup) => markup,
       templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
@@ -55,6 +56,13 @@ $(() => {
     });
 
     $(this).on('select2:close', () => $('#note_body').select());
+    $(this).on("select2:clear", function (evt) {
+      $(this).on("select2:opening.cancelOpen", function (evt) {
+        evt.preventDefault();
+        
+        $(this).off("select2:opening.cancelOpen");
+      });
+    });
   });
 
   $('select.chapter-select').each(function() {
@@ -63,6 +71,7 @@ $(() => {
     $(this).select2({
       selectOnClose: true,
       tags: true,
+      allowClear: true,
       theme: "foundation",
       placeholder: placeholder,
       createTag: function (params) {
@@ -80,5 +89,12 @@ $(() => {
     });
 
     $(this).on('select2:close', () => $('#note_body').select());
+    $(this).on("select2:clear", function (evt) {
+      $(this).on("select2:opening.cancelOpen", function (evt) {
+        evt.preventDefault();
+        
+        $(this).off("select2:opening.cancelOpen");
+      });
+    });
   });
 });

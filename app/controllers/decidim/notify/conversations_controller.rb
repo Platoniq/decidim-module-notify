@@ -11,7 +11,8 @@ module Decidim
 
       def index
         @unclassified = Chapter.new(notes: unclassified_notes)
-        @participants = Author.for(current_component)
+        @participants = Author.for(current_component).participants
+        @note_takers = Author.for(current_component).note_takers
         @form = form(NoteForm).instance
       end
 

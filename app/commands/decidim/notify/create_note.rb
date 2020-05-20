@@ -39,7 +39,7 @@ module Decidim
       attr_reader :form
 
       def create_chapter
-        return nil unless form.chapter
+        return nil if form.chapter.blank?
 
         chapter = Chapter.find_or_initialize_by(title: form.chapter, component: current_component)
         @new_chapter = chapter unless chapter.id

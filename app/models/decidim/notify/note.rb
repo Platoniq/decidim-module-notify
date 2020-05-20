@@ -10,7 +10,7 @@ module Decidim
 
       belongs_to :author, foreign_key: "decidim_author_id", class_name: "Decidim::User", optional: true
       belongs_to :creator, foreign_key: "decidim_creator_id", class_name: "Decidim::User"
-      belongs_to :chapter, foreign_key: "decidim_notify_chapter_id", class_name: "Decidim::Notify::Chapter"
+      belongs_to :chapter, foreign_key: "decidim_notify_chapter_id", class_name: "Decidim::Notify::Chapter", optional: true
 
       validates :creator, presence: true
 

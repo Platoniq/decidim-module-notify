@@ -29,6 +29,7 @@ en:
         active: Active
         delete: Delete
         edit: Edit chapter
+        empty: Nothing has been said on this topic yet.
         update: Update
       chapters:
         destroy:
@@ -44,6 +45,8 @@ en:
           sure: Are you sure to delete this note?
         index:
           conversations: Conversations
+          note_takers: Note Takers
+          participants: Participants
           send: Send
         placeholders:
           author: Author, use the number or name

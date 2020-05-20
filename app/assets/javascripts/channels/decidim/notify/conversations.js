@@ -2,12 +2,21 @@
 
 jQuery.fn.reverse = [].reverse;
 
+var updateEmptyStatus = function(selector) {
+  $(selector).each(function(){
+    if($(this).children().length == 0){
+      $(this).addClass("empty");
+    } else {
+      $(this).removeClass("empty");
+    }
+  });
+};
+
 App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::NotesChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
     // console.log("note received",data);
 
-    if(data.create) $(`#notify-chapter-notes-${data.chapterId}`).prepend(data.create);
+    if(data.create) $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`).prepend(data.create);
     if(data.update) {
       $note = $(`#notify-note-${data.id}`);
       $old = $note.closest(".notify-chapter-notes");
@@ -19,13 +28,14 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
       $note.replaceWith(data.update);
     }
     if(data.destroy) $(`#notify-note-${data.destroy}`).remove();
+    
+    updateEmptyStatus(".notify-chapter-notes");
   }
 });
 
 
 App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::ParticipantsChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
     // console.log("participants received",data);
 
     $("#notify-participants").html(data);
@@ -34,7 +44,6 @@ App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decid
 
 App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::ChaptersChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
     // console.log("chapter received",data);
 
     if(data.create) {
@@ -74,5 +83,7 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
 
       $(`#notify-chapter-${data.destroy}`).remove();
     }
+    
+    updateEmptyStatus(".notify-chapter-notes");
   }
 });

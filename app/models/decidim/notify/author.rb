@@ -19,6 +19,7 @@ module Decidim
       default_scope { order(code: :asc) }
 
       scope :note_takers, -> { where(admin: true) }
+      scope :participants, -> { where(admin: false) }
 
       def notes
         Note.where(decidim_author_id: decidim_user_id)

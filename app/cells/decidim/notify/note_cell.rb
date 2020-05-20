@@ -25,7 +25,7 @@ module Decidim
       end
 
       def note_author_class
-        return "by-note-taker" if note_taker?
+        return "by-note-taker" if author&.admin
 
         "by-participant"
       end
