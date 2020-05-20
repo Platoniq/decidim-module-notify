@@ -8,6 +8,7 @@ module Decidim
 
       self.table_name = :decidim_notify_authors
 
+      belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
       belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User", optional: true
 
       validates :user, uniqueness: { scope: :decidim_component_id }
