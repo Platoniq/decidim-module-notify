@@ -7,6 +7,7 @@ module Decidim
         attribute :users, Array[String]
         attribute :note_takers, Array[String]
         attribute :private, Boolean
+        attribute :restricted, Boolean
       end
     end
   end

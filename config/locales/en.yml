@@ -7,8 +7,8 @@ en:
         chapter: Chapter
         code: Author
       notify_config:
-        users: Participants
         note_takers: Note Takers
+        users: Participants
   decidim:
     components:
       notify:
@@ -17,6 +17,8 @@ en:
           global:
             announcement: Announcement
             private: Private board (only participants can access it)
+            restricted: Restricted board (only logged users can access it, non participants
+              are accepted)
           step:
             announcement: Announcement
     notify:
@@ -26,6 +28,13 @@ en:
         conversations:
           error: Error saving configuration [%{message}]
           index:
+            help: |-
+              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
+              <p>Configure this tool by adding the participants and some note-takers:</p>
+              <ul><li>Each participant will be assigned a number (starting at 1).</li>
+              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
+              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
+              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
             save: Save changes
             title: Participants for the conversation
           success: Configuration saved successfully
@@ -56,6 +65,12 @@ en:
           author: Author, use the number or name
           chapter: Set the chapter
           statement: Write the statement...
+        private:
+          anonymous_description: This conversation is restricted to its participants.
+            Please log in before trying to access here.
+          logged_description: This conversation is restricted to its participants.
+            If you think that you should be in it, please contact the administrator.
+          title: Private conversation!
         reset: Reset
         tip: 'Tip: use CTRL + Enter to publish your note'
         update:

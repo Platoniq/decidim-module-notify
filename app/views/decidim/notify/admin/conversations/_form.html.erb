@@ -7,6 +7,16 @@
 </div>
 
 <div class="row column">
+  <div class="switch tiny switch-with-label restricted">
+    <%= form.label :restricted do %>
+      <%= form.check_box :restricted, label: false, class: "switch-input" %>
+      <span class="switch-paddle"></span>
+      <span class="switch-label"><%= t("restricted", scope: "decidim.components.notify.settings.global") %></span>
+     <% end %>
+  </div>
+</div>
+
+<div class="row column">
   <div class="switch tiny switch-with-label private">
     <%= form.label :private do %>
       <%= form.check_box :private, label: false, class: "switch-input" %>

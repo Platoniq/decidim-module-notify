@@ -1,0 +1,11 @@
+<%= render partial: "decidim/shared/component_announcement" %>
+<div class="row column notify-container">
+  <div class="section">
+
+      <div class="callout warning">
+
+      <h5><%= t ".title" %></h5>
+      <p><%= t(current_user ? ".logged_description" : ".anonymous_description") %></p>
+    </div>
+  </div>
+</div>

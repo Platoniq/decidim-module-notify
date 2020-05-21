@@ -36,6 +36,7 @@ module Decidim
         private
 
         def update_config
+          current_component.attributes["settings"]["global"]["restricted"] = form.restricted
           current_component.attributes["settings"]["global"]["private"] = form.private
           current_component.save!
         end

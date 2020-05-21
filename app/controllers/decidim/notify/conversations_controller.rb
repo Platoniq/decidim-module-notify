@@ -10,6 +10,8 @@ module Decidim
       helper_method :chapters, :active_chapter
 
       def index
+        return render :private unless allowed_to? :index, :notes
+
         @unclassified = Chapter.new(notes: unclassified_notes)
         @participants = Author.for(current_component).participants
         @note_takers = Author.for(current_component).note_takers
@@ -34,7 +36,7 @@ module Decidim
       end
 
       def update
-        enforce_permission_to :create, :notes
+        enforce_permission_to :update, :notes
 
         @form = form(NoteForm).from_params(params)
         UpdateNote.call(@form) do

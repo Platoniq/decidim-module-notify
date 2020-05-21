@@ -9,6 +9,7 @@
   </div>
 
   <div class="card-section multiusers-select-container">
+    <p class="text-help"><%= t(".help").html_safe %></p>
     <%= decidim_form_for(@form, url: conversations_path, html: { class: "form users" }) do |f| %>
 
       <%= render partial: "form", object: f %>

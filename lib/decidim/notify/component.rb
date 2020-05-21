@@ -20,6 +20,7 @@ Decidim.register_component(:notify) do |component|
   component.settings(:global) do |settings|
     settings.attribute :announcement, type: :text, translated: true, editor: true
     settings.attribute :private, type: :boolean
+    settings.attribute :restricted, type: :boolean
   end
 
   component.settings(:step) do |settings|

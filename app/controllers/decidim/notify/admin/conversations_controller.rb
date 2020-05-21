@@ -8,12 +8,16 @@ module Decidim
         include Broadcasts
 
         def index
+          enforce_permission_to :index, :notify_config
+
           @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
           @note_takers = Author.for(current_component).note_takers.map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
-          @form = form(NotifyConfigForm).from_params(private: current_component.settings[:private])
+          @form = form(NotifyConfigForm).from_params(current_component.attributes["settings"]["global"])
         end
 
         def create
+          enforce_permission_to :update, :notify_config
+
           @form = form(NotifyConfigForm).from_params(params)
           UpdateConfig.call(@form) do
             on(:ok) do |participants|
@@ -28,6 +32,8 @@ module Decidim
         end
 
         def users
+          enforce_permission_to :update, :notify_config
+
           respond_to do |format|
             format.json do
               if (term = params[:term].to_s).present?
