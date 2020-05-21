@@ -28,7 +28,7 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
       $note.replaceWith(data.update);
     }
     if(data.destroy) $(`#notify-note-${data.destroy}`).remove();
-    
+
     updateEmptyStatus(".notify-chapter-notes");
   }
 });
@@ -38,7 +38,8 @@ App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decid
   received: function(data) {
     // console.log("participants received",data);
 
-    $("#notify-participants").html(data);
+    $("#notify-note_takers").html(data.noteTakers);
+    $("#notify-participants").html(data.participants);
   }
 });
 
@@ -48,7 +49,7 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
 
     if(data.create) {
       $("#notify-chapters").prepend(data.create);
-      $(document).foundation();      
+      $(document).foundation();
       if (!$(`#note_chapter [value="${data.title}"]`).length) {
         var newOption = new Option(data.title, data.title, true, true);
         $("#note_chapter").append(newOption).trigger("change");
@@ -83,7 +84,7 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
 
       $(`#notify-chapter-${data.destroy}`).remove();
     }
-    
+
     updateEmptyStatus(".notify-chapter-notes");
   }
 });

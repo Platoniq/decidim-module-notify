@@ -23,8 +23,9 @@ module Decidim
         end
 
         def broadcast_participants(participants)
-          html = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants)
-          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", html)
+          view1 = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants.select(&:admin))
+          view2 = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants.reject(&:admin))
+          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", noteTakers: view1, participants: view2)
         end
 
         def broadcast_create_chapter(chapter)

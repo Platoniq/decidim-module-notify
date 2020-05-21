@@ -40,7 +40,7 @@
       margin-bottom: 4px;
     }
   }
-  .select2-selection--single .select2-selection__clear, 
+  .select2-selection--single .select2-selection__clear,
   .selection .select2-selection--single .select2-selection__clear {
     margin-right: 20px;
     background: #ddd;
@@ -84,6 +84,9 @@
       margin-left: 1rem;
       display: none;
     }
+  }
+  .form-conversations-reset {
+    margin-top: 0.5rem;
   }
 
   .by-note-taker {

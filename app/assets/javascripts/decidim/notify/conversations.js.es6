@@ -37,7 +37,8 @@ $(() => {
       $("#note_code").select2("open");
     }
 
-    location = "#new_note";
+    $("html, body").animate({ scrollTop: $('#new_note').offset().top }, 400);
+    // location = "#new_note";
 
     // console.log("edit",$(e.currentTarget).attr('href'),code,body)
   });

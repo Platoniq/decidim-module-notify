@@ -7,13 +7,13 @@
       <% if allowed_to? :create, :notes %>
         <div class="card card--notes-editor">
           <div class="card-section">
-            <%= form_for(@form, url: conversations_path, remote: true, html: { class: "form new_note", data: nil }) do |f| %>
+            <%= form_for(@form, url: conversations_path, remote: true, html: { id: "new_note", class: "form new_note", data: nil }) do |f| %>
               <input type="hidden" name="_method" value="post">
               <%= render partial: "form", object: f %>
 
               <div class="float-right text-right">
                 <div class="help-text"><%= t("decidim.notify.conversations.tip") %></div>
-                <button type="reset" class="button secondary tiny"><%= t("decidim.notify.conversations.reset") %></button>
+                <button type="reset" class="button secondary tiny form-conversations-reset"><%= t("decidim.notify.conversations.reset") %></button>
               </div>
               <div class="button--double form-conversations-submit">
                   <%= f.submit t(".send") %>
