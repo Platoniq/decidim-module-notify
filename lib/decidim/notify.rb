@@ -40,6 +40,7 @@ module Decidim
     end
 
     # Not recommended to use "async", event for development
+    # postgresql has a 8000 character limitation
     config_accessor :cable_adapter do
       "postgresql"
     end
