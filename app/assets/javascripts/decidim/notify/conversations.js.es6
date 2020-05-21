@@ -2,7 +2,7 @@
 
 $(() => {
   const $info = $(".form-conversations-submit .info");
-  const $form = $('form#new_note_');
+  const $form = $('form#new_note');
   const originalAction = $form.attr("action");
 
   const resetForm = () => {
