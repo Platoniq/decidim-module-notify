@@ -6,6 +6,9 @@ en:
         body: Statement
         chapter: Chapter
         code: Author
+      notify_config:
+        users: Participants
+        note_takers: Note Takers
   decidim:
     components:
       notify:
@@ -13,6 +16,7 @@ en:
         settings:
           global:
             announcement: Announcement
+            private: Private board (only participants can access it)
           step:
             announcement: Announcement
     notify:

@@ -5,3 +5,13 @@
 <div class="row column">
   <%= form.select :note_takers, options_from_collection_for_select(@note_takers, :id, :text, proc { true }), {include_blank: false}, {class: "multiusers-select", multiple: true, data: {url: users_path}} %>
 </div>
+
+<div class="row column">
+  <div class="switch tiny switch-with-label private">
+    <%= form.label :private do %>
+      <%= form.check_box :private, label: false, class: "switch-input" %>
+      <span class="switch-paddle"></span>
+      <span class="switch-label"><%= t("private", scope: "decidim.components.notify.settings.global") %></span>
+     <% end %>
+  </div>
+</div>

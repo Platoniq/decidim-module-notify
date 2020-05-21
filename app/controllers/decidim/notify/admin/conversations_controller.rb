@@ -10,11 +10,11 @@ module Decidim
         def index
           @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
           @note_takers = Author.for(current_component).note_takers.map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
-          @form = form(ConfigForm).instance
+          @form = form(NotifyConfigForm).from_params(private: current_component.settings[:private])
         end
 
         def create
-          @form = form(ConfigForm).from_params(params)
+          @form = form(NotifyConfigForm).from_params(params)
           UpdateConfig.call(@form) do
             on(:ok) do |participants|
               flash[:notice] = I18n.t("decidim.notify.admin.conversations.success")

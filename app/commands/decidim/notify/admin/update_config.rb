@@ -23,6 +23,7 @@ module Decidim
           begin
             remove_users
             update_users
+            update_config
 
             broadcast(:ok, @participants)
           rescue ActiveRecord::RecordInvalid => e
@@ -33,6 +34,11 @@ module Decidim
         attr_reader :form
 
         private
+
+        def update_config
+          current_component.attributes["settings"]["global"]["private"] = form.private
+          current_component.save!
+        end
 
         def update_users
           @participants = []

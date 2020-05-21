@@ -3,9 +3,10 @@
 module Decidim
   module Notify
     module Admin
-      class ConfigForm < Decidim::Form
+      class NotifyConfigForm < Decidim::Form
         attribute :users, Array[String]
         attribute :note_takers, Array[String]
+        attribute :private, Boolean
       end
     end
   end

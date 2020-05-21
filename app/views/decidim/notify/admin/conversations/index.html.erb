@@ -3,7 +3,7 @@
     <h2 class="card-title">
       <%= t(".title") %>
       <div class="button--title">
-        <%= link_to t("actions.new_group", scope: "decidim.notify.admin"), "#", class: "button tiny button--simple" %>
+        <%= link_to t("actions.configure", scope: "decidim.admin"), Decidim::EngineRouter.admin_proxy(current_component.participatory_space).edit_component_path(current_component.id), class: "button tiny button--simple" %>
       </div>
     </h2>
   </div>
