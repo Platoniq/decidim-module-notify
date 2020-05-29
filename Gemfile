@@ -2,12 +2,9 @@
 
 source "https://rubygems.org"
 
-$LOAD_PATH.push File.expand_path("lib", __dir__)
-require "decidim/notify/version"
-
 ruby RUBY_VERSION
 # DECIDIM_VERSION = { git: "https://github.com/decidim/decidim" }
-DECIDIM_VERSION = Decidim::Notify::DECIDIM_VERSION
+DECIDIM_VERSION = "0.21"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-notify", path: "."

@@ -13,10 +13,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.5"
 
   s.name = "decidim-notify"
-  s.summary = "A decidim notify module"
+  s.summary = "A conversation tracker module for Decidim"
   s.description = "A note-taker feature focused on conversations."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
 
+  s.add_dependency "decidim-admin", Decidim::Notify::MIN_DECIDIM_VERSION
   s.add_dependency "decidim-core", Decidim::Notify::MIN_DECIDIM_VERSION
 end
