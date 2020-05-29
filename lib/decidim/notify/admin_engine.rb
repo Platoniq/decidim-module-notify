@@ -12,6 +12,7 @@ module Decidim
       routes do
         # Add admin engine routes here
         resources :conversations
+        resources :chapters
         get :users, to: "conversations#users"
         root to: "conversations#index"
       end

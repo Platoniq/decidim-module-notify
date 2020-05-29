@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t(".title") %>
+      <div class="button--title">
+         <%= link_to t("chapters.actions.new", scope: "decidim.notify.admin", name: t("chapter.title", scope: "activemodel.attributes")), new_chapter_path, class: "button tiny button--simple" %>
+      </div>
+    </h2>
+  </div>
+
+    <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("chapter.title", scope: "activemodel.attributes") %></th>
+            <th><%= t("chapter.active", scope: "activemodel.attributes") %></th>
+            <th class="actions"><%= t("actions.title", scope: "decidim.notify.admin") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% chapters.each do |chapter| %>
+            <tr data-id="<%= chapter.id %>">
+              <td>
+                <%= chapter.title %>
+              </td>
+              <td>
+                <% if chapter.active? %>
+                  <span class="text-success"><%= icon("check", class: "icon", aria_label: "ok", role: "img") %></span>
+                <% else %>
+                  <span class="text-alert"><%= icon("x", class: "icon", aria_label: "ko", role: "img") %></span>
+                <% end %>
+              </td>
+              <td class="table-list__actions">
+                <% if allowed_to? :update, :chapter, chapter: chapter %>
+                  <%= icon_link_to "pencil", edit_task_chapter_path(@current_task, chapter), t("actions.edit", scope: "decidim.notify"), class: "action-icon--edit" %>
+                <% end %>
+
+                <% if allowed_to? :destroy, :chapter, chapter: chapter %>
+                  <%= icon_link_to "circle-x", task_chapter_path(@current_task, chapter), t("actions.destroy", scope: "decidim.notify"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.notify") } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

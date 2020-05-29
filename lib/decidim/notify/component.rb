@@ -37,26 +37,34 @@ Decidim.register_component(:notify) do |component|
   #   # Register some stat number to the application
   # end
 
-  component.register_stat :notes_count, primary: true, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |components, start_at, end_at|
+  component.register_stat :notify_conversations_count, priority: Decidim::StatsRegistry::HIGH_PRIORITY do |components, start_at, end_at|
+    conversations = components.published.where(manifest_name: :notify)
+    conversations = conversations.where("created_at >= ?", start_at) if start_at.present?
+    conversations = conversations.where("created_at <= ?", end_at) if end_at.present?
+    conversations.count
+  end
+
+  component.register_stat :notify_notes_count, primary: true, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |components, start_at, end_at|
     notes = Decidim::Notify::Note.where(component: components)
     notes = notes.where("created_at >= ?", start_at) if start_at.present?
     notes = notes.where("created_at <= ?", end_at) if end_at.present?
     notes.count
   end
 
-  component.register_stat :authors_count do |components, start_at, end_at|
+  component.register_stat :notify_authors_count, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY  do |components, start_at, end_at|
     authors = Decidim::Notify::Author.where(component: components)
     authors = authors.where("created_at >= ?", start_at) if start_at.present?
     authors = authors.where("created_at <= ?", end_at) if end_at.present?
     authors.count
   end
 
-  component.register_stat :chapters_count do |components, start_at, end_at|
+  component.register_stat :notify_chapters_count, priority: Decidim::StatsRegistry::MEDIUM_PRIORITY do |components, start_at, end_at|
     chapters = Decidim::Notify::Chapter.where(component: components)
     chapters = chapters.where("created_at >= ?", start_at) if start_at.present?
     chapters = chapters.where("created_at <= ?", end_at) if end_at.present?
     chapters.count
   end
+
 
   # component.seeds do |participatory_space|
   #   # Add some seeds for this component

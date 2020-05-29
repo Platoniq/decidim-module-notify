@@ -2,6 +2,9 @@
 en:
   activemodel:
     attributes:
+      chapter:
+        title: Title
+        active: Active
       note:
         body: Statement
         chapter: Chapter
@@ -10,6 +13,12 @@ en:
         note_takers: Note Takers
         users: Participants
   decidim:
+    participatory_processes:
+      statistics:
+        notify_conversations_count: Conversations
+        notify_notes_count: Conversation notes
+        notify_authors_count: Conversation participants
+        notify_chapters_count: Conversation themes
     components:
       notify:
         name: Notify
@@ -24,7 +33,12 @@ en:
     notify:
       admin:
         actions:
-          new_group: New group
+          title: Actions
+        chapters:
+          actions:
+            new: New chapter
+          index:
+            title: Chapters
         conversations:
           error: Error saving configuration [%{message}]
           index:
