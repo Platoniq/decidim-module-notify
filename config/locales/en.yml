@@ -3,8 +3,8 @@ en:
   activemodel:
     attributes:
       chapter:
-        title: Title
         active: Active
+        title: Title
       note:
         body: Statement
         chapter: Chapter
@@ -13,12 +13,6 @@ en:
         note_takers: Note Takers
         users: Participants
   decidim:
-    participatory_processes:
-      statistics:
-        notify_conversations_count: Conversations
-        notify_notes_count: Conversation notes
-        notify_authors_count: Conversation participants
-        notify_chapters_count: Conversation themes
     components:
       notify:
         name: Notify
@@ -37,11 +31,21 @@ en:
         chapters:
           actions:
             new: New chapter
+          edit:
+            title: Edit chapter
+            update: Update
+          form:
+            cancel: Cancel & back to chapters
           index:
+            conversations: Configure conversation
             title: Chapters
+          new:
+            create: Create
+            title: New chapter
         conversations:
           error: Error saving configuration [%{message}]
           index:
+            chapters: Configure chapters
             help: |-
               <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
               <p>Configure this tool by adding the participants and some note-takers:</p>
@@ -89,3 +93,9 @@ en:
         tip: 'Tip: use CTRL + Enter to publish your note'
         update:
           error: Error updating the note [%{message}]
+    participatory_processes:
+      statistics:
+        notify_authors_count: Conversation participants
+        notify_chapters_count: Conversation themes
+        notify_conversations_count: Conversations
+        notify_notes_count: Conversation notes

@@ -5,6 +5,9 @@
       <div class="button--title">
          <%= link_to t("chapters.actions.new", scope: "decidim.notify.admin", name: t("chapter.title", scope: "activemodel.attributes")), new_chapter_path, class: "button tiny button--simple" %>
       </div>
+      <div class="button--title">
+        <%= link_to t(".conversations"), conversations_path, class: "button tiny button--simple" %>
+      </div>
     </h2>
   </div>
 
@@ -28,16 +31,16 @@
                 <% if chapter.active? %>
                   <span class="text-success"><%= icon("check", class: "icon", aria_label: "ok", role: "img") %></span>
                 <% else %>
-                  <span class="text-alert"><%= icon("x", class: "icon", aria_label: "ko", role: "img") %></span>
+                  <span class="text-muted"><%= icon("check", class: "icon", aria_label: "ko", role: "img") %></span>
                 <% end %>
               </td>
               <td class="table-list__actions">
                 <% if allowed_to? :update, :chapter, chapter: chapter %>
-                  <%= icon_link_to "pencil", edit_task_chapter_path(@current_task, chapter), t("actions.edit", scope: "decidim.notify"), class: "action-icon--edit" %>
+                  <%= icon_link_to "pencil", edit_chapter_path(chapter), t("chapter.edit", scope: "decidim.notify"), class: "action-icon--edit" %>
                 <% end %>
 
                 <% if allowed_to? :destroy, :chapter, chapter: chapter %>
-                  <%= icon_link_to "circle-x", task_chapter_path(@current_task, chapter), t("actions.destroy", scope: "decidim.notify"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.notify") } %>
+                  <%= icon_link_to "circle-x", chapter_path(chapter), t("chapters.destroy", scope: "decidim.notify"), method: :delete, class: "action-icon--remove", data: { confirm: t("chapters.destroy.sure", scope: "decidim.notify") } %>
                 <% end %>
               </td>
             </tr>

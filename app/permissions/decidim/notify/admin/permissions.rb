@@ -9,10 +9,10 @@ module Decidim
 
           return permission_action if permission_action.scope != :admin
 
-          return permission_action unless permission_action.subject == :notify_config
+          return permission_action unless [:config, :chapter].include? permission_action.subject
 
           case permission_action.action
-          when :index, :update
+          when :index, :create, :update, :destroy
             permission_action.allow!
           end
           permission_action
