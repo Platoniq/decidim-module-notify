@@ -31,6 +31,15 @@ en:
         chapters:
           actions:
             new: New chapter
+          create:
+            success: Chapter created successfully
+            error: Error creating the chapter
+          update:
+            success: Chapter updated successfully
+            error: Error updating the chapter
+          destroy:
+            success: Chapter deleted successfully
+            error: Error deleting the chapter
           edit:
             title: Edit chapter
             update: Update

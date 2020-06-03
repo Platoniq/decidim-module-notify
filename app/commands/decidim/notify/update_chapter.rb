@@ -2,7 +2,7 @@
 
 module Decidim
   module Notify
-    class UpdateChapter < Rectify::Command
+    class UpdateChapter < Admin::UpdateChapter
       # Public: Initializes the command.
       #
       # form - A config form
@@ -20,23 +20,16 @@ module Decidim
         return broadcast(:invalid) if form.invalid?
 
         begin
-          chapter = Chapter.find(form.id)
-          # rubocop:disable Rails/SkipsModelValidations
-          Chapter.for(chapter.component).update_all(active: false) if form.active
-          # rubocop:enable Rails/SkipsModelValidations
-          chapter.title = form.title
-          chapter.active = form.active
-          chapter.save!
+          @chapter = Chapter.find(form.id)
 
-          broadcast(:ok, chapter)
+          unset_actives
+          update_chapter!
+
+          broadcast(:ok, @chapter)
         rescue ActiveRecord::ActiveRecordError => e
           broadcast(:invalid, e.message)
         end
       end
-
-      private
-
-      attr_reader :form
     end
   end
 end

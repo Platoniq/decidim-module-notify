@@ -6,6 +6,8 @@ module Decidim
       class ChapterForm < Decidim::Form
         attribute :title, String
         attribute :active, Boolean
+
+        validates :title, presence: true
       end
     end
   end

@@ -1,4 +1,4 @@
-<%= decidim_form_for(@form, url: new_chapter_path, html: { class: "form edit_chapter" }) do |f| %>
+<%= decidim_form_for(@form, url: chapters_path, html: { class: "form edit_chapter" }) do |f| %>
   <%= render partial: "form", object: f, locals: { title: t(".title") } %>
 
   <div class="button--double form-general-submit">
