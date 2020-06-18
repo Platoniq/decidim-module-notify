@@ -28,7 +28,7 @@ module Decidim
               flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message: message)
             end
           end
-          redirect_to conversations_path
+          redirect_to EngineRouter.admin_proxy(current_component).conversations_path
         end
 
         def users

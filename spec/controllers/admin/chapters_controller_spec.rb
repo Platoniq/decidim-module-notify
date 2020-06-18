@@ -28,30 +28,16 @@ module Decidim::Notify::Admin
     end
 
     describe "GET #index" do
-      let(:params) do
-        {
-          component_id: component.id,
-          participatory_process_slug: component.participatory_space.slug
-        }
-      end
-
       it "renders the index listing" do
-        get :index, params: params
+        get :index
         expect(response).to have_http_status(:ok)
         expect(subject).to render_template(:index)
       end
     end
 
     describe "GET #new" do
-      let(:params) do
-        {
-          component_id: component.id,
-          participatory_process_slug: component.participatory_space.slug
-        }
-      end
-
       it "renders the empty form" do
-        get :new, params: params
+        get :new
         expect(response).to have_http_status(:ok)
         expect(subject).to render_template(:new)
       end
@@ -82,8 +68,6 @@ module Decidim::Notify::Admin
       let!(:chapter) { create :notify_chapter, component: component }
       let(:params) do
         {
-          component_id: component.id,
-          participatory_process_slug: component.participatory_space.slug,
           id: chapter.id,
           chapter: form
         }
@@ -105,11 +89,8 @@ module Decidim::Notify::Admin
 
     describe "DELETE #destroy" do
       let!(:chapter) { create :notify_chapter, component: component }
-
       let(:params) do
         {
-          component_id: component.id,
-          participatory_process_slug: component.participatory_space.slug,
           id: chapter.id
         }
       end
