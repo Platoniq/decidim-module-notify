@@ -106,12 +106,12 @@ en:
       home:
         statistics:
           notify_authors_count: Conversation participants
-          notify_chapters_count: Conversation themes
+          notify_chapters_count: Conversation topics
           notify_conversations_count: Conversations
           notify_notes_count: Conversation notes
     participatory_processes:
       statistics:
         notify_authors_count: Conversation participants
-        notify_chapters_count: Conversation themes
+        notify_chapters_count: Conversation topics
         notify_conversations_count: Conversations
         notify_notes_count: Conversation notes
