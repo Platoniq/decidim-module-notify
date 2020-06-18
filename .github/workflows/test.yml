@@ -68,12 +68,15 @@ jobs:
       - name: Run RSpec
         run: COBERTURA=1 bundle exec rake
 
+      - name: Set env
+        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
+
       - uses: actions/checkout@master
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: ${{ env.GITHUB_WORKSPACE }}/coverage/coverage.xml
+          coverage-reports: ${{ env.workspace }}/coverage/coverage.xml
 
       # - name: Publish code coverage
       #   run: |

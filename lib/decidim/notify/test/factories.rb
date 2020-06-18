@@ -17,13 +17,25 @@ FactoryBot.define do
     trait :with_author do
       author { create(:user) }
     end
-    # chapter
+
+    trait :with_chapter do
+      chapter { create(:notify_chapter, component: component) }
+    end
   end
 
   factory :notify_author, class: "Decidim::Notify::Author" do
     component { create(:notify_component) }
     code { Faker::Number.between(1, 20) }
     # name { Faker::Name.name }
+
+    trait :with_user do
+      user { create(:user) }
+    end
+  end
+
+  factory :notify_chapter, class: "Decidim::Notify::Chapter" do
+    component { create(:notify_component) }
+    title { Faker::Lorem.sentences(3).join("\n") }
 
     trait :with_user do
       user { create(:user) }
