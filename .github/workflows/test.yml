@@ -1,11 +1,11 @@
-name: Test
+name: TestNotify
 
 on:
   push:
   pull_request:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -58,9 +58,9 @@ jobs:
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
 
-      - name: Publish code coverage
-        run: |
-          export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-          ./cc-test-reporter after-build -r "$CC_TEST_REPORTER_ID"
-        env:
-          CC_TEST_REPORTER_ID: f4e29abf77907a77f577de201af7791c8f202265a63c09535551146810780eb3
+      # - name: Publish code coverage
+      #   run: |
+      #     export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+      #     ./cc-test-reporter after-build -r "$CC_TEST_REPORTER_ID"
+      #   env:
+      #     CC_TEST_REPORTER_ID: afec4e0521370c5dfcd26d2bcdf7d0d21fcd6545bc3e377b88e51e827b8acdaf
