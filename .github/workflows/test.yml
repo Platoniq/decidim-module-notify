@@ -32,6 +32,9 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Set env
+        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
+
       - uses: ruby/setup-ruby@master
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -66,17 +69,21 @@ jobs:
       #     ./cc-test-reporter before-build
 
       - name: Run RSpec
-        run: COBERTURA=1 bundle exec rake
+        run: CODECOV=1 bundle exec rake
 
-      - name: Set env
-        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
-
-      - uses: actions/checkout@master
-      - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@master
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
         with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: ${{ env.workspace }}/coverage/coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/coverage.xml
+          fail_ci_if_error: true
+
+      # - uses: actions/checkout@master
+      # - name: Run codacy-coverage-reporter
+      #   uses: codacy/codacy-coverage-reporter-action@master
+      #   with:
+      #     project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      #     coverage-reports: ${{ env.workspace }}/coverage/coverage.xml
 
       # - name: Publish code coverage
       #   run: |

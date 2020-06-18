@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "decidim/notify/test/shared_examples/component_examples"
 
 module Decidim::Notify
   describe Note do
@@ -11,11 +12,9 @@ module Decidim::Notify
 
     it { is_expected.to be_valid }
 
-    context "when the note is created" do
-      it "is associated with a component" do
-        expect(subject.component).to be_a(Decidim::Component)
-      end
+    include_examples "model component is notify"
 
+    context "when the note is created" do
       it "is associated with a creator" do
         expect(subject.creator).to eq(creator)
       end
