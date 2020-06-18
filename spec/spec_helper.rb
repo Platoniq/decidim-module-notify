@@ -11,8 +11,8 @@ if ENV["CODECOV"]
 end
 
 if ENV["COBERTURA"]
-	require 'simplecov-cobertura'
-	SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+  require "simplecov-cobertura"
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 end
 
 ENV["ENGINE_ROOT"] = File.dirname(__dir__)

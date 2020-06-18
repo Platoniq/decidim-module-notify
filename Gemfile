@@ -30,5 +30,5 @@ end
 
 group :test do
   gem "codecov", require: false
-  gem 'simplecov-cobertura', require: false
+  gem "simplecov-cobertura", require: false
 end
