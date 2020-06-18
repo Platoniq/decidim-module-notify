@@ -9,5 +9,14 @@ FactoryBot.define do
     participatory_space { create(:participatory_process, :with_steps) }
   end
 
-  # Add engine factories here
+  factory :notify_note, class: "Decidim::Notify::Note" do
+    component { create(:notify_component) }
+    body { Faker::Lorem.sentences(3).join("\n") }
+    creator { create(:user) }
+
+    trait :with_author do
+      author { create(:user) }
+    end
+    # chapter
+  end
 end

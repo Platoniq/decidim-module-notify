@@ -8,7 +8,6 @@ module Decidim
 
       self.table_name = :decidim_notify_chapters
 
-      belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
       has_many :notes,
                foreign_key: "decidim_notify_chapter_id",
                class_name: "Decidim::Notify::Note",

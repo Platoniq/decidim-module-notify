@@ -32,14 +32,11 @@ en:
           actions:
             new: New chapter
           create:
-            success: Chapter created successfully
             error: Error creating the chapter
-          update:
-            success: Chapter updated successfully
-            error: Error updating the chapter
+            success: Chapter created successfully
           destroy:
-            success: Chapter deleted successfully
             error: Error deleting the chapter
+            success: Chapter deleted successfully
           edit:
             title: Edit chapter
             update: Update
@@ -51,6 +48,9 @@ en:
           new:
             create: Create
             title: New chapter
+          update:
+            error: Error updating the chapter
+            success: Chapter updated successfully
         conversations:
           error: Error saving configuration [%{message}]
           index:
@@ -102,6 +102,13 @@ en:
         tip: 'Tip: use CTRL + Enter to publish your note'
         update:
           error: Error updating the note [%{message}]
+    pages:
+      home:
+        statistics:
+          notify_authors_count: Conversation participants
+          notify_chapters_count: Conversation themes
+          notify_conversations_count: Conversations
+          notify_notes_count: Conversation notes
     participatory_processes:
       statistics:
         notify_authors_count: Conversation participants
