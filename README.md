@@ -1,13 +1,18 @@
 # Decidim::Notify
 
-A note-taker feature focused on conversations.
+![[CI] Build Status](https://github.com/Platoniq/decidim-module-notify/workflows/%5BCI%5D%20Test%20Notify/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a00b6c950199d3530dc9/maintainability)](https://codeclimate.com/github/Platoniq/decidim-module-notify/maintainability)
+[![Codecov](https://codecov.io/gh/Platoniq/decidim-module-notify/branch/master/graph/badge.svg)](https://codecov.io/gh/Platoniq/decidim-module-notify)
+
+
+A note-taker feature focused on conversations. This module provides a component for any participatory space in Decidim.
 
 ## Usage
 
 Notify will be available as a Component for a Participatory
 Space.
 
-> Module in development! Not ready to use!
+> This module is under development!
 
 ## Installation
 
