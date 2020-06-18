@@ -8,7 +8,7 @@ module Decidim
       include Broadcasts
 
       def update
-        enforce_permission_to :create, :chapters
+        enforce_permission_to :create, :chapter
 
         @form = form(ChapterForm).from_params(params)
         UpdateChapter.call(@form) do
@@ -24,7 +24,7 @@ module Decidim
       end
 
       def destroy
-        enforce_permission_to :destroy, :chapters
+        enforce_permission_to :destroy, :chapter
 
         DeleteChapter.call(params[:id]) do
           on(:ok) do

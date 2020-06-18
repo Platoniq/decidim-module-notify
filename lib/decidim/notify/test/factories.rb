@@ -31,6 +31,10 @@ FactoryBot.define do
     trait :with_user do
       user { create(:user) }
     end
+
+    trait :is_note_taker do
+      admin { true }
+    end
   end
 
   factory :notify_chapter, class: "Decidim::Notify::Chapter" do
