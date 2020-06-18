@@ -13,6 +13,10 @@ module Decidim
       it { is_expected.to be_valid }
 
       context "when the note is created" do
+        it "is associated with a component" do
+          expect(subject.component).to be_a(Decidim::Component)
+        end
+
         it "is associated with a creator" do
           expect(subject.creator).to eq(creator)
         end
@@ -25,7 +29,7 @@ module Decidim
       context "when the note has an author" do
         let(:note) { create(:notify_note, :with_author) }
 
-        it "is does not have an author" do
+        it "is has an author" do
           expect(subject.author).to be_a(Decidim::User)
         end
       end
