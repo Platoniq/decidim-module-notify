@@ -19,6 +19,12 @@ module Decidim
         model.id
       end
 
+      def note_taker?
+        return unless current_user
+
+        Author.for(model.component).note_takers.find_by(user: current_user)
+      end
+
       def notes
         return [] unless model&.notes
 
