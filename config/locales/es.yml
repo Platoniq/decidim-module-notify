@@ -91,7 +91,6 @@ es:
           anonymous_description: Esta conversación está restringida a sus participantes. Por favor, inicie sesión antes de intentar acceder aquí.
           logged_description: Esta conversación está restringida a sus participantes. Si crees que deberías estar en ella, por favor contacta al administrador.
           title: Conversación Privada!
-        reset: Restablecer
         tip: 'Truco: usa CTRL + Enter para publicar tu nota'
         update:
           error: Error al actualizar la nota [%{message}]
