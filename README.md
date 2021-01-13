@@ -12,6 +12,8 @@ A note-taker feature focused on conversations. This module provides a component 
 Notify will be available as a Component for a Participatory
 Space.
 
+![Notify component](examples/notify.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
