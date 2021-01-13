@@ -1,0 +1,110 @@
+ca:
+  activemodel:
+    attributes:
+      chapter:
+        active: Active
+        title: Title
+      note:
+        body: Statement
+        chapter: Chapter
+        code: Author
+      notify_config:
+        note_takers: Note Takers
+        users: Participants
+  decidim:
+    components:
+      notify:
+        name: Notify
+        settings:
+          global:
+            announcement: Announcement
+            private: Private board (only participants can access it)
+            restricted: Restricted board (only logged users can access it, non participants are accepted)
+          step:
+            announcement: Announcement
+    notify:
+      admin:
+        actions:
+          title: Actions
+        chapters:
+          actions:
+            new: New chapter
+          create:
+            error: Error creating the chapter
+            success: Chapter created successfully
+          destroy:
+            error: Error deleting the chapter
+            success: Chapter deleted successfully
+          edit:
+            title: Edit chapter
+            update: Update
+          form:
+            cancel: Cancel & back to chapters
+          index:
+            conversations: Configure conversation
+            title: Chapters
+          new:
+            create: Create
+            title: New chapter
+          update:
+            error: Error updating the chapter
+            success: Chapter updated successfully
+        conversations:
+          error: Error saving configuration [%{message}]
+          index:
+            chapters: Configure chapters
+            help: |-
+              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
+              <p>Configure this tool by adding the participants and some note-takers:</p>
+              <ul><li>Each participant will be assigned a number (starting at 1).</li>
+              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
+              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
+              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
+            save: Save changes
+            title: Participants for the conversation
+          success: Configuration saved successfully
+      chapter:
+        active: Active
+        delete: Delete
+        destroy:
+          error: Error deleting the chapter
+          sure: Are you sure to delete this chapter?
+        edit: Edit chapter
+        empty: Nothing has been said on this topic yet.
+        update:
+          error: Error updating the chapter [%{message}]
+      conversations:
+        create:
+          error: Error creating the note [%{message}]
+        destroy:
+          error: Error deleting the note
+          sure: Are you sure to delete this note?
+        index:
+          note_takers: Note Takers
+          participants: Participants
+          send: Send
+        placeholders:
+          author: Author, use the number or name
+          chapter: Set the chapter
+          statement: Write the statement...
+        private:
+          anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
+          logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
+          title: Private conversation!
+        reset: Reset
+        tip: 'Tip: use CTRL + Enter to publish your note'
+        update:
+          error: Error updating the note [%{message}]
+    pages:
+      home:
+        statistics:
+          notify_authors_count: Conversation participants
+          notify_chapters_count: Conversation topics
+          notify_conversations_count: Conversations
+          notify_notes_count: Conversation notes
+    participatory_processes:
+      statistics:
+        notify_authors_count: Conversation participants
+        notify_chapters_count: Conversation topics
+        notify_conversations_count: Conversations
+        notify_notes_count: Conversation notes
