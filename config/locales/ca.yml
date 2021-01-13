@@ -91,7 +91,6 @@ ca:
           anonymous_description: Aquesta conversa està restringida als seus participants. Inicieu sessió abans d’intentar accedir aquí.
           logged_description: Aquesta conversa està restringida als seus participants. Si creieu que hi hauríeu de ser, poseu-vos en contacte amb l’administrador.
           title: Conversa privada!
-        reset: Restableix
         tip: 'Truc: utilitzeu CTRL + Retorn per publicar la vostra nota'
         update:
           error: S'ha produït un error al actualitzar la nota [%{message}]
