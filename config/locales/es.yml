@@ -2,82 +2,82 @@ es:
   activemodel:
     attributes:
       chapter:
-        active: Active
-        title: Title
+        active: Activo
+        title: Título
       note:
-        body: Statement
-        chapter: Chapter
-        code: Author
+        body: Declaración
+        chapter: Capítulo
+        code: Autor
       notify_config:
-        note_takers: Note Takers
-        users: Participants
+        note_takers: Tomadores de Notas
+        users: Participantes
   decidim:
     components:
       notify:
         name: Notify
         settings:
           global:
-            announcement: Announcement
-            private: Private board (only participants can access it)
-            restricted: Restricted board (only logged users can access it, non participants are accepted)
+            announcement: Anuncio
+            private: Tablón privado (sólo los participantes pueden acceder a él)
+            restricted: Tablón restringido (sólo los usuarios registrados pueden acceder a él, se aceptan no participantes)
           step:
-            announcement: Announcement
+            announcement: Anuncio
     notify:
       admin:
         actions:
-          title: Actions
+          title: Acciones
         chapters:
           actions:
-            new: New chapter
+            new: Capítulo nuevo
           create:
-            error: Error creating the chapter
-            success: Chapter created successfully
+            error: Error creando el capítulo
+            success: Capítulo creado correctamente
           destroy:
-            error: Error deleting the chapter
-            success: Chapter deleted successfully
+            error: Error al eliminar el capítulo
+            success: Capítulo eliminado correctamente
           edit:
-            title: Edit chapter
-            update: Update
+            title: Editar capítulo
+            update: Actualizar
           form:
-            cancel: Cancel & back to chapters
+            cancel: Cancelar y volver a los capítulos
           index:
-            conversations: Configure conversation
-            title: Chapters
+            conversations: Configurar conversación
+            title: Capítulos
           new:
-            create: Create
-            title: New chapter
+            create: Crear
+            title: Nuevo capítulo
           update:
-            error: Error updating the chapter
-            success: Chapter updated successfully
+            error: Error actualizando el capítulo
+            success: Capítulo actualizado correctamente
         conversations:
-          error: Error saving configuration [%{message}]
+          error: Error al guardar la configuración [%{message}]
           index:
-            chapters: Configure chapters
+            chapters: Configurar capítulos
             help: |-
-              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
-              <p>Configure this tool by adding the participants and some note-takers:</p>
-              <ul><li>Each participant will be assigned a number (starting at 1).</li>
-              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
-              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
-              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
-            save: Save changes
-            title: Participants for the conversation
-          success: Configuration saved successfully
+              <p>Notify te permite transcribir conversaciones entre varias personas en tiempo real (sin necesidad de actualizar la página).</p>
+              <p>Configura esta herramienta agregando los participantes y algunos tomadores de notas:</p>
+              <ul><li>A cada participante se le asignará un número (a partir del 1).</li>
+              <li>Los tomadores de notas son aquellos participantes que pueden transcribir la conversación.<br>
+              Cada nota transcrita puede ser acreditada a un participante escribiendo su número o nombre.</li></ul>
+              <p>Para facilitar el proceso, todos los avatares de los participantes y sus números se muestran junto a las notas.</p>
+            save: Guardar cambios
+            title: Participantes de la conversación
+          success: Configuración guardada correctamente
       chapter:
-        active: Active
-        delete: Delete
+        active: Activo
+        delete: Eliminar
         destroy:
-          error: Error deleting the chapter
-          sure: Are you sure to delete this chapter?
-        edit: Edit chapter
-        empty: Nothing has been said on this topic yet.
+          error: Error al eliminar el capítulo
+          sure: '¿Seguro que quieres eliminar este capítulo?'
+        edit: Editar capítulo
+        empty: Todavía no se ha dicho nada sobre este tema.
         update:
-          error: Error updating the chapter [%{message}]
+          error: Error al actualizar el capítulo [%{message}]
       conversations:
         create:
-          error: Error creating the note [%{message}]
+          error: Error al crear la nota [%{message}]
         destroy:
-          error: Error deleting the note
+          error: Error al eliminar la nota
           sure: Are you sure to delete this note?
         index:
           note_takers: Note Takers
