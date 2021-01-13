@@ -3,8 +3,33 @@
 base_locale: en
 locales: [en]
 
-ignore_unused:
-  - "decidim.components.notify.name"
+search:
+  # Root directories for relative keys resolution.
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/presenters
+    - app/services
+    - app/views
+    - app/cells
 
+# Read and write translations.
+data:
+  yaml:
+    write:
+      # do not wrap lines at 80 characters
+      line_width: -1
+
+ignore_unused:
+  - decidim.components.notify.*
+  - activemodel.attributes.*
+  - decidim.notify.chapter.update.*
+  - decidim.notify.conversations.private.*
+  - decidim.pages.home.statistics.*
+  - decidim.participatory_processes.statistics.*
+
+# keys reused from decidim-core
 ignore_missing:
-  - decidim.participatory_processes.scopes.global
+  - decidim.core.actions.unauthorized
+  - decidim.admin.actions.configure

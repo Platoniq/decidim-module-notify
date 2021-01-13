@@ -56,7 +56,7 @@ $(() => {
     });
 
     $(this).on('select2:close', () => $('#note_body').select());
-    $(this).on("select2:clear", function (evt) {
+    $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();
         
@@ -89,7 +89,7 @@ $(() => {
     });
 
     $(this).on('select2:close', () => $('#note_body').select());
-    $(this).on("select2:clear", function (evt) {
+    $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();
         

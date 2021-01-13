@@ -36,11 +36,11 @@
               </td>
               <td class="table-list__actions">
                 <% if allowed_to? :update, :chapter, chapter: chapter %>
-                  <%= icon_link_to "pencil", edit_chapter_path(chapter), t("chapter.edit", scope: "decidim.notify"), class: "action-icon--edit" %>
+                  <%= icon_link_to "pencil", edit_chapter_path(chapter), t("edit", scope: "decidim.notify.chapter"), class: "action-icon--edit" %>
                 <% end %>
 
                 <% if allowed_to? :destroy, :chapter, chapter: chapter %>
-                  <%= icon_link_to "circle-x", chapter_path(chapter), t("chapters.destroy", scope: "decidim.notify"), method: :delete, class: "action-icon--remove", data: { confirm: t("chapters.destroy.sure", scope: "decidim.notify") } %>
+                  <%= icon_link_to "circle-x", chapter_path(chapter), t("delete", scope: "decidim.notify.chapter"), method: :delete, class: "action-icon--remove", data: { confirm: t("destroy.sure", scope: "decidim.notify.chapter") } %>
                 <% end %>
               </td>
             </tr>

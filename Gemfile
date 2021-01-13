@@ -4,13 +4,13 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 # DECIDIM_VERSION = { git: "https://github.com/decidim/decidim" }
-DECIDIM_VERSION = "0.21"
+DECIDIM_VERSION = "0.22"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-notify", path: "."
 
 gem "bootsnap", "~> 1.4"
-gem "puma", ">= 4.3"
+gem "puma", ">= 4.3.5"
 gem "uglifier", "~> 4.1"
 
 group :development, :test do
@@ -30,5 +30,4 @@ end
 
 group :test do
   gem "codecov", require: false
-  gem "simplecov-cobertura", require: false
 end

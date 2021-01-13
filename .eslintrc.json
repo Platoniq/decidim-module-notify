@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "globals": {
+        "$": false,
+        "jQuery": false,
+        "ActionCable": false,
+        "App": false,
+        "Rails": false
+    },
+    "rules": {
+    }
+}

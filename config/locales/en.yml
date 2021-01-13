@@ -20,8 +20,7 @@ en:
           global:
             announcement: Announcement
             private: Private board (only participants can access it)
-            restricted: Restricted board (only logged users can access it, non participants
-              are accepted)
+            restricted: Restricted board (only logged users can access it, non participants are accepted)
           step:
             announcement: Announcement
     notify:
@@ -68,13 +67,11 @@ en:
       chapter:
         active: Active
         delete: Delete
-        edit: Edit chapter
-        empty: Nothing has been said on this topic yet.
-        update: Update
-      chapters:
         destroy:
           error: Error deleting the chapter
           sure: Are you sure to delete this chapter?
+        edit: Edit chapter
+        empty: Nothing has been said on this topic yet.
         update:
           error: Error updating the chapter [%{message}]
       conversations:
@@ -84,7 +81,6 @@ en:
           error: Error deleting the note
           sure: Are you sure to delete this note?
         index:
-          conversations: Conversations
           note_takers: Note Takers
           participants: Participants
           send: Send
@@ -93,10 +89,8 @@ en:
           chapter: Set the chapter
           statement: Write the statement...
         private:
-          anonymous_description: This conversation is restricted to its participants.
-            Please log in before trying to access here.
-          logged_description: This conversation is restricted to its participants.
-            If you think that you should be in it, please contact the administrator.
+          anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
+          logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
           title: Private conversation!
         reset: Reset
         tip: 'Tip: use CTRL + Enter to publish your note'

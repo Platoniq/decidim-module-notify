@@ -62,7 +62,7 @@ $(() => {
   document.body.addEventListener('ajax:error', (responseText) => {
     showInfo(responseText.detail[0].message || responseText.detail[0], 5000).removeClass('text-success').addClass('text-alert');
   });
-  document.body.addEventListener('ajax:success', (responseText) => {
+  document.body.addEventListener('ajax:success', () => {
     showInfo("✔", 1000).removeClass('text-alert').addClass('text-success');
     resetForm();
     $('.dropdown-pane').foundation('close');
