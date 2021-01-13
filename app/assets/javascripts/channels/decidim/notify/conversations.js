@@ -18,9 +18,9 @@ App.notifyNotesChannel = App.cable.subscriptions.create({ channel: "Decidim::Not
 
     if(data.create) $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`).prepend(data.create);
     if(data.update) {
-      $note = $(`#notify-note-${data.id}`);
-      $old = $note.closest(".notify-chapter-notes");
-      $new = $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`);
+      var $note = $(`#notify-note-${data.id}`);
+      var $old = $note.closest(".notify-chapter-notes");
+      var $new = $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`);
       if($old[0] != $new[0]) {
         // TODO: put it in the right place by time of creation
         $note.detach().prependTo($new);
@@ -46,12 +46,12 @@ App.notifyParticipantsChannel = App.cable.subscriptions.create({ channel: "Decid
 App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::Notify::ChaptersChannel", id: window.Notify && window.Notify.id }, {
   received: function(data) {
     // console.log("chapter received",data);
-
+    var newOption;
     if(data.create) {
       $("#notify-chapters").prepend(data.create);
       $(document).foundation();
       if (!$(`#note_chapter [value="${data.title}"]`).length) {
-        var newOption = new Option(data.title, data.title, true, true);
+        newOption = new Option(data.title, data.title, true, true);
         $("#note_chapter").append(newOption).trigger("change");
       }
     }
@@ -67,7 +67,7 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
           $chapter.closest("h3").addClass("active");
         }
         var activate = $('#note_body').val()=="" && data.active;
-        var newOption = new Option(data.update, data.update, activate, activate);
+        newOption = new Option(data.update, data.update, activate, activate);
         $(`#note_chapter [value="${old}"]`).remove();
         $('#note_chapter').append(newOption).trigger('change');
       } else {
@@ -77,7 +77,7 @@ App.notifyChaptersChannel = App.cable.subscriptions.create({ channel: "Decidim::
 
     if(data.destroy) {
       // Move notes to the unclassified
-      $unclassified = $("#notify-chapter-notes-unclassified");
+      var $unclassified = $("#notify-chapter-notes-unclassified");
       $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each(function() {
         $(this).detach().prependTo($unclassified);
       });

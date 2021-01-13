@@ -18,7 +18,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.chapters.update.error", message: message) }, status: :unprocessable_entity
+            render json: { message: t("update.error", scope: "decidim.notify.chapter", message: message) }, status: :unprocessable_entity
           end
         end
       end
@@ -32,7 +32,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.chapters.destroy.error", message: message) }, status: :unprocessable_entity
+            render json: { message: t("destroy.error", scope: "decidim.notify.chapter", message: message) }, status: :unprocessable_entity
           end
         end
       end

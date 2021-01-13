@@ -6,7 +6,10 @@
 /pkg/
 /spec/reports/
 /tmp/
-
+node_modules/
+.vscode
+.byebug_history
+npm_debug.log
 # rspec failure tracking
 .rspec-failures
 
@@ -15,3 +18,6 @@ spec/decidim_dummy_app
 
 # default development application
 development_app
+
+.rbenv-vars
+*.gem

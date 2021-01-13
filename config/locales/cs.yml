@@ -1,5 +1,4 @@
----
-en:
+cs:
   activemodel:
     attributes:
       chapter:
@@ -92,6 +91,7 @@ en:
           anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
           logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
           title: Private conversation!
+        reset: Reset
         tip: 'Tip: use CTRL + Enter to publish your note'
         update:
           error: Error updating the note [%{message}]
