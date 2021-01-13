@@ -78,33 +78,33 @@ es:
           error: Error al crear la nota [%{message}]
         destroy:
           error: Error al eliminar la nota
-          sure: Are you sure to delete this note?
+          sure: '¿Seguro que quieres eliminar esta nota?'
         index:
-          note_takers: Note Takers
-          participants: Participants
-          send: Send
+          note_takers: Tomadores de Notas
+          participants: Participantes
+          send: Enviar
         placeholders:
-          author: Author, use the number or name
-          chapter: Set the chapter
-          statement: Write the statement...
+          author: Autor, busca por número o nombre
+          chapter: Establecer el capítulo
+          statement: Escribe la declaración...
         private:
-          anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
-          logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
-          title: Private conversation!
-        reset: Reset
-        tip: 'Tip: use CTRL + Enter to publish your note'
+          anonymous_description: Esta conversación está restringida a sus participantes. Por favor, inicie sesión antes de intentar acceder aquí.
+          logged_description: Esta conversación está restringida a sus participantes. Si crees que deberías estar en ella, por favor contacta al administrador.
+          title: Conversación Privada!
+        reset: Restablecer
+        tip: 'Truco: usa CTRL + Enter para publicar tu nota'
         update:
-          error: Error updating the note [%{message}]
+          error: Error al actualizar la nota [%{message}]
     pages:
       home:
         statistics:
-          notify_authors_count: Conversation participants
-          notify_chapters_count: Conversation topics
-          notify_conversations_count: Conversations
-          notify_notes_count: Conversation notes
+          notify_authors_count: Participantes de la conversación
+          notify_chapters_count: Temas de conversación
+          notify_conversations_count: Conversaciones
+          notify_notes_count: Notas de la conversación
     participatory_processes:
       statistics:
-        notify_authors_count: Conversation participants
-        notify_chapters_count: Conversation topics
-        notify_conversations_count: Conversations
-        notify_notes_count: Conversation notes
+        notify_authors_count: Participantes de la conversación
+        notify_chapters_count: Temas de la conversación
+        notify_conversations_count: Conversaciones
+        notify_notes_count: Notas de la conversación
