@@ -65,7 +65,71 @@ Decidim.register_component(:notify) do |component|
     chapters.count
   end
 
-  # component.seeds do |participatory_space|
-  #   # Add some seeds for this component
-  # end
+  component.seeds do |participatory_space|
+    # Add some seeds for this component
+    admin_user = Decidim::User.find_by(
+      organization: participatory_space.organization,
+      email: "admin@example.org"
+    )
+
+    params = {
+      name: Decidim::Components::Namer.new(participatory_space.organization.available_locales, :notify).i18n_name,
+      manifest_name: :notify,
+      published_at: Time.current,
+      participatory_space: participatory_space,
+      settings: {
+        announcement: { en: Faker::Lorem.paragraphs(2).join("\n") },
+        private: Faker::Boolean.boolean(0.5),
+        restricted: Faker::Boolean.boolean(0.5)
+      }
+    }
+
+    component = Decidim.traceability.perform_action!(
+      "publish",
+      Decidim::Component,
+      admin_user,
+      visibility: "all"
+    ) do
+      Decidim::Component.create!(params)
+    end
+
+    notes = [
+      "I love dinosaurs, there where amazing beasts!",
+      "Dinosaurs when extinct 65 million years ago",
+      "Dinosaurs are not really extinct, they evolve into birds!",
+      "Actually, there's more species of birds than mammals, so we could say that they still rule the earth!"
+    ]
+
+    # Create a chapter
+    chapter = Decidim::Notify::Chapter.create!(
+      title: "Extinctions",
+      active: true,
+      component: component
+    )
+    # add admin user as a note taker
+    # add a random user as a note taker
+    # add 2 users as participants
+    participants = [admin_user] + Decidim::User.where(organization: component.organization).sample(3)
+    # add avatars and create participants
+    participants.each.with_index(1) do |user, index|
+      user.avatar = File.new(File.join(__dir__, "seeds", "avatar#{index}.png"))
+      user.save!
+      # create author
+      author = Decidim::Notify::Author.find_or_create_by(
+        user: user,
+        component: component
+      )
+      author.code = index
+      author.admin = index < 3
+      author.save!
+      # Create a note for the conversation
+      Decidim::Notify::Note.create!(
+        component: component,
+        author: author.user,
+        creator: admin_user,
+        chapter: index > 1 ? chapter : nil,
+        body: notes[index - 1]
+      )
+    end
+  end
 end
