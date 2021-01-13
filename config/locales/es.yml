@@ -1,0 +1,110 @@
+es:
+  activemodel:
+    attributes:
+      chapter:
+        active: Activo
+        title: Título
+      note:
+        body: Declaración
+        chapter: Capítulo
+        code: Autor
+      notify_config:
+        note_takers: Tomadores de Notas
+        users: Participantes
+  decidim:
+    components:
+      notify:
+        name: Notify
+        settings:
+          global:
+            announcement: Anuncio
+            private: Tablón privado (sólo los participantes pueden acceder a él)
+            restricted: Tablón restringido (sólo los usuarios registrados pueden acceder a él, se aceptan no participantes)
+          step:
+            announcement: Anuncio
+    notify:
+      admin:
+        actions:
+          title: Acciones
+        chapters:
+          actions:
+            new: Capítulo nuevo
+          create:
+            error: Error creando el capítulo
+            success: Capítulo creado correctamente
+          destroy:
+            error: Error al eliminar el capítulo
+            success: Capítulo eliminado correctamente
+          edit:
+            title: Editar capítulo
+            update: Actualizar
+          form:
+            cancel: Cancelar y volver a los capítulos
+          index:
+            conversations: Configurar conversación
+            title: Capítulos
+          new:
+            create: Crear
+            title: Nuevo capítulo
+          update:
+            error: Error actualizando el capítulo
+            success: Capítulo actualizado correctamente
+        conversations:
+          error: Error al guardar la configuración [%{message}]
+          index:
+            chapters: Configurar capítulos
+            help: |-
+              <p>Notify te permite transcribir conversaciones entre varias personas en tiempo real (sin necesidad de actualizar la página).</p>
+              <p>Configura esta herramienta agregando los participantes y algunos tomadores de notas:</p>
+              <ul><li>A cada participante se le asignará un número (a partir del 1).</li>
+              <li>Los tomadores de notas son aquellos participantes que pueden transcribir la conversación.<br>
+              Cada nota transcrita puede ser acreditada a un participante escribiendo su número o nombre.</li></ul>
+              <p>Para facilitar el proceso, todos los avatares de los participantes y sus números se muestran junto a las notas.</p>
+            save: Guardar cambios
+            title: Participantes de la conversación
+          success: Configuración guardada correctamente
+      chapter:
+        active: Activo
+        delete: Eliminar
+        destroy:
+          error: Error al eliminar el capítulo
+          sure: '¿Seguro que quieres eliminar este capítulo?'
+        edit: Editar capítulo
+        empty: Todavía no se ha dicho nada sobre este tema.
+        update:
+          error: Error al actualizar el capítulo [%{message}]
+      conversations:
+        create:
+          error: Error al crear la nota [%{message}]
+        destroy:
+          error: Error al eliminar la nota
+          sure: '¿Seguro que quieres eliminar esta nota?'
+        index:
+          note_takers: Tomadores de Notas
+          participants: Participantes
+          send: Enviar
+        placeholders:
+          author: Autor, busca por número o nombre
+          chapter: Establecer el capítulo
+          statement: Escribe la declaración...
+        private:
+          anonymous_description: Esta conversación está restringida a sus participantes. Por favor, inicie sesión antes de intentar acceder aquí.
+          logged_description: Esta conversación está restringida a sus participantes. Si crees que deberías estar en ella, por favor contacta al administrador.
+          title: Conversación Privada!
+        reset: Restablecer
+        tip: 'Truco: usa CTRL + Enter para publicar tu nota'
+        update:
+          error: Error al actualizar la nota [%{message}]
+    pages:
+      home:
+        statistics:
+          notify_authors_count: Participantes de la conversación
+          notify_chapters_count: Temas de conversación
+          notify_conversations_count: Conversaciones
+          notify_notes_count: Notas de la conversación
+    participatory_processes:
+      statistics:
+        notify_authors_count: Participantes de la conversación
+        notify_chapters_count: Temas de la conversación
+        notify_conversations_count: Conversaciones
+        notify_notes_count: Notas de la conversación
