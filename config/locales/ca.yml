@@ -2,14 +2,14 @@ ca:
   activemodel:
     attributes:
       chapter:
-        active: Active
-        title: Title
+        active: Actiu
+        title: Títol
       note:
-        body: Statement
-        chapter: Chapter
-        code: Author
+        body: Enunciat
+        chapter: Capítol
+        code: Autor
       notify_config:
-        note_takers: Note Takers
+        note_takers: Prenedors de notes
         users: Participants
   decidim:
     components:
@@ -17,94 +17,94 @@ ca:
         name: Notify
         settings:
           global:
-            announcement: Announcement
-            private: Private board (only participants can access it)
-            restricted: Restricted board (only logged users can access it, non participants are accepted)
+            announcement: Anunci
+            private: Tauler privat (només hi poden accedir els participants)
+            restricted: Tauler restringit (només hi poden accedir els usuaris registrats, els no-participants són acceptats)
           step:
-            announcement: Announcement
+            announcement: Anunci
     notify:
       admin:
         actions:
-          title: Actions
+          title: Accions
         chapters:
           actions:
-            new: New chapter
+            new: Nou capítol
           create:
-            error: Error creating the chapter
-            success: Chapter created successfully
+            error: S'ha produït un error al crear el capítol
+            success: Capítol creat correctament
           destroy:
-            error: Error deleting the chapter
-            success: Chapter deleted successfully
+            error: S'ha produït un error al esborrar el capítol
+            success: Capítol esborrat correctament
           edit:
-            title: Edit chapter
-            update: Update
+            title: Editar capítol
+            update: Actualitza
           form:
-            cancel: Cancel & back to chapters
+            cancel: Cancel·la i torna als capítols
           index:
-            conversations: Configure conversation
-            title: Chapters
+            conversations: Configura la conversa
+            title: Capítols
           new:
-            create: Create
-            title: New chapter
+            create: Crea
+            title: Nou capítol
           update:
-            error: Error updating the chapter
-            success: Chapter updated successfully
+            error: S'ha produït un error al actualitzar el capítol
+            success: Capítol actualiitzat correctament
         conversations:
-          error: Error saving configuration [%{message}]
+          error: S'ha produït un error al desar la configuració [%{message}]
           index:
-            chapters: Configure chapters
+            chapters: Configura els capítols
             help: |-
-              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
-              <p>Configure this tool by adding the participants and some note-takers:</p>
-              <ul><li>Each participant will be assigned a number (starting at 1).</li>
-              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
-              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
-              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
-            save: Save changes
-            title: Participants for the conversation
-          success: Configuration saved successfully
+              <p>Notify us permet transcriure converses entre diverses persones en temps real (no cal actualitzar la pàgina).</p>
+              <p>Configureu aquesta eina afegint els participants i alguns usuaris que prenen notes:</p>
+              <ul><li>A cada participant se li assignarà un número (començant per 1).</li>
+              <li>Els que prenen notes són aquells participants als quals se'ls permet transcriure la conversa.<br>
+              Cada nota transcrita es pot acreditar a un participant escrivint el seu número o nom. </li> </ul>
+              <p>Per facilitar el procés, es mostren tots els avatars dels participants i els seus números al costat de les notes.</p>
+            save: Desa els canvis
+            title: Participants de la conversa
+          success: Configuració desada correctament
       chapter:
-        active: Active
-        delete: Delete
+        active: Actiu
+        delete: Elimina
         destroy:
-          error: Error deleting the chapter
-          sure: Are you sure to delete this chapter?
-        edit: Edit chapter
-        empty: Nothing has been said on this topic yet.
+          error: S'ha produït un error al esborrar el capítol
+          sure: Segur que vols suprimir aquest capítol?
+        edit: Edita el capítol
+        empty: Encara no s'ha dit res sobre aquest tema.
         update:
-          error: Error updating the chapter [%{message}]
+          error: S'ha produït un error al actualitzar el capítol [%{message}]
       conversations:
         create:
-          error: Error creating the note [%{message}]
+          error: S'ha produït un error al crear la nota [%{message}]
         destroy:
-          error: Error deleting the note
-          sure: Are you sure to delete this note?
+          error: S'ha produït un error al esborrar la nota
+          sure: Segur que vols esborrar aquesta nota?
         index:
-          note_takers: Note Takers
+          note_takers: Prenedors de notes
           participants: Participants
-          send: Send
+          send: Envia
         placeholders:
-          author: Author, use the number or name
-          chapter: Set the chapter
-          statement: Write the statement...
+          author: Autor, cerca per número o nom
+          chapter: Estableix el capítol
+          statement: Escriu la declaració...
         private:
-          anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
-          logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
-          title: Private conversation!
-        reset: Reset
-        tip: 'Tip: use CTRL + Enter to publish your note'
+          anonymous_description: Aquesta conversa està restringida als seus participants. Inicieu sessió abans d’intentar accedir aquí.
+          logged_description: Aquesta conversa està restringida als seus participants. Si creieu que hi hauríeu de ser, poseu-vos en contacte amb l’administrador.
+          title: Conversa privada!
+        reset: Restableix
+        tip: 'Truc: utilitzeu CTRL + Retorn per publicar la vostra nota'
         update:
-          error: Error updating the note [%{message}]
+          error: S'ha produït un error al actualitzar la nota [%{message}]
     pages:
       home:
         statistics:
-          notify_authors_count: Conversation participants
-          notify_chapters_count: Conversation topics
-          notify_conversations_count: Conversations
-          notify_notes_count: Conversation notes
+          notify_authors_count: Participants de la conversa
+          notify_chapters_count: Temes de conversa
+          notify_conversations_count: Converses
+          notify_notes_count: Notes de la conversa
     participatory_processes:
       statistics:
-        notify_authors_count: Conversation participants
-        notify_chapters_count: Conversation topics
-        notify_conversations_count: Conversations
-        notify_notes_count: Conversation notes
+        notify_authors_count: Participants de la conversa
+        notify_chapters_count: Temes de la conversa
+        notify_conversations_count: Converses
+        notify_notes_count: Notes de la conversa
