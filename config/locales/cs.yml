@@ -2,108 +2,108 @@ cs:
   activemodel:
     attributes:
       chapter:
-        active: Active
-        title: Title
+        active: Aktivní
+        title: Název
       note:
-        body: Statement
-        chapter: Chapter
-        code: Author
+        body: Prohlášení
+        chapter: Kapitola
+        code: Autor
       notify_config:
-        note_takers: Note Takers
-        users: Participants
+        note_takers: Přijímající poznámky
+        users: Účastníci
   decidim:
     components:
       notify:
-        name: Notify
+        name: Upozornit
         settings:
           global:
-            announcement: Announcement
-            private: Private board (only participants can access it)
-            restricted: Restricted board (only logged users can access it, non participants are accepted)
+            announcement: Oznámení
+            private: Soukromé fórum (pouze účastníci k němu mají přístup)
+            restricted: Omezené fórum (k němu mají přístup pouze přihlášení uživatelé, kteří nejsou účastníky)
           step:
-            announcement: Announcement
+            announcement: Oznámení
     notify:
       admin:
         actions:
-          title: Actions
+          title: Akce
         chapters:
           actions:
-            new: New chapter
+            new: Nová kapitola
           create:
-            error: Error creating the chapter
-            success: Chapter created successfully
+            error: Chyba při vytváření kapitoly
+            success: Kapitola úspěšně vytvořena
           destroy:
-            error: Error deleting the chapter
-            success: Chapter deleted successfully
+            error: Chyba při odstraňování kapitoly
+            success: Kapitola úspěšně smazána
           edit:
-            title: Edit chapter
-            update: Update
+            title: Upravit kapitolu
+            update: Aktualizovat
           form:
-            cancel: Cancel & back to chapters
+            cancel: Zrušit a vrátit se ke kapitolám
           index:
-            conversations: Configure conversation
-            title: Chapters
+            conversations: Konfigurace konverzace
+            title: Kapitoly
           new:
-            create: Create
-            title: New chapter
+            create: Vytvořit
+            title: Nová kapitola
           update:
-            error: Error updating the chapter
-            success: Chapter updated successfully
+            error: Chyba při aktualizaci kapitoly
+            success: Kapitola byla úspěšně aktualizována
         conversations:
-          error: Error saving configuration [%{message}]
+          error: Chyba při ukládání konfigurace [%{message}]
           index:
-            chapters: Configure chapters
+            chapters: Konfigurovat kapitoly
             help: |-
-              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
-              <p>Configure this tool by adding the participants and some note-takers:</p>
-              <ul><li>Each participant will be assigned a number (starting at 1).</li>
-              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
-              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
-              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
-            save: Save changes
-            title: Participants for the conversation
-          success: Configuration saved successfully
+              <p>Upozornění vám umožní přepsat konverzace mezi více lidmi v reálném čase (není vyžadována žádná obnova stránky).</p>
+              <p>Konfigurujte tento nástroj přidáním účastníků a některých přijímajících poznámek:</p>
+              <ul><li>Každému účastníkovi bude přiděleno číslo (počínaje 1).</li>
+              <li>Přijímající poznámek jsou účastníci, kteří mohou konverzaci přepsat.<br>
+              Každá přijatá poznámka může být připsána účastníkovi napsáním jejich čísla nebo jména.</li></ul>
+              <p>Pro usnadnění procesu jsou všechny avatary účastníků a jejich čísla zobrazeny vedle poznámek.</p>
+            save: Uložit změny
+            title: Účastníci konverzace
+          success: Konfigurace byla úspěšně uložena
       chapter:
-        active: Active
-        delete: Delete
+        active: Aktivní
+        delete: Smazat
         destroy:
-          error: Error deleting the chapter
-          sure: Are you sure to delete this chapter?
-        edit: Edit chapter
-        empty: Nothing has been said on this topic yet.
+          error: Chyba při odstraňování kapitoly
+          sure: Opravdu chcete odstranit tuto kapitolu?
+        edit: Upravit kapitolu
+        empty: K tomuto tématu zatím nebylo nic řečeno.
         update:
-          error: Error updating the chapter [%{message}]
+          error: Chyba při aktualizaci kapitoly [%{message}]
       conversations:
         create:
-          error: Error creating the note [%{message}]
+          error: Chyba při vytváření poznámky [%{message}]
         destroy:
-          error: Error deleting the note
-          sure: Are you sure to delete this note?
+          error: Chyba při odstraňování poznámky
+          sure: Opravdu chcete odstranit tuto poznámku?
         index:
-          note_takers: Note Takers
-          participants: Participants
-          send: Send
+          note_takers: Přijímající poznámky
+          participants: Účastníci
+          send: Odeslat
         placeholders:
-          author: Author, use the number or name
-          chapter: Set the chapter
-          statement: Write the statement...
+          author: Autor, použijte číslo nebo jméno
+          chapter: Nastavit kapitolu
+          statement: Napište prohlášení...
         private:
-          anonymous_description: This conversation is restricted to its participants. Please log in before trying to access here.
-          logged_description: This conversation is restricted to its participants. If you think that you should be in it, please contact the administrator.
-          title: Private conversation!
-        tip: 'Tip: use CTRL + Enter to publish your note'
+          anonymous_description: Tato konverzace je omezena na její účastníky. Před pokusem o přístup se prosím přihlaste.
+          logged_description: Tato konverzace je omezena na její účastníky. Pokud si myslíte, že byste v ní měli být, kontaktujte správce.
+          title: Soukromá konverzace!
+        tip: 'Tip: použijte CTRL + Enter pro publikování vaší poznámky'
         update:
-          error: Error updating the note [%{message}]
+          error: Chyba při aktualizaci poznámky [%{message}]
     pages:
       home:
         statistics:
-          notify_authors_count: Conversation participants
-          notify_chapters_count: Conversation topics
-          notify_conversations_count: Conversations
-          notify_notes_count: Conversation notes
+          notify_authors_count: Účastníci konverzace
+          notify_chapters_count: Témata konverzací
+          notify_conversations_count: Konverzace
+          notify_notes_count: Poznámky ke konverzaci
     participatory_processes:
       statistics:
-        notify_authors_count: Conversation participants
-        notify_chapters_count: Conversation topics
-        notify_conversations_count: Conversations
-        notify_notes_count: Conversation notes
+        notify_authors_count: Účastníci konverzace
+        notify_chapters_count: Témata konverzací
+        notify_conversations_count: Konverzace
+        notify_notes_count: Poznámky ke konverzaci
