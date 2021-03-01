@@ -9,7 +9,7 @@ ca:
         chapter: Capítol
         code: Autor
       notify_config:
-        note_takers: Prenedors de notes
+        note_takers: Prenedores de notes
         users: Participants
   decidim:
     components:
