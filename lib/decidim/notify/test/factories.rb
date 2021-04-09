@@ -11,7 +11,7 @@ FactoryBot.define do
 
   factory :notify_note, class: "Decidim::Notify::Note" do
     component { create(:notify_component) }
-    body { Faker::Lorem.sentences(3).join("\n") }
+    body { Faker::Lorem.sentences(number: 3).join("\n") }
     creator { create(:user) }
 
     trait :with_author do
@@ -25,7 +25,7 @@ FactoryBot.define do
 
   factory :notify_author, class: "Decidim::Notify::Author" do
     component { create(:notify_component) }
-    code { Faker::Number.between(1, 20) }
+    code { Faker::Number.between(from: 1, to: 20) }
     # name { Faker::Name.name }
 
     trait :with_user do
@@ -39,7 +39,7 @@ FactoryBot.define do
 
   factory :notify_chapter, class: "Decidim::Notify::Chapter" do
     component { create(:notify_component) }
-    title { Faker::Lorem.sentences(3).join("\n") }
+    title { Faker::Lorem.sentences(number: 3).join("\n") }
 
     trait :with_user do
       user { create(:user) }

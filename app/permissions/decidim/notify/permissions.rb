@@ -25,7 +25,7 @@ module Decidim
         elsif component.settings.restricted
           return allow! if user
         else
-          return allow!
+          allow!
         end
       end
 

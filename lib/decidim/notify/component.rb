@@ -78,9 +78,9 @@ Decidim.register_component(:notify) do |component|
       published_at: Time.current,
       participatory_space: participatory_space,
       settings: {
-        announcement: { en: Faker::Lorem.paragraphs(2).join("\n") },
-        private: Faker::Boolean.boolean(0.5),
-        restricted: Faker::Boolean.boolean(0.5)
+        announcement: { en: Faker::Lorem.paragraphs(number: 2).join("\n") },
+        private: Faker::Boolean.boolean(true_ratio: 0.5),
+        restricted: Faker::Boolean.boolean(true_ratio: 0.5)
       }
     }
 
