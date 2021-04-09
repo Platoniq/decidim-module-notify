@@ -9,7 +9,7 @@ es:
         chapter: Capítulo
         code: Autor
       notify_config:
-        note_takers: Tomadores de Notas
+        note_takers: Tomadoras de Notas
         users: Participantes
   decidim:
     components:
