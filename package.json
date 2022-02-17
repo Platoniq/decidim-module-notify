@@ -1,18 +1,25 @@
 {
   "name": "decidim-module-notify",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A conversation tracker for Decidim",
   "scripts": {
-    "lint": "eslint -c .eslintrc.json --ext .js,.js.es6 app/assets"
+    "lint": "eslint -c .eslintrc.json --ext .js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Platoniq/decidim-module-notify.git"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -c .eslintrc.json --ext .js app/packs/",
+    "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint-fix": "stylelint **/*.scss --fix"
+  },
   "keywords": [
     "decidim"
   ],
-  "author": "Ivan Verges <ivan@platoniq.net>",
+  "author": "ivan@platoniq.net",
   "license": "AGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/Platoniq/decidim-module-notify/issues"
@@ -44,7 +51,7 @@
       "block-no-empty": true,
       "block-opening-brace-newline-after": "always-multi-line",
       "block-opening-brace-space-after": "always-single-line",
-      "block-opening-brace-space-before": "never",
+      "block-opening-brace-space-before": "always",
       "color-hex-case": "lower",
       "color-hex-length": "short",
       "color-no-invalid-hex": true,
@@ -178,12 +185,15 @@
       "value-list-max-empty-lines": 0
     }
   },
-  "dependencies": {
-    "cable_ready": "^4.1.2"
-  },
   "devDependencies": {
-    "eslint": "^7.8.1",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0"
+    "eslint": "^7.32.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "stylelint": "13.11.0"
+  },
+  "dependencies": {
+    "select2": "^4.1.0-rc.0"
   }
 }
