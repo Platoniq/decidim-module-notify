@@ -17,8 +17,12 @@ module Decidim
         root to: "conversations#index"
       end
 
-      initializer "decidim_notify.assets" do |app|
-        # app.config.assets.precompile += %w(decidim_notify_manifest.js decidim_notify_manifest.css)
+      # initializer "decidim_notify.assets" do |app|
+      #   app.config.assets.precompile += %w(decidim_notify_manifest.js decidim_notify_manifest.css)
+      # end
+
+      initializer "decidim_notify.webpacker.assets_path" do
+        Decidim.register_assets_path File.expand_path("app/packs", root)
       end
 
       initializer "decidim_notify.cable" do |_app|
