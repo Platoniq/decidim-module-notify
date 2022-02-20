@@ -15,7 +15,7 @@ module Decidim
       end
 
       def avatar_url
-        model&.avatar_url(:profile)
+        model.attached_uploader(:avatar).path(variant: :profile) if model.respond_to?(:attached_uploader)
       end
 
       def current_component

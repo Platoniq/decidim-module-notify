@@ -1,0 +1,224 @@
+// From Decidicim core
+@import 'stylesheets/decidim/variables';
+@import 'stylesheets/decidim/utils/settings';
+// From npm package
+@import "select2";
+@import "select2-foundation-theme";
+@import "hexagon";
+
+// we need to hide the original select otherwise focus is lost
+.select2-hidden-accessible {
+  display: none;
+}
+.select2-container--foundation {
+  width: 100% !important;
+  .select2-dropdown {
+    border-radius: 4px;
+  }
+  .select2-search--dropdown .select2-search__field {
+    border-radius: 4px;
+    &:focus {
+      border-color:#333;
+    }
+  }
+ .select2-selection {
+    border-radius: 4px;
+  }
+ .select2-results__option--highlighted[aria-selected] {
+    background-color: rgba(var(--secondary-rgb), 0.5);
+  }
+  .select2-result-repository {
+    display: flex;
+    &__avatar {
+      @include responsive_hexagon();
+    }
+    &__meta {
+      flex: 1;
+      align-self: center;
+      margin-left: 1rem;
+      color: black;
+      font-weight: bold;
+      word-wrap: break-word;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+  }
+  .select2-selection--single .select2-selection__clear,
+  .selection .select2-selection--single .select2-selection__clear {
+    margin-right: 20px;
+    background: #ddd;
+    border-radius: 50%;
+    line-height: 1;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+
+
+.notify-container {
+  .hexagon {
+    @include responsive_hexagon();
+  }
+  .notify-participant {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+
+  .card--notes-editor {
+    background: #eee;
+    border: #cacaca solid 1px;
+    textarea {
+      border: 1px solid #cacaca;
+      border-radius: 4px;
+      resize: vertical;
+    }
+  }
+  input, textarea {
+    &::placeholder {
+      color: #333;
+    }
+  }
+  .form-conversations-submit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+
+    .info {
+      margin-left: 1rem;
+      display: none;
+    }
+  }
+  .form-conversations-reset {
+    margin-top: 0.5rem;
+  }
+
+  .by-note-taker {
+    background-color:rgba(var(--primary-rgb), 0.1);
+  }
+
+  .notify-chapter {
+    h3 {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin:1rem 0 1rem 0;
+      text-transform: uppercase;
+      &::before,&::after {
+        content: '';
+        border-top: 2px solid;
+        margin: 0 1rem 0 0;
+        flex: 1 0 1rem;
+      }
+      &:after {
+        margin: 0 0 0 1rem;
+      }
+      &.active {
+        color: var(--primary);
+      }
+      &:empty {
+        &::before,&::after {
+          margin:0;
+        }
+      }
+
+      >button {
+        font-size: 1rem;
+        color: var(--primary);
+        display: inline-block;
+        margin: 0 -0.5rem 0 0.5rem;
+      }
+      >.dropdown-pane {
+        font-family: $body-font-family;
+        margin-left: -3em;
+        border: 1px solid #333;
+        box-shadow: #999 0px 0px 15px;
+        text-align: left;
+
+        .button {
+          margin-bottom: 0;
+        }
+        .delete {
+          color: var(--primary);
+          position: absolute;
+          bottom: 1em;
+          right: 1rem;
+        }
+      }
+    }
+
+    .notify-chapter-notes {
+      padding:0.5rem;
+      .notify-note {
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+
+      &:empty, &.empty {
+        &::before {
+          content: attr(data-empty);
+          font-style: italic;
+          font-size: 0.9rem;
+          color: #888;
+        }
+      }
+    }
+  }
+
+  .media-object {
+    display: flex;
+
+    h4, p, em{
+      font-size: 1rem;
+      line-height: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    em {
+      font-size: 0.8rem;
+      color: #999;
+    }
+    h4 {
+      font-weight: 600;
+      b {
+        font-weight: 700;
+      }
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  .media-object-section {
+    .thumbnail {
+      width: 70px;
+    }
+    &.main-section {
+      flex: 1;
+      p {
+        white-space: pre-line;
+      }
+    }
+
+  }
+
+  .notify-note {
+    button {
+      &.tiny {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      &.delete {
+        svg {
+          fill: var(--alert);
+        }
+      }
+      &.edit {
+        svg {
+          fill: var(--secondary);
+        }
+      }
+    }
+  }
+}

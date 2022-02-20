@@ -1,0 +1,126 @@
+@mixin responsive_hexagon() {
+  @include hexagon(71px);
+  @media only screen and (max-width: 596px) {
+    @include hexagon(35px, 1px);
+    .code {
+      font-size: 0.8em;
+      padding-top: 1px;
+    }
+  }
+}
+
+@mixin hexagon($width: 71px, $borderWidth: 2px, $borderColor: #000, $shadow: 0 0 10px rgba(0,0,0,0.5), $color: #fff) {
+  // $width works best with even numbers - browser rounding effs up with odds
+
+  //calculated values
+  $root2: 1.41421356237;
+  $root3: 1.73205080757;
+  $scaleFactor: 0.57735026919; // = tan(30deg) *this smushes a square into a 60deg/120deg rhombus:
+  $scaleFactor1: 1/$scaleFactor;
+
+  $height: $width/$root3;
+  $capWidth: $width/$root2; // caps = the top and bottom triangles
+  $capBorderWidth: $borderWidth*$root2;
+  $capBorderHeight: $borderWidth*2/$root3; //needed to offset bg pos
+  $border: solid $borderWidth $borderColor;
+  $capBorder: solid $capBorderWidth $borderColor;
+  $coverWidth: $width - $borderWidth*2; //the cover up rectangle
+  $coverHeight: $height - $borderWidth*$scaleFactor*2;
+  $capHeight: $height - $capBorderHeight;
+  $bgHeight: $capHeight*2;
+  $bgHeight: $height*2 - ($capBorderHeight*2);
+  $bgHeight: $height*2 - ($borderWidth*2/$root3)*2;
+  $bgHeight: $height*2 - ($borderWidth/$root3)*4;
+  $translateBG: -$height/2 + $capBorderHeight/2;
+
+  position: relative;
+  width: $width;
+  height: $height;
+  margin: $height/2 auto;
+  background-color: $color;
+  background-size: auto $bgHeight; //fit to total height, minus borders
+  background-position: center;
+  border-left: $border;
+  border-right: $border;
+  box-shadow: $shadow;
+  text-align:left;
+
+  .hex1,
+  .hex2 {
+    position: absolute;
+    z-index: 1;
+    width: $capWidth;
+    height: $capWidth;
+    box-shadow: $shadow;
+    overflow: hidden;
+    transform: scaleY($scaleFactor) rotate(-45deg);
+    background: inherit;
+    left: ($width - $capWidth)/2 - $borderWidth; //offset by half the difference in
+  }
+
+  //counter transform the bg image on the caps
+  .hex1:after,
+  .hex2:after {
+    content: "";
+    position: absolute;
+    width: $coverWidth;
+    height: $capHeight;
+    transform: rotate(45deg) scaleY($scaleFactor1) translateY($translateBG);
+    transform-origin: 0 0;
+    background: inherit;
+    //not sure why but this 1px correction seems necessary:(
+    // margin-left: 1px;
+  }
+
+  //send top to top and bottom to bottom
+  .hex1 {
+    top: -$width/$root2/2;  //half the rhombus height
+    border-top: $capBorder;
+    border-right: $capBorder;
+
+    &:after {
+      background-position: center top;
+    }
+  }
+
+  .hex2 {
+    bottom: -$width/$root2/2; //half the rhombus height
+    border-bottom: $capBorder;
+    border-left: $capBorder;
+
+    &:after {
+      background-position: center bottom;
+    }
+  }
+
+  //cover up extra shadows
+  &:after {
+    content: "";
+    position: absolute;
+    top: $borderWidth*$scaleFactor;
+    left: 0;
+    width: $coverWidth;
+    height: $coverHeight;
+    z-index: 2;
+    background: inherit;
+  }
+
+  // Role
+  .code {
+    z-index: 10;
+    bottom:-$width/4;
+    right:-$width/6;
+    position: absolute;
+    width: $width/2;
+    height: $width/2;
+    border-radius:$width/2;
+    background-color: rgba(200,200,200,0.9);
+    color:#000;
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 7px;
+    line-height: 1;
+    font-weight: 600;
+    border: 1px solid #999;
+  }
+}
