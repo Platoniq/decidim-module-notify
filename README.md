@@ -19,7 +19,7 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-notify", "~> 0.4.0"
+gem "decidim-notify"
 ```
 
 And then execute:
@@ -27,13 +27,21 @@ And then execute:
 ```bash
 bundle
 bundle exec rails decidim_notify:install:migrations
+bundle exec rails decidim_notify:webpacker:install
 bundle exec rails db:migrate
 ```
+
+> NOTE: the `decidim_notify:webpacker:install` is only necessary for Decidim versions starting at 0.25.
+
+The correct version of Notify should resolved automatically by the Bundler.
+However you can force some specific version using `gem "decidim-decidim_awesome", "~> 0.8.0"` in the Gemfile.
 
 Depending on your Decidim version, choose the corresponding Plugin version to ensure compatibility:
 
 | Notify version | Compatible Decidim versions |
 |---|---|
+| 0.5.x | 0.25.x, 0.26.x |
+| 0.4.x | 0.24.x |
 | 0.3.x | 0.21.x - 0.24.x |
 
 ### Configuration

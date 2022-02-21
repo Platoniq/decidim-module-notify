@@ -27,6 +27,7 @@ ignore_unused:
   - decidim.notify.chapter.update.*
   - decidim.notify.conversations.private.*
   - decidim.pages.home.statistics.*
+  - decidim.statistics.*
   - decidim.participatory_processes.statistics.*
 
 # keys reused from decidim-core
