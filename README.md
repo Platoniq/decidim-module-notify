@@ -34,7 +34,7 @@ bundle exec rails db:migrate
 > NOTE: the `decidim_notify:webpacker:install` is only necessary for Decidim versions starting at 0.25.
 
 The correct version of Notify should resolved automatically by the Bundler.
-However you can force some specific version using `gem "decidim-decidim_awesome", "~> 0.8.0"` in the Gemfile.
+However you can force some specific version using `gem "decidim-notify", "~> 0.5.0"` in the Gemfile.
 
 Depending on your Decidim version, choose the corresponding Plugin version to ensure compatibility:
 
