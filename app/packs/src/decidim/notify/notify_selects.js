@@ -1,7 +1,9 @@
-// = require select2
+// I haven't found a way to include jquery plugins without making webpack repeat jQuery itself
+// the workaround is to use CDN providers and include them via standard <script> before any javascript_pack_tag
+// require("select2/src/js/jquery.select2.js")
 
 $(() => {
-  $('select.multiusers-select').each(function() {
+  $("select.multiusers-select").each(function() {
     const url = $(this).attr("data-url");
     $(this).select2({
       ajax: {
@@ -21,10 +23,9 @@ $(() => {
     });
   });
 
-  $('select.user-select').each(function() {
+  $("select.user-select").each(function() {
     const url = $(this).attr("data-url");
     const placeholder = $(this).attr("placeholder");
-
     $(this).select2({
       ajax: {
         url: url,
@@ -43,9 +44,10 @@ $(() => {
       selectOnClose: true,
       escapeMarkup: (markup) => markup,
       templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
-      templateResult: function(item) {
+      templateResult: (item) => {
+        console.log(item)
         return `<div class="select2-result-repository">
-        <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar})">
+        <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar || window.Notify.defaultAvatar})">
         <div class="hex1"></div><div class="hex2"></div>
         </div>
         <div class="select2-result-repository__meta">
@@ -55,7 +57,8 @@ $(() => {
       }
     });
 
-    $(this).on('select2:close', () => $('#note_body').select());
+    $(this).on("select2:open", () => $(".select2-search__field").select());
+    $(this).on("select2:close", () => $("#note_body").select());
     $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();
@@ -65,7 +68,7 @@ $(() => {
     });
   });
 
-  $('select.chapter-select').each(function() {
+  $("select.chapter-select").each(function() {
     const placeholder = $(this).attr("placeholder");
 
     $(this).select2({
@@ -75,12 +78,12 @@ $(() => {
       theme: "foundation",
       placeholder: placeholder,
       createTag: function (params) {
-        var term = $.trim(params.term);
+        let term = $.trim(params.term);
 
-        if (term === '') {
+        if (term === "") {
           return null;
         }
-        var n = {
+        let n = {
           id: term,
           text: term
         }
@@ -88,7 +91,7 @@ $(() => {
       }
     });
 
-    $(this).on('select2:close', () => $('#note_body').select());
+    $(this).on("select2:close", () => $("#note_body").select());
     $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();

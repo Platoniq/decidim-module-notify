@@ -75,7 +75,7 @@ module Decidim
               query = Author.for(current_component).joins(:user)
               query = query.where("decidim_notify_authors.code=:code OR decidim_users.name ILIKE :term OR decidim_users.nickname ILIKE :term", code: term.to_i, term: "%#{term}%")
 
-              render json: query.all.collect { |u| { id: u.code, name: u.name, avatar: u&.avatar_url, nickname: u.nickname, text: format_user_name(u) } }
+              render json: query.all.collect { |u| { id: u.code, name: u.name, avatar: u.attached_uploader(:avatar).path, nickname: u.nickname, text: format_user_name(u) } }
             else
               render json: []
             end

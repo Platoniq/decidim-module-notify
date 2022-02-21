@@ -6,12 +6,12 @@ Decidim.register_component(:notify) do |component|
   component.engine = Decidim::Notify::Engine
   component.admin_engine = Decidim::Notify::AdminEngine
   component.icon = "decidim/notify/icon.svg"
-  component.stylesheet = "decidim/notify/notify"
-  component.admin_stylesheet = "decidim/notify/admin"
+  # component.stylesheet = "decidim/notify/notify"
+  # component.admin_stylesheet = "decidim/notify/admin"
 
   component.on(:before_destroy) do |instance|
     # Code executed before removing the component
-    raise StandardEerror, "Can't remove this component, there's notes in it!" if Decidim::Notify::Note.for(instance).any?
+    raise StandardError, "Can't remove this component, there's notes in it!" if Decidim::Notify::Note.for(instance).any?
   end
 
   # These actions permissions can be configured in the admin panel
@@ -112,7 +112,7 @@ Decidim.register_component(:notify) do |component|
     participants = [admin_user] + Decidim::User.where(organization: component.organization).sample(3)
     # add avatars and create participants
     participants.each.with_index(1) do |user, index|
-      user.avatar = File.new(File.join(__dir__, "seeds", "avatar#{index}.png"))
+      user.avatar = Rack::Test::UploadedFile.new(File.expand_path(File.join(__dir__, "seeds", "avatar#{index}.png")))
       user.save!
       # create author
       author = Decidim::Notify::Author.find_or_create_by(

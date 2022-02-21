@@ -108,3 +108,8 @@ en:
         notify_chapters_count: Conversation topics
         notify_conversations_count: Conversations
         notify_notes_count: Conversation notes
+    statistics:
+      notify_authors_count: Notify authors
+      notify_chapters_count: Notify chapters
+      notify_conversations_count: Notify conversations
+      notify_notes_count: Notify notes

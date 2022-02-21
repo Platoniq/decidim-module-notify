@@ -13,30 +13,27 @@ module Decidim
 
     class << self
       def cable
-        return @cable if @cable
-
-        @cable = ActionCable::Server::Configuration.new
-        @cable.mount_path = config.cable_mount_path
-        @cable.connection_class = -> { Decidim::Notify::Connection }
-        @cable.url = config.cable_url
-        @cable.cable = {
-          "adapter" => config.cable_adapter,
-          "channel_prefix" => config.cable_channel_prefix
-        }
-        @cable
+        @cable || begin
+          @cable = ActionCable::Server::Configuration.new
+          @cable.mount_path = config.cable_mount_path
+          @cable.connection_class = -> { Decidim::Notify::Connection }
+          @cable.url = config.cable_url
+          @cable.cable = {
+            "adapter" => config.cable_adapter,
+            "channel_prefix" => config.cable_channel_prefix
+          }
+          @cable
+        end
       end
 
       def server
-        return @server if @server
-
-        @server = ActionCable::Server::Base.new
-        @server.config = cable
-        @server
+        @server ||= ActionCable::Server::Base.new(config: cable)
       end
     end
 
+    # Notify uses its custom ActionCable server, better not to use the default /cable route as it causes conflicts
     config_accessor :cable_mount_path do
-      "/cable"
+      "/notify_cable"
     end
 
     # Not recommended to use "async", event for development

@@ -15,7 +15,8 @@ module Decidim
       end
 
       def avatar_url
-        model&.avatar_url(:profile)
+        path = model.attached_uploader(:avatar).path(variant: :profile) if model.respond_to?(:attached_uploader)
+        path.presence || ActionController::Base.helpers.asset_pack_path("media/images/default-avatar.svg")
       end
 
       def current_component

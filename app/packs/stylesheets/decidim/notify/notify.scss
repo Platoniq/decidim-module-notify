@@ -1,5 +1,7 @@
-@import 'decidim/variables';
-@import 'decidim/utils/settings';
+// From Decidicim core
+@import 'stylesheets/decidim/variables';
+@import 'stylesheets/decidim/utils/settings';
+// From npm package
 @import "select2";
 @import "select2-foundation-theme";
 @import "hexagon";
@@ -202,7 +204,8 @@
   }
 
   .notify-note {
-    button {
+    .buttons a{
+      display: block;
       &.tiny {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
