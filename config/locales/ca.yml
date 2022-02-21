@@ -108,7 +108,7 @@ ca:
         notify_conversations_count: Converses
         notify_notes_count: Notes de la conversa
     statistics:
-      notify_authors_count: Notify authors
-      notify_chapters_count: Notify chapters
-      notify_conversations_count: Notify conversations
-      notify_notes_count: Notify notes
+      notify_authors_count: Autors de notes
+      notify_chapters_count: Capítols en les notes
+      notify_conversations_count: Converses
+      notify_notes_count: Notes
