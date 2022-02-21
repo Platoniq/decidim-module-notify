@@ -107,3 +107,8 @@ es:
         notify_chapters_count: Temas de la conversación
         notify_conversations_count: Conversaciones
         notify_notes_count: Notas de la conversación
+    statistics:
+      notify_authors_count: Notify authors
+      notify_chapters_count: Notify chapters
+      notify_conversations_count: Notify conversations
+      notify_notes_count: Notify notes
