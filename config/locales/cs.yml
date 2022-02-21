@@ -107,3 +107,8 @@ cs:
         notify_chapters_count: Témata konverzací
         notify_conversations_count: Konverzace
         notify_notes_count: Poznámky ke konverzaci
+    statistics:
+      notify_authors_count: Notify authors
+      notify_chapters_count: Notify chapters
+      notify_conversations_count: Notify conversations
+      notify_notes_count: Notify notes
