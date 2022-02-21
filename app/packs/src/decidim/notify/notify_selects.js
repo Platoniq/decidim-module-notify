@@ -26,7 +26,6 @@ $(() => {
   $('select.user-select').each(function() {
     const url = $(this).attr("data-url");
     const placeholder = $(this).attr("placeholder");
-
     $(this).select2({
       ajax: {
         url: url,
@@ -45,9 +44,10 @@ $(() => {
       selectOnClose: true,
       escapeMarkup: (markup) => markup,
       templateSelection: (item) => `<b>${item.id}</b> - ${item.text}`,
-      templateResult: function(item) {
+      templateResult: (item) => {
+        console.log(item)
         return `<div class="select2-result-repository">
-        <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar})">
+        <div class="select2-result-repository__avatar" style="background-image:url(${item.avatar || window.Notify.defaultAvatar})">
         <div class="hex1"></div><div class="hex2"></div>
         </div>
         <div class="select2-result-repository__meta">
@@ -57,6 +57,7 @@ $(() => {
       }
     });
 
+    $(this).on('select2:open', () => $(".select2-search__field").select());
     $(this).on('select2:close', () => $('#note_body').select());
     $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
