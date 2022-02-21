@@ -1,13 +1,13 @@
-import { createConsumer } from "@rails/actioncable"
+import consumer from "./consumer"
 
-const App = {
+const App = window.App = {
   id: window.Notify && window.Notify.id,
-  consumer: createConsumer()
+  consumer: consumer
 }
 
 jQuery.fn.reverse = [].reverse;
 
-var updateEmptyStatus = function(selector) {
+const updateEmptyStatus = (selector) => {
   $(selector).each(function(){
     if($(this).children().length == 0){
       $(this).addClass("empty");
@@ -18,14 +18,14 @@ var updateEmptyStatus = function(selector) {
 };
 
 App.notifyNotesChannel = App.consumer.subscriptions.create({ channel: "Decidim::Notify::NotesChannel", id: App.id }, {
-  received: function(data) {
-    console.log("note received",data);
+  received(data) {
+    // console.log("note received",data);
 
     if(data.create) $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`).prepend(data.create);
     if(data.update) {
-      var $note = $(`#notify-note-${data.id}`);
-      var $old = $note.closest(".notify-chapter-notes");
-      var $new = $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`);
+      let $note = $(`#notify-note-${data.id}`);
+      let $old = $note.closest(".notify-chapter-notes");
+      let $new = $(`#notify-chapter-notes-${data.chapterId||"unclassified"}`);
       if($old[0] != $new[0]) {
         // TODO: put it in the right place by time of creation
         $note.detach().prependTo($new);
@@ -40,8 +40,8 @@ App.notifyNotesChannel = App.consumer.subscriptions.create({ channel: "Decidim::
 
 
 App.notifyParticipantsChannel = App.consumer.subscriptions.create({ channel: "Decidim::Notify::ParticipantsChannel", id: App.id }, {
-  received: function(data) {
-    console.log("participants received",data);
+  received(data) {
+    // console.log("participants received",data);
 
     $("#notify-note_takers").html(data.noteTakers);
     $("#notify-participants").html(data.participants);
@@ -49,30 +49,29 @@ App.notifyParticipantsChannel = App.consumer.subscriptions.create({ channel: "De
 });
 
 App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidim::Notify::ChaptersChannel", id: App.id }, {
-  received: function(data) {
-    console.log("chapter received",data);
-    var newOption;
+  received(data) {
+    // console.log("chapter received",data);
     if(data.create) {
       $("#notify-chapters").prepend(data.create);
       $(document).foundation();
       if (!$(`#note_chapter [value="${data.title}"]`).length) {
-        newOption = new Option(data.title, data.title, true, true);
+        let newOption = new Option(data.title, data.title, true, true);
         $("#note_chapter").append(newOption).trigger("change");
       }
     }
 
     if(data.update) {
-      var $chapter = $(`#notify-chapter-${data.id} .chapter-title`);
+      let $chapter = $(`#notify-chapter-${data.id} .chapter-title`);
       if($chapter.length) {
-        var old = $chapter.text();
+        let old = $chapter.text();
         $chapter.text(data.update);
         if(data.active) {
           $(".notify-chapter h3").removeClass("active");
           $(`.toggle-chapter-active .switch-input:not(#chapter_active-${data.id})`).prop("checked", false);
           $chapter.closest("h3").addClass("active");
         }
-        var activate = $('#note_body').val()=="" && data.active;
-        newOption = new Option(data.update, data.update, activate, activate);
+        let activate = $('#note_body').val()=="" && data.active;
+        let newOption = new Option(data.update, data.update, activate, activate);
         $(`#note_chapter [value="${old}"]`).remove();
         $('#note_chapter').append(newOption).trigger('change');
       } else {
@@ -82,7 +81,7 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
 
     if(data.destroy) {
       // Move notes to the unclassified
-      var $unclassified = $("#notify-chapter-notes-unclassified");
+      let $unclassified = $("#notify-chapter-notes-unclassified");
       $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each(function() {
         $(this).detach().prependTo($unclassified);
       });

@@ -31,8 +31,9 @@ module Decidim
       end
     end
 
+    # Notify uses its custom ActionCable server, better not to use the default /cable route as it causes conflicts
     config_accessor :cable_mount_path do
-      "/cable"
+      "/notify_cable"
     end
 
     # Not recommended to use "async", event for development

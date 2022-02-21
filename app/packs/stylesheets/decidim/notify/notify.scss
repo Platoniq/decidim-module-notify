@@ -204,7 +204,8 @@
   }
 
   .notify-note {
-    button {
+    .buttons a{
+      display: block;
       &.tiny {
         padding-left: 0.5rem;
         padding-right: 0.5rem;

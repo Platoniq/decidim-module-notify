@@ -9,7 +9,7 @@
   </div>
   <% if note_taker? %>
     <div class="media-object-section buttons">
-      <%= button_to edit_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
+      <%= link_to edit_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
         <%= icon "trash" %>
       <% end %>
       <%= link_to edit_path, class: "edit" do %>

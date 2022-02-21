@@ -1,6 +1,7 @@
 <script type="text/javascript">
   window.Notify = window.Notify || {};
   window.Notify.id = <%= id %>;
+  window.Notify.cableUrl = "<%= Decidim::Notify.config.cable_mount_path %>";
 </script>
 
 <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" %>
