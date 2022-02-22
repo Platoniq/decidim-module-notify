@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.summary = "A conversation tracker module for Decidim"
   s.description = "A note-taker feature focused on conversations."
 
-  s.files = Dir["{app,config,lib,vendor,db}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,lib,vendor,db}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "package.json", "README.md"]
 
   s.add_dependency "decidim-admin", Decidim::Notify::MIN_DECIDIM_VERSION
   s.add_dependency "decidim-core", Decidim::Notify::MIN_DECIDIM_VERSION

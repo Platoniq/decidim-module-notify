@@ -33,6 +33,33 @@ bundle exec rails db:migrate
 
 > NOTE: the `decidim_notify:webpacker:install` is only necessary for Decidim versions starting at 0.25.
 
+> **IMPORTANT!** A Decidim application might not have activate `ActionCable` by default, which is needed by this plugin.
+> Check if your `config/application.rb` file has the line `require "action_cable/engine"` uncommented. Overall it should look something like this:
+>
+> ```ruby
+>  # frozen_string_literal: true
+> 
+> require_relative "boot"
+> 
+> 
+> require "decidim/rails"
+> # Add the frameworks used by your app that are not loaded by Decidim.
+> require "action_cable/engine"
+> # require "action_mailbox/engine"
+> # require "action_text/engine"
+> 
+> 
+> # Require the gems listed in Gemfile, including any gems
+> # you've limited to :test, :development, or :production.
+> Bundler.require(*Rails.groups)
+> 
+> module DecidimApp
+>   class Application < Rails::Application
+>      ...
+>   end
+> end
+> ```
+
 The correct version of Notify should resolved automatically by the Bundler.
 However you can force some specific version using `gem "decidim-notify", "~> 0.5.0"` in the Gemfile.
 
