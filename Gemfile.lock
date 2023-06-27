@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    decidim-notify (0.5)
-      decidim-admin (>= 0.25)
-      decidim-core (>= 0.25)
+    decidim-notify (0.6)
+      decidim-admin (>= 0.27.0, < 0.28)
+      decidim-core (>= 0.27.0, < 0.28)
 
 GEM
   remote: https://rubygems.org/
