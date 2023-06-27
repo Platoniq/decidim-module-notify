@@ -2,7 +2,7 @@
 @import 'stylesheets/decidim/variables';
 @import 'stylesheets/decidim/utils/settings';
 // From npm package
-@import "select2";
+@import "select2/dist/css/select2.css";
 @import "select2-foundation-theme";
 @import "hexagon";
 
@@ -10,6 +10,11 @@
 .select2-hidden-accessible {
   display: none;
 }
+
+.button--double{
+  width: fit-content;
+}
+
 .select2-container--foundation {
   width: 100% !important;
   .select2-dropdown {

@@ -3,7 +3,7 @@
 module Decidim
   module Notify
     module Admin
-      class CreateChapter < Rectify::Command
+      class CreateChapter < Decidim::Command
         # Public: Initializes the command.
         #
         # form - A chapter form

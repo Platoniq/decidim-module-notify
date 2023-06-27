@@ -2,7 +2,7 @@
 
 module Decidim
   module Notify
-    class CreateNote < Rectify::Command
+    class CreateNote < Decidim::Command
       # Public: Initializes the command.
       #
       # form - A config form

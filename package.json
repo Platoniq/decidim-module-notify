@@ -2,9 +2,6 @@
   "name": "decidim-module-notify",
   "version": "1.1.0",
   "description": "A conversation tracker for Decidim",
-  "scripts": {
-    "lint": "eslint -c .eslintrc.json --ext .js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Platoniq/decidim-module-notify.git"
@@ -187,14 +184,13 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.22.0",
     "stylelint": "13.11.0"
   },
   "dependencies": {
-    "@rails/actioncable": "6.0.4",
+    "@rails/actioncable": "6.1.7",
     "select2": "^4.1.0-rc.0"
   }
 }
