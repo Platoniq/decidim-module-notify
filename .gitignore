@@ -22,3 +22,5 @@ development_app
 .rbenv-vars
 .byebug_history
 *.gem
+
+.rubocop-https*
