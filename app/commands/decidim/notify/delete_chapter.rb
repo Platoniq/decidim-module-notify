@@ -2,7 +2,7 @@
 
 module Decidim
   module Notify
-    class DeleteChapter < Rectify::Command
+    class DeleteChapter < Decidim::Command
       # Public: Initializes the command.
       #
       def initialize(id)

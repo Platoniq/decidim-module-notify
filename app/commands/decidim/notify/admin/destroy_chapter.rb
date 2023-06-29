@@ -3,7 +3,7 @@
 module Decidim
   module Notify
     module Admin
-      class DestroyChapter < Rectify::Command
+      class DestroyChapter < Decidim::Command
         # Public: Initializes the command.
         #
         # chapter - the chapter to be update

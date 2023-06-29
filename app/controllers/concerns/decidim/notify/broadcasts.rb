@@ -10,22 +10,22 @@ module Decidim
       included do
         def broadcast_create_note(note)
           html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: note })
-          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", create: html, chapterId: note.chapter&.id)
+          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { create: html, chapterId: note.chapter&.id })
         end
 
         def broadcast_update_note(note)
           html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: note })
-          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", id: note.id, update: html, chapterId: note.chapter&.id)
+          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { id: note.id, update: html, chapterId: note.chapter&.id })
         end
 
         def broadcast_destroy_note(id)
-          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", destroy: id)
+          Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { destroy: id })
         end
 
         def broadcast_participants(participants)
           view1 = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants.select(&:admin))
           view2 = render_to_string(partial: "decidim/notify/conversations/participant", collection: participants.reject(&:admin))
-          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", noteTakers: view1, participants: view2)
+          Decidim::Notify.server.broadcast("notify-participants-#{current_component.id}", { noteTakers: view1, participants: view2 })
         end
 
         def broadcast_create_chapter(chapter)
@@ -48,7 +48,7 @@ module Decidim
         end
 
         def broadcast_destroy_chapter(id)
-          Decidim::Notify.server.broadcast("notify-chapters-#{current_component.id}", destroy: id)
+          Decidim::Notify.server.broadcast("notify-chapters-#{current_component.id}", { destroy: id })
         end
       end
     end

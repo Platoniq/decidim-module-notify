@@ -11,7 +11,6 @@ module Decidim
       included do
         belongs_to :component, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
 
-        validates :component, presence: true
         validate :component_is_notify
 
         def self.for(component)

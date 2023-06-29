@@ -45,4 +45,13 @@
   </div>
 </div>
 
-<%= render partial: "script.js", locals: { id: current_component.id } %>
+<%= javascript_pack_tag "decidim_notify_component" %>
+
+<% content_for(:js_content) do %>
+  <script type="text/javascript">
+    window.Notify = window.Notify || {};
+    window.Notify.id = <%= current_component.id %>;
+    window.Notify.cableUrl = "<%= Decidim::Notify.config.cable_mount_path %>";
+    window.Notify.defaultAvatar = '<%= ActionController::Base.helpers.asset_pack_path("media/images/default-avatar.svg") %>';
+  </script>
+<% end %>

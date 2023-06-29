@@ -3,7 +3,7 @@
 module Decidim
   module Notify
     module Admin
-      class UpdateConfig < Rectify::Command
+      class UpdateConfig < Decidim::Command
         # Public: Initializes the command.
         #
         # form - A config form

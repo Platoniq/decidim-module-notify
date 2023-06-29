@@ -20,11 +20,11 @@ module Decidim::Notify
       end
 
       it "is does not have an author" do
-        expect(subject.author).to eq(nil)
+        expect(subject.author).to be_nil
       end
 
       it "is does not have a chapter" do
-        expect(subject.chapter).to eq(nil)
+        expect(subject.chapter).to be_nil
       end
     end
 

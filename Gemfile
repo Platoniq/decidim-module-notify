@@ -3,7 +3,8 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = "0.26.5"
+
+DECIDIM_VERSION = "0.27"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-notify", path: "."

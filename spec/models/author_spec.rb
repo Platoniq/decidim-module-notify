@@ -23,7 +23,7 @@ module Decidim::Notify
       let(:author) { create(:notify_author) }
 
       it "is does not have an user" do
-        expect(subject.user).to eq(nil)
+        expect(subject.user).to be_nil
       end
     end
 

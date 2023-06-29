@@ -2,7 +2,7 @@
 
 module Decidim
   module Notify
-    class DeleteNote < Rectify::Command
+    class DeleteNote < Decidim::Command
       # Public: Initializes the command.
       #
       def initialize(id)
