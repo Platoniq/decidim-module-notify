@@ -98,3 +98,31 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
     updateEmptyStatus(".notify-chapter-notes");
   }
 });
+
+App.notifyTypingChannel = App.consumer.subscriptions.create( { channel: "Decidim::Notify::TypingChannel", id: App.id }, {
+  received(data) {
+    // Called when there's incoming data on the websocket for this channel
+    const typingIndicator = document.querySelector(".typing-indicator");
+
+    if (data.typing) {
+      typingIndicator.innerText = `User ${data.user_id} is typing...`;
+    } else {
+      typingIndicator.innerText = "";
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inputField = document.getElementById("note_body");
+  const typingChannel = App.consumer.subscriptions.subscriptions.find(subscription => {
+    return subscription.identifier === JSON.stringify({ channel: "Decidim::Notify::TypingChannel", id: App.id });
+  });
+
+  inputField.addEventListener("input", () => {
+    if (inputField.value.length > 0) {
+      typingChannel.perform("start_typing");
+    } else {
+      typingChannel.perform("stop_typing");
+    }
+  });
+});
