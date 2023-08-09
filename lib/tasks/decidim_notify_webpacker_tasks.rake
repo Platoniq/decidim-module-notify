@@ -4,14 +4,14 @@ require "decidim/gem_manager"
 
 namespace :decidim_notify do
   namespace :webpacker do
-    desc "Installs Decidim Awesome webpacker files in Rails instance application"
+    desc "Installs Notify webpacker files in Rails instance application"
     task install: :environment do
       raise "Decidim gem is not installed" if decidim_path.nil?
 
       install_notify_npm
     end
 
-    desc "Adds Decidim Awesome dependencies in package.json"
+    desc "Adds Notify dependencies in package.json"
     task upgrade: :environment do
       raise "Decidim gem is not installed" if decidim_path.nil?
 
