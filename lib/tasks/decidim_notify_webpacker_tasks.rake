@@ -11,7 +11,7 @@ namespace :decidim_notify do
       install_notify_npm
     end
 
-    desc "Adds Decidim Notify dependencies in package.json"
+    desc "Adds Notify dependencies in package.json"
     task upgrade: :environment do
       raise "Decidim gem is not installed" if decidim_path.nil?
 
