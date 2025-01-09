@@ -1,0 +1,239 @@
+/Users/harrisonhassig/.rbenv/versions/3.1.1/bin/ruby -I/Users/harrisonhassig/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rspec-core-3.13.2/lib:/Users/harrisonhassig/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rspec-support-3.13.2/lib /Users/harrisonhassig/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rspec-core-3.13.2/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
+
+Randomized with seed 4850
+
+Decidim::Notify::ChapterForm
+  when everything is OK
+    is expected to be valid
+
+Decidim::Notify::ConversationsController
+  DELETE #destroy
+    deletes the note
+  POST #create
+    creates a new note
+  GET #index
+    renders the index listing
+  PATCH #update
+    updates the note
+
+I18n sanity
+  is normalized
+  does not have missing keys
+  does not have unused keys
+
+Decidim::Notify::ParticipantCell
+  when rendering a participant
+    renders the user
+    renders the number
+
+Decidim::Notify::Admin::ChaptersController
+  POST #create
+    when there is permission
+      returns ok
+      creates the new chapter
+  DELETE #destroy
+    when there is permission
+      returns ok
+      updates the new chapter
+  GET #new
+    renders the empty form
+  PATCH #update
+    when there is permission
+      updates the new chapter
+      returns ok
+  GET #index
+    renders the index listing
+
+Decidim::Notify::Note
+  is associated with a component
+  is expected to be valid
+  when component is not notify
+    is expected to be invalid
+  when the note has a chapter
+    is has an chapter
+  when obtaining all elements for the component
+    returns current element
+  when the note has an author
+    is has an author
+  when the note is created
+    is does not have an author
+    is associated with a creator
+    is does not have a chapter
+
+Decidim::Notify::Admin::NotifyConfigForm
+  when everything is OK
+    is expected to be valid
+
+Decidim::Notify::Author
+  is expected to be valid
+  is associated with a component
+  when the author is created
+    is has an user
+  when obtaining all elements for the component
+    returns current element
+  when the author has not an user
+    is does not have an user
+  when the author has notes
+    returns all his notes
+  when component is not notify
+    is expected to be invalid
+
+Decidim::Notify::ChapterCell
+  when rendering a chapter
+    is not active
+    renders the chapter
+    do not render the edit button
+  when user is note_taker
+    renders the edit button (FAILED - 1)
+  when is active
+    is active
+
+Decidim::Notify::Admin::ChapterForm
+  when everything is OK
+    is expected to be valid
+  when there's no title
+    is expected not to be valid
+
+Decidim::Notify::NoteCell
+  when rendering a note
+    renders the body
+    do not render the edit button
+    renders the author
+  when user is note_taker
+    renders the edit button (FAILED - 2)
+
+Decidim::Notify::Chapter
+  is expected to be valid
+  is associated with a component
+  when component is not notify
+    is expected to be invalid
+  when obtaining all elements for the component
+    returns current element
+
+Decidim::Notify::NoteForm
+  when there's no body
+    is expected not to be valid
+  when everything is OK
+    is expected to be valid
+
+Decidim::Notify::Admin::ConversationsController
+  GET #index
+    renders the index listing
+  POST #create
+    when there is permission
+      creates users and note_takers for the component
+      returns ok
+
+Decidim::Notify::ChaptersController
+  DELETE #destroy
+    deletes the chapter
+  PATCH #update
+    creates a new chapter
+
+Failures:
+
+  1) Decidim::Notify::ChapterCell when user is note_taker renders the edit button
+     Failure/Error: <button type="button" data-toggle="chapter-dropdown-<%= id %>"><%= icon "pencil-line" %></button>
+
+     Shakapacker::Manifest::MissingEntryError:
+       Shakapacker can't find media/images/remixicon.symbol.svg in /Users/harrisonhassig/code/HHassig/platoniq/decidim-module-notify/spec/decidim_dummy_app/public/packs-test/manifest.json. Possible causes:
+       1. You forgot to install node packages (try `yarn install`) or are running an incompatible version of Node
+       2. Your app has code with a non-standard extension (like a `.jsx` file) but the extension is not in the `extensions` config in `config/shakapacker.yml`
+       3. You have set compile: false (see `config/shakapacker.yml`) for this environment
+          (unless you are using the `bin/shakapacker -w` or the `bin/shakapacker-dev-server`, in which case maybe you aren't running the dev server in the background?)
+       4. webpack has not yet FINISHED running to reflect updates.
+       5. You have misconfigured Shakapacker's `config/shakapacker.yml` file.
+       6. Your webpack configuration is not creating a manifest.
+
+       Your manifest contains:
+       {}
+     # ./app/cells/decidim/notify/chapter/show.erb:6:in `__tilt_58080'
+     # ./app/cells/decidim/notify/chapter_cell.rb:13:in `show'
+     # ./spec/cells/chapter_cell_spec.rb:7:in `block (2 levels) in <module:Notify>'
+     # ./spec/cells/chapter_cell_spec.rb:37:in `block (3 levels) in <module:Notify>'
+
+  2) Decidim::Notify::NoteCell when user is note_taker renders the edit button
+     Failure/Error: <%= icon "trash" %>
+
+     RuntimeError:
+       Icon trash not found. Register it with 
+
+               Decidim.icons.register(name: "trash", icon: "trash", category: "system", description: "", engine: :core)
+             
+     # ./app/cells/decidim/notify/note/show.erb:13:in `block in __tilt_58080'
+     # ./app/cells/decidim/notify/note/show.erb:12:in `__tilt_58080'
+     # ./spec/cells/note_cell_spec.rb:7:in `block (2 levels) in <module:Notify>'
+     # ./spec/cells/note_cell_spec.rb:37:in `block (3 levels) in <module:Notify>'
+
+Top 10 slowest examples (15.99 seconds, 38.5% of total time):
+  Decidim::Notify::ConversationsController DELETE #destroy deletes the note
+    3.33 seconds ./spec/controllers/conversations_controller_spec.rb:60
+  Decidim::Notify::Author when the author has notes returns all his notes
+    1.96 seconds ./spec/models/author_spec.rb:33
+  Decidim::Notify::NoteCell when user is note_taker renders the edit button
+    1.59 seconds ./spec/cells/note_cell_spec.rb:36
+  Decidim::Notify::NoteCell when rendering a note renders the author
+    1.59 seconds ./spec/cells/note_cell_spec.rb:16
+  Decidim::Notify::NoteCell when rendering a note renders the body
+    1.58 seconds ./spec/cells/note_cell_spec.rb:21
+  Decidim::Notify::NoteCell when rendering a note do not render the edit button
+    1.57 seconds ./spec/cells/note_cell_spec.rb:26
+  Decidim::Notify::Note when component is not notify is expected to be invalid
+    1.2 seconds ./lib/decidim/notify/test/shared_examples/component_examples.rb:15
+  Decidim::Notify::Author when component is not notify is expected to be invalid
+    1.17 seconds ./lib/decidim/notify/test/shared_examples/component_examples.rb:15
+  Decidim::Notify::Note when the note has an author is has an author
+    1.16 seconds ./spec/models/note_spec.rb:34
+  Decidim::Notify::Chapter when component is not notify is expected to be invalid
+    0.84231 seconds ./lib/decidim/notify/test/shared_examples/component_examples.rb:15
+
+Top 10 slowest example groups:
+  Decidim::Notify::NoteCell
+    1.58 seconds average (6.33 seconds / 4 examples) ./spec/cells/note_cell_spec.rb:6
+  Decidim::Notify::ConversationsController
+    1.28 seconds average (5.11 seconds / 4 examples) ./spec/controllers/conversations_controller_spec.rb:6
+  Decidim::Notify::Author
+    0.95481 seconds average (6.68 seconds / 7 examples) ./spec/models/author_spec.rb:7
+  Decidim::Notify::Note
+    0.872 seconds average (7.85 seconds / 9 examples) ./spec/models/note_spec.rb:7
+  Decidim::Notify::ChapterCell
+    0.7979 seconds average (3.99 seconds / 5 examples) ./spec/cells/chapter_cell_spec.rb:6
+  Decidim::Notify::ParticipantCell
+    0.78534 seconds average (1.57 seconds / 2 examples) ./spec/cells/participant_cell_spec.rb:6
+  Decidim::Notify::Admin::NotifyConfigForm
+    0.76576 seconds average (0.76576 seconds / 1 example) ./spec/forms/admin/notify_config_form_spec.rb:6
+  Decidim::Notify::Admin::ConversationsController
+    0.54164 seconds average (1.62 seconds / 3 examples) ./spec/controllers/admin/conversations_controller_spec.rb:6
+  Decidim::Notify::Chapter
+    0.51141 seconds average (2.05 seconds / 4 examples) ./spec/models/chapter_spec.rb:7
+  Decidim::Notify::ChaptersController
+    0.43065 seconds average (0.8613 seconds / 2 examples) ./spec/controllers/chapters_controller_spec.rb:6
+
+Finished in 41.58 seconds (files took 4.15 seconds to load)
+57 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/cells/chapter_cell_spec.rb:36 # Decidim::Notify::ChapterCell when user is note_taker renders the edit button
+rspec ./spec/cells/note_cell_spec.rb:36 # Decidim::Notify::NoteCell when user is note_taker renders the edit button
+
+Randomized with seed 4850
+
+
+  _____          _
+ / ____|        | |
+| |     ___   __| | ___  ___ _____   __
+| |    / _ \ / _\`|/ _ \/ __/ _ \ \ / /
+| |___| (_) | (_| |  __/ (_| (_) \ V /
+ \_____\___/ \__,_|\___|\___\___/ \_/
+                               Ruby-0.2.12
+[31mx>[0m No CI provider detected.
+[32m==>[0m Appending file network
+[32m==>[0m Gzipping contents
+[32m==>[0m Uploading reports
+    url:   https://codecov.io
+    query: token=secret&flags&package=ruby-0.2.12&branch=deps%2Fdecidim-0.28&commit=120d15ec21ff6c53d2748461e3ac384478bac419
+[32m-> [0m Pinging Codecov
+https://codecov.io/upload/v4?token=secret&flags&package=ruby-0.2.12&branch=deps%2Fdecidim-0.28&commit=120d15ec21ff6c53d2748461e3ac384478bac419
+[31m{"message":"Token required - not valid tokenless upload"}
+[0m

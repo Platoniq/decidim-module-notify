@@ -3,7 +3,7 @@
 module Decidim
   # This holds the decidim-notify version.
   module Notify
-    VERSION = "0.6"
-    COMPAT_DECIDIM_VERSION = [">= 0.27.0", "< 0.28"].freeze
+    VERSION = "0.7"
+    COMPAT_DECIDIM_VERSION = [">= 0.28.0", "< 0.29"].freeze
   end
 end
