@@ -1,9 +1,5 @@
 // From Decidicim core
 @import 'stylesheets/decidim/legacy/variables';
-@import 'stylesheets/decidim/utils/settings';
-// From npm package
-@import "select2/dist/css/select2.css";
-@import "select2-foundation-theme";
 @import "hexagon";
 
 // we need to hide the original select otherwise focus is lost
@@ -58,8 +54,6 @@
     width: 20px;
   }
 }
-
-
 
 .notify-container {
   .hexagon {
@@ -136,7 +130,7 @@
         margin: 0 -0.5rem 0 0.5rem;
       }
       >.dropdown-pane {
-        font-family: $body-font-family;
+        // font-family: $body-font-family;
         margin-left: -3em;
         border: 1px solid #333;
         box-shadow: #999 0px 0px 15px;

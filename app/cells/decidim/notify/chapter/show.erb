@@ -3,7 +3,7 @@
     <h3 class="<%= " active" if active %>">
       <span class="chapter-title"><%= title %></span>
       <% if note_taker? %>
-        <button type="button" data-toggle="chapter-dropdown-<%= id %>"><%= icon "pencil-line" %></button>
+        <button type="button" data-toggle="chapter-dropdown-<%= id %>"><%= icon "pencil" %></button>
 
         <div class="dropdown-pane" id="chapter-dropdown-<%= id %>" data-position="bottom" data-alignment="center" data-dropdown data-auto-focus="true" data-close-on-click="true">
           <h4><%= t("edit", scope: "decidim.notify.chapter") %></h4>

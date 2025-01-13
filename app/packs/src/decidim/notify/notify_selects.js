@@ -1,5 +1,5 @@
 // I haven't found a way to include jquery plugins without making webpack repeat jQuery itself
-// the workaround is to use CDN providers and include them via standard <script> before any javascript_pack_tag
+// the workaround is to use CDN providers and include them via standard <script> before any append_javascript_pack_tag
 // require("select2/src/js/jquery.select2.js")
 
 $(() => {
@@ -62,7 +62,7 @@ $(() => {
     $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();
-        
+
         $(this).off("select2:opening.cancelOpen");
       });
     });
@@ -95,7 +95,7 @@ $(() => {
     $(this).on("select2:clear", function () {
       $(this).on("select2:opening.cancelOpen", function (evt) {
         evt.preventDefault();
-        
+
         $(this).off("select2:opening.cancelOpen");
       });
     });
