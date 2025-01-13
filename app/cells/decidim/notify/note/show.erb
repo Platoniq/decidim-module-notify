@@ -10,10 +10,10 @@
   <% if note_taker? %>
     <div class="media-object-section buttons">
       <%= link_to edit_path, method: :delete, remote: true, class: "delete", data: { confirm: t("decidim.notify.conversations.destroy.sure") } do %>
-        <%= icon "delete-bin-line" %>
+        <%= icon "trash" %>
       <% end %>
       <%= link_to edit_path, class: "edit" do %>
-        <%= icon "pencil" %>
+        <%= icon "pencil-line" %>
       <% end %>
     </div>
   <% end %>
