@@ -21,7 +21,7 @@
             <%= form.submit t("update", scope: "decidim.notify.chapter"), class: "button small" %>
           <% end %>
           <%= button_to update_path, method: :delete, remote: true, class: "delete", title: t("delete", scope: "decidim.notify.chapter"), data: { confirm: t("destroy.sure", scope: "decidim.notify.chapter") } do %>
-            <%= icon "trash" %>
+            <%= icon "delete-bin-line" %>
           <% end %>
         </div>
       <% end %>

@@ -13,9 +13,6 @@ en:
         note_takers: Note Takers
         users: Participants
   decidim:
-    admin:
-      actions:
-        manage: Manage
     components:
       notify:
         name: Notify
