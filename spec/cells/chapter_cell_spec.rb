@@ -9,7 +9,7 @@ module Decidim::Notify
     controller Decidim::Notify::ConversationsController
 
     let(:my_cell) { cell("decidim/notify/chapter", chapter) }
-    let!(:chapter) { create(:notify_chapter, active: active) }
+    let!(:chapter) { create(:notify_chapter, active:) }
     let(:active) { false }
     let!(:note_taker) { create(:notify_author, :is_note_taker, :with_user, component: chapter.component) }
 

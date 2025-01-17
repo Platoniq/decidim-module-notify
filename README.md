@@ -1,9 +1,9 @@
 # Decidim::Notify
 
-![[CI] Build Status](https://github.com/Platoniq/decidim-module-notify/workflows/%5BCI%5D%20Test%20Notify/badge.svg)
+[![[CI] Lint](https://github.com/Platoniq/decidim-module-notify/actions/workflows/lint.yml/badge.svg)](https://github.com/Platoniq/decidim-module-notify/actions/workflows/lint.yml)
+[![[CI] Test](https://github.com/Platoniq/decidim-module-notify/actions/workflows/test.yml/badge.svg)](https://github.com/Platoniq/decidim-module-notify/actions/workflows/test.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a00b6c950199d3530dc9/maintainability)](https://codeclimate.com/github/Platoniq/decidim-module-notify/maintainability)
-[![Codecov](https://codecov.io/gh/Platoniq/decidim-module-notify/branch/master/graph/badge.svg)](https://codecov.io/gh/Platoniq/decidim-module-notify)
-
+[![Coverage Status](https://coveralls.io/repos/github/Platoniq/decidim-module-notify/badge.svg?branch=main)](https://coveralls.io/github/Platoniq/decidim-module-notify?branch=main)
 
 A note-taker feature focused on conversations. This module provides a component for any participatory space in Decidim.
 
@@ -19,7 +19,7 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-notify"
+gem "decidim-notify", git: "https://github.com/Platoniq/decidim-module-notify.git"
 ```
 
 And then execute:
@@ -32,7 +32,7 @@ bundle exec rails db:migrate
 ```
 
 > NOTE: the `decidim_notify:webpacker:install` is only necessary for Decidim versions starting at 0.25.
-
+>
 > **IMPORTANT!** A Decidim application might not have activate `ActionCable` by default, which is needed by this plugin.
 > Check if your `config/application.rb` file has the line `require "action_cable/engine"` uncommented. Overall it should look something like this:
 >
@@ -66,10 +66,12 @@ However you can force some specific version using `gem "decidim-notify", "~> 0.5
 Depending on your Decidim version, choose the corresponding Plugin version to ensure compatibility:
 
 | Notify version | Compatible Decidim versions |
-|---|---|
-| 0.5.x | 0.25.x, 0.26.x |
-| 0.4.x | 0.24.x |
-| 0.3.x | 0.21.x - 0.24.x |
+|----------------|-----------------------------|
+| 0.7.x          | 0.28.x                      |
+| 0.6.x          | 0.27.x                      |
+| 0.5.x          | 0.25.x, 0.26.x              |
+| 0.4.x          | 0.24.x                      |
+| 0.3.x          | 0.21.x - 0.24.x             |
 
 ### Configuration
 
@@ -89,7 +91,6 @@ end
 ## Contributing
 
 See [Decidim](https://github.com/decidim/decidim).
-
 
 ### Developing
 
@@ -137,7 +138,7 @@ project is set to follow the same rules that Decidim itself follows.
 You can run the code styling checks by running the following commands from the
 console:
 
-```
+```bash
 bundle exec rubocop
 ```
 

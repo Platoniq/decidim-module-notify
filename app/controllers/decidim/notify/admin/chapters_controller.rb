@@ -13,6 +13,11 @@ module Decidim
           @form = form(ChapterForm).instance
         end
 
+        def edit
+          enforce_permission_to :update, :chapter, chapter: current_chapter
+          @form = form(ChapterForm).from_model(current_chapter)
+        end
+
         def create
           enforce_permission_to :create, :chapter
 
@@ -31,11 +36,6 @@ module Decidim
               render :new
             end
           end
-        end
-
-        def edit
-          enforce_permission_to :update, :chapter, chapter: current_chapter
-          @form = form(ChapterForm).from_model(current_chapter)
         end
 
         def update

@@ -18,6 +18,9 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,lib,vendor,db}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "package.json", "README.md"]
 
+  # Lock Temporarily as it is failing in 0.29 branch. More info: https://github.com/rails/rails/pull/54264
+  s.add_dependency "concurrent-ruby", "= 1.3.4"
+
   s.add_dependency "decidim-admin", Decidim::Notify::COMPAT_DECIDIM_VERSION
   s.add_dependency "decidim-core", Decidim::Notify::COMPAT_DECIDIM_VERSION
 

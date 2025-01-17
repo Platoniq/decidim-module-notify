@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     trait :with_chapter do
-      chapter { create(:notify_chapter, component: component) }
+      chapter { create(:notify_chapter, component:) }
     end
   end
 

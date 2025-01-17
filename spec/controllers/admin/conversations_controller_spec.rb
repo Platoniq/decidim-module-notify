@@ -3,15 +3,15 @@
 require "spec_helper"
 
 module Decidim::Notify::Admin
-  describe ConversationsController, type: :controller do
+  describe ConversationsController do
     routes { Decidim::Notify::AdminEngine.routes }
 
-    let(:organization) { create :organization }
-    let(:user) { create(:user, :confirmed, :admin, organization: organization) }
-    let(:participatory_space) { create(:participatory_process, organization: organization) }
-    let(:component) { create :notify_component, participatory_space: participatory_space }
-    let!(:users) { create_list(:user, 3, organization: organization) }
-    let!(:note_takers) { create_list(:user, 2, organization: organization) }
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, :confirmed, :admin, organization:) }
+    let(:participatory_space) { create(:participatory_process, organization:) }
+    let(:component) { create(:notify_component, participatory_space:) }
+    let!(:users) { create_list(:user, 3, organization:) }
+    let!(:note_takers) { create_list(:user, 2, organization:) }
     let(:params) do
       {
         users: users.pluck(:id).map(&:to_s),
@@ -30,7 +30,7 @@ module Decidim::Notify::Admin
 
     describe "GET #index" do
       it "renders the index listing" do
-        get :index, params: params
+        get(:index, params:)
         expect(response).to have_http_status(:ok)
         expect(subject).to render_template(:index)
       end
@@ -39,13 +39,13 @@ module Decidim::Notify::Admin
     describe "POST #create" do
       context "when there is permission" do
         it "returns ok" do
-          post :create, params: params
+          post(:create, params:)
           expect(flash[:notice]).not_to be_empty
           expect(response).to have_http_status(:found)
         end
 
         it "creates users and note_takers for the component" do
-          post :create, params: params
+          post(:create, params:)
           expect(Decidim::Notify::Author.participants.map(&:user)).to match_array(users)
           expect(Decidim::Notify::Author.note_takers.map(&:user)).to match_array(note_takers)
         end

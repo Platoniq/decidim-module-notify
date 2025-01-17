@@ -25,7 +25,7 @@ module Decidim
               broadcast_participants participants
             end
             on(:invalid) do |message|
-              flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message: message)
+              flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message:)
             end
           end
           redirect_to EngineRouter.admin_proxy(current_component).conversations_path

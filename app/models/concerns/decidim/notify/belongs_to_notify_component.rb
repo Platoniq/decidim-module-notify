@@ -14,7 +14,7 @@ module Decidim
         validate :component_is_notify
 
         def self.for(component)
-          where(component: component)
+          where(component:)
         end
 
         private

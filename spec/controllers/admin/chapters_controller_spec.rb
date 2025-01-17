@@ -3,15 +3,15 @@
 require "spec_helper"
 
 module Decidim::Notify::Admin
-  describe ChaptersController, type: :controller do
+  describe ChaptersController do
     routes { Decidim::Notify::AdminEngine.routes }
 
-    let(:organization) { create :organization }
-    let(:user) { create(:user, :confirmed, :admin, organization: organization) }
-    let(:participatory_space) { create(:participatory_process, organization: organization) }
-    let(:component) { create :notify_component, participatory_space: participatory_space }
-    let(:chapter) { create :notify_chapter, component: component }
-    let(:author) { create :notify_author, :is_note_taker, component: component, user: user }
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, :confirmed, :admin, organization:) }
+    let(:participatory_space) { create(:participatory_process, organization:) }
+    let(:component) { create(:notify_component, participatory_space:) }
+    let(:chapter) { create(:notify_chapter, component:) }
+    let(:author) { create(:notify_author, :is_note_taker, component:, user:) }
 
     let(:form) do
       {
@@ -52,20 +52,20 @@ module Decidim::Notify::Admin
 
       context "when there is permission" do
         it "returns ok" do
-          post :create, params: params
+          post(:create, params:)
           expect(flash[:notice]).not_to be_empty
           expect(response).to have_http_status(:found)
         end
 
         it "creates the new chapter" do
-          post :create, params: params
+          post(:create, params:)
           expect(Decidim::Notify::Chapter.first.title).to eq(form[:title])
         end
       end
     end
 
     describe "PATCH #update" do
-      let!(:chapter) { create :notify_chapter, component: component }
+      let!(:chapter) { create(:notify_chapter, component:) }
       let(:params) do
         {
           id: chapter.id,
@@ -75,20 +75,20 @@ module Decidim::Notify::Admin
 
       context "when there is permission" do
         it "returns ok" do
-          patch :update, params: params
+          patch(:update, params:)
           expect(flash[:notice]).not_to be_empty
           expect(response).to have_http_status(:found)
         end
 
         it "updates the new chapter" do
-          patch :update, params: params
+          patch(:update, params:)
           expect(Decidim::Notify::Chapter.first.title).to eq(form[:title])
         end
       end
     end
 
     describe "DELETE #destroy" do
-      let!(:chapter) { create :notify_chapter, component: component }
+      let!(:chapter) { create(:notify_chapter, component:) }
       let(:params) do
         {
           id: chapter.id
@@ -97,13 +97,13 @@ module Decidim::Notify::Admin
 
       context "when there is permission" do
         it "returns ok" do
-          delete :destroy, params: params
+          delete(:destroy, params:)
           expect(flash[:notice]).not_to be_empty
           expect(response).to have_http_status(:found)
         end
 
         it "updates the new chapter" do
-          delete :destroy, params: params
+          delete(:destroy, params:)
           expect { chapter.reload }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end
