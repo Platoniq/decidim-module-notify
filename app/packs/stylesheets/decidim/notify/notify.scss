@@ -58,13 +58,22 @@
   }
 }
 
-.layout-main__section {
-  background-color: rgba(243, 244, 247, 1);
+.notify-announcement {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.delete-chapter-button {
+  position: absolute;
+  font-size: 24px;
+  line-height: 30px;
+  --tw-text-opacity: 1;
+  bottom: 1.5rem;
+  left: 9rem;
 }
 
 .notify-container {
   padding-top: 2rem;
-  background-color: rgba(243, 244, 247, 1);
+  background-color: rgba(255, 255, 255, 1);
 
   #new_note > div > label {
     display: flex;
@@ -106,7 +115,7 @@
   }
 
   .section, aside, .layout-2col__main, #notify-chapters {
-    background-color: rgba(243, 244, 247, 1);
+    background-color: rgba(255, 255, 255, 1);
   }
   .hexagon {
     @include responsive_hexagon();
