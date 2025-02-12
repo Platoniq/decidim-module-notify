@@ -39,7 +39,6 @@ en:
           edit:
             title: Edit chapter
             update: Update
-          form:
             cancel: Cancel & back to chapters
           index:
             conversations: Configure conversation
@@ -47,6 +46,7 @@ en:
           new:
             create: Create
             title: New chapter
+            cancel: Cancel & back to chapters
           update:
             error: Error updating the chapter
             success: Chapter updated successfully
@@ -55,15 +55,18 @@ en:
           index:
             chapters: Configure chapters
             help: |-
-              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p>
-              <p>Configure this tool by adding the participants and some note-takers:</p>
-              <ul><li>Each participant will be assigned a number (starting at 1).</li>
-              <li>Note takers are those participants who are allowed to transcribe the conversation.<br>
-              Each transcribed note can be credited to a participant by writing their number or name.</li></ul>
-              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p>
+              <p>Notify lets you transcribe conversations between multiple people in real time (no page refresh required).</p><br>
+              <p>Configure this tool by adding the participants and some note-takers:</p><br>
+              <ul><li>- Each participant will be assigned a number (starting at 1).</li>
+              <li>- Note takers are those participants who are allowed to transcribe the conversation.
+              Each transcribed note can be credited to a participant by writing their number or name.</li></ul><br>
+              <p>To facilitate the process, all the participants' avatars and their numbers are shown next to the notes.</p><br>
             save: Save changes
             title: Participants for the conversation
           success: Configuration saved successfully
+          users_picker:
+            choose_users: "Choose users"
+            no_users: "No users were found"
       chapter:
         active: Active
         delete: Delete
