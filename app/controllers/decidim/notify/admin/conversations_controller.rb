@@ -10,8 +10,8 @@ module Decidim
         def index
           enforce_permission_to :index, :config
 
-          @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
-          @note_takers = Author.for(current_component).note_takers.map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
+          @users = Author.for(current_component).map(&:decidim_user_id)
+          @note_takers = Author.for(current_component).note_takers.map(&:decidim_user_id)
           @form = form(NotifyConfigForm).from_params(current_component.attributes["settings"]["global"])
         end
 

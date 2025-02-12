@@ -39,8 +39,7 @@
   "dependencies": {
     "@decidim/browserslist-config": "^0.28.4",
     "@decidim/webpacker": "^0.28.4",
-    "@rails/actioncable": "6.1.7",
-    "select2": "^4.1.0-rc.0"
+    "@rails/actioncable": "6.1.7"
   },
   "browserslist": ["extends @decidim/browserslist-config"]
 }

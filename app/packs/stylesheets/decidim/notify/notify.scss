@@ -1,61 +1,11 @@
 // From Decidicim core
 @import "stylesheets/decidim/legacy/variables";
 // From npm package
-// @import "select2/dist/css/select2.css";
-@import "select2-foundation-theme";
+@import "tom-select/dist/scss/tom-select";
 @import "hexagon";
-
-// we need to hide the original select otherwise focus is lost
-.select2-hidden-accessible {
-  display: none;
-}
 
 .button--double{
   width: fit-content;
-}
-
-.select2-container--foundation {
-  width: 100% !important;
-  .select2-dropdown {
-    border-radius: 4px;
-  }
-  .select2-search--dropdown .select2-search__field {
-    border-radius: 4px;
-    &:focus {
-      border-color:#333;
-    }
-  }
- .select2-selection {
-    border-radius: 4px;
-  }
- .select2-results__option--highlighted[aria-selected] {
-    background-color: rgba(var(--secondary-rgb), 0.5);
-  }
-  .select2-result-repository {
-    display: flex;
-    &__avatar {
-      @include responsive_hexagon();
-    }
-    &__meta {
-      flex: 1;
-      align-self: center;
-      margin-left: 1rem;
-      color: black;
-      font-weight: bold;
-      word-wrap: break-word;
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-  }
-  .select2-selection--single .select2-selection__clear,
-  .selection .select2-selection--single .select2-selection__clear {
-    margin-right: 20px;
-    background: #ddd;
-    border-radius: 50%;
-    line-height: 1;
-    height: 20px;
-    width: 20px;
-  }
 }
 
 .notify-announcement {

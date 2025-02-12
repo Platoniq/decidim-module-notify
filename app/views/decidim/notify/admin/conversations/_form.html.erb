@@ -1,10 +1,30 @@
-<div class="row column">
-  <%= form.select :users, options_from_collection_for_select(@users, :id, :text, proc { true }), { include_blank: false }, { class: "multiusers-select", multiple: true, data: { url: users_path } } %>
-</div>
+<label for="users_list">
+  <%= t("users", scope: "activemodel.attributes.notify_config") %>
+  <select id="users_list"
+          placeholder="<%= t("users_picker.choose_users", scope: "decidim.notify.admin.conversations") %>"
+          data-tm-name="users"
+          data-tm-items="<%= @users.to_json %>"
+          data-tm-no-results="No users"
+          class="mt-4" multiple>
+    <% current_organization.users.pluck(:id, :name).each do |id, name| %>
+      <option value="<%= id %>"><%= name %> </option>
+    <% end %>
+  </select>
+</label>
 
-<div class="row column">
-  <%= form.select :note_takers, options_from_collection_for_select(@note_takers, :id, :text, proc { true }), { include_blank: false }, { class: "multiusers-select", multiple: true, data: { url: users_path } } %>
-</div>
+<label for="users_list">
+  <%= t("note_takers", scope: "activemodel.attributes.notify_config") %>
+  <select id="users_list"
+          placeholder="<%= t("users_picker.choose_users", scope: "decidim.notify.admin.conversations") %>"
+          data-tm-name="note_takers"
+          data-tm-items="<%= @note_takers.to_json %>"
+          data-tm-no-results="No users"
+          class="mt-4" multiple>
+    <% current_organization.users.pluck(:id, :name).each do |id, name| %>
+      <option value="<%= id %>"><%= name %> </option>
+    <% end %>
+  </select>
+</label>
 
 <div class="row column">
   <div class="switch tiny switch-with-label restricted">
@@ -16,7 +36,7 @@
   </div>
 </div>
 
-<div class="row column">
+<div class="row column pb-4">
   <div class="switch tiny switch-with-label private">
     <%= form.label :private do %>
       <%= form.check_box :private, label: false, class: "switch-input" %>
