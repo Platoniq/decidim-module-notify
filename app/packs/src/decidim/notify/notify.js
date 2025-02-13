@@ -15,16 +15,16 @@ $(() => {
   $form.find('[type="reset"]').on("click", resetForm);
 
   // edit button in notes
-  $("#notify-chapters").on("click", "a.edit", (e) => {
-    e.preventDefault();
-    const $a = $(e.currentTarget);
+  $("#notify-chapters").on("click", "a.edit", (event) => {
+    event.preventDefault();
+    const $a = $(event.currentTarget);
     const code = $a.closest(".notify-note").data("author-code");
     const chapter = $a.closest(".notify-note").data("chapter");
     const name = $a.closest(".notify-note").find(".note-name").text();
     const body = $a.closest(".notify-note").find(".note-body").text();
 
     $form.find('[name="_method"]').val("patch");
-    $form.attr("action", $(e.currentTarget).attr("href"));
+    $form.attr("action", $(event.currentTarget).attr("href"));
     $("#note_body").val(body);
     $("#note_chapter").val(chapter);
     $("#note_chapter").trigger("change");
@@ -43,8 +43,8 @@ $(() => {
   });
 
   // Keypress CTRL-Enter sends form
-  $("#note_body").keypress(function(e) {
-    if (e.ctrlKey && (e.which === 10 || e.which === 13)) {
+  $("#note_body").keypress(function(event) {
+    if (event.ctrlKey && (event.which === 10 || event.which === 13)) {
       Rails.fire($form[0], "submit");
     }
   });

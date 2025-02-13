@@ -42,7 +42,7 @@
   #notify-participants {
     border: 1px solid #cacaca;
     border-radius: 4px;
-    background-color:  #ffdbbb;
+    background-color:  #fafafa;
     margin-bottom: 1rem;
     padding: 0.5rem 0rem;
     text-align: center;
@@ -51,13 +51,14 @@
   #notify-note_takers, .card-section.notify-chapter-notes {
     border: 1px solid #cacaca;
     border-radius: 4px;
-    background-color:  white;
+    background-color:  #fafafa;
     margin-bottom: 1rem;
     padding: 0.5rem;
   }
 
   #notify-note_takers {
     text-align: center;
+    background-color:  rgb(var(--tertiary-rgb) / 0.6);
   }
 
   .card-section {
@@ -89,12 +90,16 @@
 
   .card--notes-editor {
     border-radius: 4px;
-    background: #eee;
-    border: #cacaca solid 1px;
+    background: #fafafa;
+    border: rgb(243 244 247) solid 2px;
     textarea {
+      background-color: white;
       border: 1px solid #cacaca;
       border-radius: 4px;
       resize: vertical;
+    }
+    select {
+      background-color: white;
     }
   }
   input, textarea {

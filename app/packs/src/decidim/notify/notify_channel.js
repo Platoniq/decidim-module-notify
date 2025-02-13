@@ -9,7 +9,7 @@ jQuery.fn.reverse = [].reverse;
 
 const updateEmptyStatus = (selector) => {
   $(selector).each(function() {
-    if ($(this).children().length == 0) {
+    if ($(this).children().length === 0) {
       $(this).addClass("empty");
     } else {
       $(this).removeClass("empty");
@@ -28,7 +28,7 @@ App.notifyNotesChannel = App.consumer.subscriptions.create({ channel: "Decidim::
       let $note = $(`#notify-note-${data.id}`);
       let $old = $note.closest(".notify-chapter-notes");
       let $new = $(`#notify-chapter-notes-${data.chapterId || "unclassified"}`);
-      if ($old[0] != $new[0]) {
+      if ($old[0] !== $new[0]) {
         /* eslint-disable */
         // FIXME: put it in the right place by time of creation
         /* eslint-enable */
@@ -76,7 +76,7 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
           $(`.toggle-chapter-active .switch-input:not(#chapter_active-${data.id})`).prop("checked", false);
           $chapter.closest("h3").addClass("active");
         }
-        let activate = $("#note_body").val() == "" && data.active;
+        let activate = $("#note_body").val() === "" && data.active;
         let newOption = new Option(data.update, data.update, activate, activate);
         $(`#note_chapter [value="${old}"]`).remove();
         $("#note_chapter").append(newOption).trigger("change");
