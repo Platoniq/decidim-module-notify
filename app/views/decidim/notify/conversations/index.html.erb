@@ -21,8 +21,9 @@
           </div>
         </div>
       <% end %>
-      <%= render layout: "layouts/decidim/shared/layout_two_col", locals: { reverse: true } do %>
-        <% if allowed_to? :create, :notes %>
+      <% if allowed_to? :create, :notes %>
+        <%= render layout: "layouts/decidim/shared/layout_two_col", locals: { reverse: true } do %>
+
           <div class="card card--notes-editor">
             <div class="card-section">
               <%= form_for(@form, url: conversations_path, remote: true, html: { id: "new_note", class: "form new_note", data: nil }) do |f| %>

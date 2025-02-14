@@ -4,7 +4,7 @@
 @import "tom-select/dist/scss/tom-select";
 @import "hexagon";
 
-.button--double{
+.button--double {
   width: fit-content;
 }
 
@@ -42,30 +42,34 @@
   #notify-participants {
     border: 1px solid #cacaca;
     border-radius: 4px;
-    background-color:  #fafafa;
+    background-color: #fafafa;
     margin-bottom: 1rem;
     padding: 0.5rem 0rem;
     text-align: center;
   }
 
-  #notify-note_takers, .card-section.notify-chapter-notes {
+  #notify-note_takers,
+  .card-section.notify-chapter-notes {
     border: 1px solid #cacaca;
     border-radius: 4px;
-    background-color:  #fafafa;
+    background-color: #fafafa;
     margin-bottom: 1rem;
     padding: 0.5rem;
   }
 
   #notify-note_takers {
     text-align: center;
-    background-color:  rgb(var(--tertiary-rgb) / 0.6);
+    background-color: rgb(var(--tertiary-rgb) / 0.6);
   }
 
   .card-section {
     padding: 1rem;
   }
 
-  .section, aside, .layout-2col__main, #notify-chapters {
+  .section,
+  aside,
+  .layout-2col__main,
+  #notify-chapters {
     background-color: rgba(255, 255, 255, 1);
   }
   .hexagon {
@@ -80,7 +84,8 @@
     display: none;
   }
 
-  .layout-2col__main, .layout-2col__aside {
+  .layout-2col__main,
+  .layout-2col__aside {
     margin-bottom: 0rem;
     padding-bottom: 0rem;
     margin-top: 0rem;
@@ -102,7 +107,8 @@
       background-color: white;
     }
   }
-  input, textarea {
+  input,
+  textarea {
     &::placeholder {
       color: #333;
     }
@@ -123,7 +129,7 @@
   }
 
   .by-note-taker {
-    background-color:rgba(var(--primary-rgb), 0.1);
+    background-color: rgba(var(--primary-rgb), 0.1);
   }
 
   .notify-chapter {
@@ -133,10 +139,11 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin:1rem 0 1rem 0;
+      margin: 1rem 0 1rem 0;
       text-transform: uppercase;
-      &::before,&::after {
-        content: '';
+      &::before,
+      &::after {
+        content: "";
         border-top: 2px solid;
         margin: 0 1rem 0 0;
         flex: 1 0 1rem;
@@ -148,18 +155,19 @@
         color: var(--primary);
       }
       &:empty {
-        &::before,&::after {
-          margin:0;
+        &::before,
+        &::after {
+          margin: 0;
         }
       }
 
-      >button {
+      > button {
         font-size: 1rem;
         color: var(--primary);
         display: inline-block;
         margin: 0 -0.5rem 0 0.5rem;
       }
-      >.dropdown-pane {
+      > .dropdown-pane {
         font-family: "Source Sans Pro", Helvetica, Roboto, Arial, sans-serif;
         margin-left: -3em;
         border: 1px solid #333;
@@ -179,13 +187,14 @@
     }
 
     .notify-chapter-notes {
-      padding:0.5rem;
+      padding: 0.5rem;
       .notify-note {
         padding: 0.5rem;
         border-radius: 4px;
       }
 
-      &:empty, &.empty {
+      &:empty,
+      &.empty {
         &::before {
           content: attr(data-empty);
           font-style: italic;
@@ -199,7 +208,9 @@
   .media-object {
     display: flex;
 
-    h4, p, em{
+    h4,
+    p,
+    em {
       font-size: 1rem;
       line-height: 1.1rem;
       margin-bottom: 0.5rem;
@@ -224,7 +235,8 @@
       width: 70px;
     }
     &.main-section {
-      flex: 1;margin-left: 1rem;
+      flex: 1;
+      margin-left: 1rem;
       padding-top: 1rem;
       p {
         white-space: pre-line;
@@ -233,11 +245,10 @@
     .delete {
       margin-bottom: 0.5rem;
     }
-
   }
 
   .notify-note {
-    .buttons a{
+    .buttons a {
       display: block;
       &.tiny {
         padding-left: 0.5rem;
