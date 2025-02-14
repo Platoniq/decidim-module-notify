@@ -1,5 +1,5 @@
 
-$(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const $info = $(".form-conversations-submit .info");
   const $form = $("form#new_note");
   const originalAction = $form.attr("action");

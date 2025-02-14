@@ -4,7 +4,7 @@
           placeholder="<%= t("users_picker.choose_users", scope: "decidim.notify.admin.conversations") %>"
           data-tm-name="users"
           data-tm-items="<%= @users.to_json %>"
-          data-tm-no-results="No users"
+          data-tm-no-results="<%= t("users_picker.no_users", scope: "decidim.notify.admin.conversations") %>"
           class="mt-4 pb-4" multiple>
     <% current_organization.users.pluck(:id, :name).each do |id, name| %>
       <option value="<%= id %>"><%= name %> </option>
@@ -18,7 +18,7 @@
           placeholder="<%= t("users_picker.choose_users", scope: "decidim.notify.admin.conversations") %>"
           data-tm-name="note_takers"
           data-tm-items="<%= @note_takers.to_json %>"
-          data-tm-no-results="No users"
+          data-tm-no-results="<%= t("users_picker.no_users", scope: "decidim.notify.admin.conversations") %>"
           class="mt-4 pb-4" multiple>
     <% current_organization.users.pluck(:id, :name).each do |id, name| %>
       <option value="<%= id %>"><%= name %> </option>

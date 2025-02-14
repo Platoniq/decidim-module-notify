@@ -8,11 +8,11 @@ const App = window.App = {
 jQuery.fn.reverse = [].reverse;
 
 const updateEmptyStatus = (selector) => {
-  $(selector).each(function() {
-    if ($(this).children().length === 0) {
-      $(this).addClass("empty");
+  document.querySelectorAll(selector).forEach((element) => {
+    if (element.children.length === 0) {
+      element.classList.add("empty");
     } else {
-      $(this).removeClass("empty");
+      element.classList.remove("empty");
     }
   });
 };
@@ -88,8 +88,8 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
     if (data.destroy) {
       // Move notes to the unclassified
       let $unclassified = $("#notify-chapter-notes-unclassified");
-      $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each(function() {
-        $(this).detach().prependTo($unclassified);
+      $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each((index, note) => {
+        $(note).detach().prependTo($unclassified);
       });
 
       $(`#notify-chapter-${data.destroy}`).remove();

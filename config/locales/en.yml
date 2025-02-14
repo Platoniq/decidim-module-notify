@@ -37,16 +37,16 @@ en:
             error: Error deleting the chapter
             success: Chapter deleted successfully
           edit:
+            cancel: Cancel & back to chapters
             title: Edit chapter
             update: Update
-            cancel: Cancel & back to chapters
           index:
             conversations: Configure conversation
             title: Chapters
           new:
+            cancel: Cancel & back to chapters
             create: Create
             title: New chapter
-            cancel: Cancel & back to chapters
           update:
             error: Error updating the chapter
             success: Chapter updated successfully
@@ -65,8 +65,8 @@ en:
             title: Participants for the conversation
           success: Configuration saved successfully
           users_picker:
-            choose_users: "Choose users"
-            no_users: "No users were found"
+            choose_users: Choose users
+            no_users: No users were found
       chapter:
         active: Active
         delete: Delete

@@ -7,13 +7,13 @@
     <div class="section">
       <% content_for :aside do %>
         <div class="columns smallmedium-3">
-          <h5><%= t("users", scope: "activemodel.attributes.notify_config") %></h5>
+          <h5><%= t("participants", scope: "decidim.notify.conversations.index") %></h5>
           <div class="card">
             <div class="card-section" id="notify-participants">
               <%= render partial: "participant", collection: @participants %>
             </div>
           </div>
-          <h5><%= t("note_takers", scope: "activemodel.attributes.notify_config") %></h5>
+          <h5><%= t("note_takers", scope: "decidim.notify.conversations.index") %></h5>
           <div class="card">
             <div class="card-section by-note-taker" id="notify-note_takers">
               <%= render partial: "participant", collection: @note_takers %>
@@ -32,7 +32,7 @@
                   <div class="help-text"><%= t("decidim.notify.conversations.tip") %></div>
                 </div>
                 <div class="button button__primary button__sm form-conversations-submit">
-                    <%= f.submit "Send" %>
+                    <%= f.submit t("send", scope: "decidim.notify.conversations.index") %>
                     <div class="info">✔️</div>
                 </div>
               <% end %>
