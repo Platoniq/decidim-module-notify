@@ -76,7 +76,7 @@ Decidim.register_component(:notify) do |component|
       name: Decidim::Components::Namer.new(participatory_space.organization.available_locales, :notify).i18n_name,
       manifest_name: :notify,
       published_at: Time.current,
-      participatory_space: participatory_space,
+      participatory_space:,
       settings: {
         announcement: { en: Faker::Lorem.paragraphs(number: 2).join("\n") },
         private: Faker::Boolean.boolean(true_ratio: 0.5),
@@ -104,7 +104,7 @@ Decidim.register_component(:notify) do |component|
     chapter = Decidim::Notify::Chapter.create!(
       title: "Extinctions",
       active: true,
-      component: component
+      component:
     )
     # add admin user as a note taker
     # add a random user as a note taker
@@ -116,15 +116,15 @@ Decidim.register_component(:notify) do |component|
       user.save!
       # create author
       author = Decidim::Notify::Author.find_or_create_by(
-        user: user,
-        component: component
+        user:,
+        component:
       )
       author.code = index
       author.admin = index < 3
       author.save!
       # Create a note for the conversation
       Decidim::Notify::Note.create!(
-        component: component,
+        component:,
         author: author.user,
         creator: admin_user,
         chapter: index > 1 ? chapter : nil,

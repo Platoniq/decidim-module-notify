@@ -8,8 +8,8 @@ module Decidim::Notify::Admin
 
     let(:attributes) do
       {
-        users: users,
-        note_takers: note_takers,
+        users:,
+        note_takers:,
         private: false,
         restricted: false
       }

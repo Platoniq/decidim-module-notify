@@ -25,7 +25,6 @@ desc "Generates a dummy app for testing"
 task test_app: "decidim:generate_external_test_app" do
   ENV["RAILS_ENV"] = "test"
   install_module("spec/decidim_dummy_app")
-  fix_babel_config("spec/decidim_dummy_app")
   override_webpacker_config_files("spec/decidim_dummy_app")
 end
 
@@ -44,19 +43,6 @@ task :development_app do
   end
 
   install_module("development_app")
-  fix_babel_config("development_app")
   override_webpacker_config_files("development_app")
   seed_db("development_app")
-end
-
-def fix_babel_config(path)
-  Dir.chdir(path) do
-    babel_config = "#{Dir.pwd}/babel.config.json"
-    File.delete(babel_config) if File.exist?(babel_config)
-    FileUtils.cp("#{__dir__}/babel.config.json", Dir.pwd)
-
-    # Temporary fix to overcome the issue with sass-embedded, see:
-    # https://github.com/decidim/decidim/pull/11074
-    system("npm i sass-embedded@~1.62.0")
-  end
 end

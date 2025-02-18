@@ -8,7 +8,7 @@ module Decidim::Notify
     subject { note }
 
     let(:creator) { create(:user) }
-    let(:note) { create(:notify_note, creator: creator) }
+    let(:note) { create(:notify_note, creator:) }
 
     it { is_expected.to be_valid }
 

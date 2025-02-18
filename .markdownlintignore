@@ -1,0 +1,5 @@
+node_modules/
+decidim_dummy_app/
+*/public/decidim-packs/
+vendor/bundle
+development_app/

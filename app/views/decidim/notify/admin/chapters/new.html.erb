@@ -1,7 +1,23 @@
-<%= decidim_form_for(@form, url: chapters_path, html: { class: "form edit_chapter" }) do |f| %>
-  <%= render partial: "form", object: f, locals: { title: t(".title") } %>
+<% add_decidim_page_title(t(".title")) %>
 
-  <div class="button--double form-general-submit">
-      <%= f.submit t(".create") %>
-  </div>
-<% end %>
+<div class="item_show__header">
+  <h1 class="item_show__header-title">
+    <%= t(".title") %>
+    <%= link_to t(".cancel"), chapters_path, class: "button button__sm button__secondary" %>
+  </h1>
+</div>
+
+<div class="item__edit-form">
+  <%= decidim_form_for(@form, url: chapters_path, html: { class: "form-defaults form edit_chapter" }) do |f| %>
+    <div class="card">
+      <div class="card-section">
+        <%= render partial: "form", object: f, locals: { title: t(".title") } %>
+      </div>
+    </div>
+    <div class="item__edit-sticky">
+      <div class="item__edit-sticky-container">
+        <%= f.submit t(".create"), class: "button button__sm button__secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

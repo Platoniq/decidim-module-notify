@@ -1,25 +1,20 @@
-@import "select2/dist/css/select2.css";
-@import "select2-foundation-theme";
+@import "tom-select/dist/scss/tom-select";
 
-.multiusers-select-container {
-  form label {
-    margin-bottom: 1rem;
+/* overwrite tom-select defaults */
+.ts {
+  &-control {
+    @apply border-gray text-md min-h-[40px];
+
+    input {
+      @apply font-normal text-black text-md;
+    }
   }
 
-  .switch-paddle {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 1em;
+  &-dropdown {
+    @apply text-md text-gray-2 font-normal;
+
+    .active {
+      @apply text-white bg-secondary;
+    }
   }
 }
-
-.select2-container--foundation .select2-selection--multiple .select2-selection__choice {
-  display: inline-block;
-  float: none;
-  font-weight: normal;
-}
-
-.form-conversations-submit {
-  margin-top: 2rem;
-}
-

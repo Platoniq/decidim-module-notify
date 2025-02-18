@@ -9,12 +9,12 @@ module Decidim
 
       included do
         def broadcast_create_note(note)
-          html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: note })
+          html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: })
           Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { create: html, chapterId: note.chapter&.id })
         end
 
         def broadcast_update_note(note)
-          html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: note })
+          html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: })
           Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { id: note.id, update: html, chapterId: note.chapter&.id })
         end
 

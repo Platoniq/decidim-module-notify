@@ -30,7 +30,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.create.error", message: message) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.create.error", message:) }, status: :unprocessable_entity
           end
         end
       end
@@ -47,7 +47,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.update.error", message: message) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.update.error", message:) }, status: :unprocessable_entity
           end
         end
       end
@@ -61,7 +61,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.destroy.error", message: message) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.destroy.error", message:) }, status: :unprocessable_entity
           end
         end
       end

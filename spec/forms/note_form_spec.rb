@@ -8,9 +8,9 @@ module Decidim::Notify
 
     let(:attributes) do
       {
-        code: code,
-        chapter: chapter,
-        body: body
+        code:,
+        chapter:,
+        body:
       }
     end
     let(:body) { "Father McKentsy is alone" }

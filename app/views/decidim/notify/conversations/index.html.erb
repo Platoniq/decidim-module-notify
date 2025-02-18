@@ -1,51 +1,58 @@
-<%= render partial: "decidim/shared/component_announcement" %>
+<div class="notify-announcement">
+  <%= render partial: "decidim/shared/component_announcement" %>
+</div>
 
 <div class="row notify-container">
   <div class="columns smallmedium-9">
     <div class="section">
-
-      <% if allowed_to? :create, :notes %>
-        <div class="card card--notes-editor">
-          <div class="card-section">
-            <%= form_for(@form, url: conversations_path, remote: true, html: { id: "new_note", class: "form new_note", data: nil }) do |f| %>
-              <input type="hidden" name="_method" value="post">
-              <%= render partial: "form", object: f %>
-
-              <div class="float-right text-right">
-                <div class="help-text"><%= t("decidim.notify.conversations.tip") %></div>
-              </div>
-              <div class="button--double form-conversations-submit">
-                  <%= f.submit t(".send") %>
-                  <div class="info">✔</div>
-              </div>
-            <% end %>
+      <% content_for :aside do %>
+        <div class="columns smallmedium-3">
+          <h5><%= t("participants", scope: "decidim.notify.conversations.index") %></h5>
+          <div class="card">
+            <div class="card-section" id="notify-participants">
+              <%= render partial: "participant", collection: @participants %>
+            </div>
+          </div>
+          <h5><%= t("note_takers", scope: "decidim.notify.conversations.index") %></h5>
+          <div class="card">
+            <div class="card-section by-note-taker" id="notify-note_takers">
+              <%= render partial: "participant", collection: @note_takers %>
+            </div>
           </div>
         </div>
       <% end %>
+      <% if allowed_to? :create, :notes %>
+        <%= render layout: "layouts/decidim/shared/layout_two_col", locals: { reverse: true } do %>
 
-      <div id="notify-chapters">
-        <%= render partial: "chapter", collection: chapters %>
-        <%= render partial: "chapter", locals: { chapter: @unclassified } %>
-      </div>
-    </div>
-  </div>
-  <div class="columns smallmedium-3">
-    <h5><%= t ".participants" %></h5>
-    <div class="card">
-      <div class="card-section" id="notify-participants">
-        <%= render partial: "participant", collection: @participants %>
-      </div>
-    </div>
-    <h5><%= t ".note_takers" %></h5>
-    <div class="card">
-      <div class="card-section by-note-taker" id="notify-note_takers">
-        <%= render partial: "participant", collection: @note_takers %>
-      </div>
+          <div class="card card--notes-editor">
+            <div class="card-section">
+              <%= form_for(@form, url: conversations_path, remote: true, html: { id: "new_note", class: "form new_note", data: nil }) do |f| %>
+                <input type="hidden" name="_method" value="post">
+                <%= render partial: "form", object: f %>
+                <div class="float-right text-right">
+                  <div class="help-text"><%= t("decidim.notify.conversations.tip") %></div>
+                </div>
+                <div class="button button__primary button__sm form-conversations-submit">
+                    <%= f.submit t("send", scope: "decidim.notify.conversations.index") %>
+                    <div class="info">✔️</div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+      <%= render layout: "layouts/decidim/shared/layout_two_col", locals: { reverse: true }, class: "notify-chapters-container" do %>
+        <div id="notify-chapters">
+          <%= render partial: "chapter", collection: chapters %>
+          <%= render partial: "chapter", locals: { chapter: @unclassified } %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-<%= javascript_pack_tag "decidim_notify_component" %>
+<%= append_javascript_pack_tag "decidim_notify_component" %>
 
 <% content_for(:js_content) do %>
   <script type="text/javascript">

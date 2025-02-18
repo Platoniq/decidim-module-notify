@@ -1,14 +1,10 @@
 <div class="card">
-  <div class="card-divider">
-    <h2 class="card-title">
+  <div class="item_show__header">
+    <h1 class="item_show__header-title">
       <%= t(".title") %>
-      <div class="button--title">
-         <%= link_to t("chapters.actions.new", scope: "decidim.notify.admin", name: t("chapter.title", scope: "activemodel.attributes")), new_chapter_path, class: "button tiny button--simple" %>
-      </div>
-      <div class="button--title">
-        <%= link_to t(".conversations"), conversations_path, class: "button tiny button--simple" %>
-      </div>
-    </h2>
+      <%= link_to t("chapters.actions.new", scope: "decidim.notify.admin", name: t("chapter.title", scope: "activemodel.attributes")), new_chapter_path, class: "button button__sm button__secondary" %>
+      <%= link_to t(".conversations"), conversations_path, class: "button button__sm button__secondary" %>
+    </h1>
   </div>
 
     <div class="card-section">
@@ -29,18 +25,18 @@
               </td>
               <td>
                 <% if chapter.active? %>
-                  <span class="text-success"><%= icon("check", class: "icon", aria_label: "ok", role: "img") %></span>
+                  <span class="text-success"><%= icon("check-line", class: "check", aria_label: "ok", role: "img") %></span>
                 <% else %>
-                  <span class="text-muted"><%= icon("check", class: "icon", aria_label: "ko", role: "img") %></span>
+                  <span class="text-muted"><%= icon("close-line", class: "check", aria_label: "ko", role: "img") %></span>
                 <% end %>
               </td>
               <td class="table-list__actions">
                 <% if allowed_to? :update, :chapter, chapter: chapter %>
-                  <%= icon_link_to "pencil", edit_chapter_path(chapter), t("edit", scope: "decidim.notify.chapter"), class: "action-icon--edit" %>
+                  <%= icon_link_to "pencil-line", edit_chapter_path(chapter), t("edit", scope: "decidim.notify.chapter"), class: "action-icon--edit" %>
                 <% end %>
 
                 <% if allowed_to? :destroy, :chapter, chapter: chapter %>
-                  <%= icon_link_to "circle-x", chapter_path(chapter), t("delete", scope: "decidim.notify.chapter"), method: :delete, class: "action-icon--remove", data: { confirm: t("destroy.sure", scope: "decidim.notify.chapter") } %>
+                  <%= icon_link_to "close-circle-line", chapter_path(chapter), t("delete", scope: "decidim.notify.chapter"), method: :delete, class: "action-icon--remove", data: { confirm: t("destroy.sure", scope: "decidim.notify.chapter") } %>
                 <% end %>
               </td>
             </tr>

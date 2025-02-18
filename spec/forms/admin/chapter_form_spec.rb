@@ -8,7 +8,7 @@ module Decidim::Notify::Admin
 
     let(:attributes) do
       {
-        title: title,
+        title:,
         active: false
       }
     end

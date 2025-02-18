@@ -10,8 +10,8 @@ module Decidim
         def index
           enforce_permission_to :index, :config
 
-          @users = Author.for(current_component).map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
-          @note_takers = Author.for(current_component).note_takers.map { |user| OpenStruct.new(text: format_user_name(user), id: user.decidim_user_id) }
+          @users = Author.for(current_component).map(&:decidim_user_id)
+          @note_takers = Author.for(current_component).note_takers.map(&:decidim_user_id)
           @form = form(NotifyConfigForm).from_params(current_component.attributes["settings"]["global"])
         end
 
@@ -25,7 +25,7 @@ module Decidim
               broadcast_participants participants
             end
             on(:invalid) do |message|
-              flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message: message)
+              flash[:alert] = I18n.t("decidim.notify.admin.conversations.error", message:)
             end
           end
           redirect_to EngineRouter.admin_proxy(current_component).conversations_path

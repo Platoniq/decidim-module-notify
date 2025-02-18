@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 
 @mixin responsive_hexagon() {
   @include hexagon(71px);
@@ -11,7 +11,13 @@
   }
 }
 
-@mixin hexagon($width: 71px, $borderWidth: 2px, $borderColor: #000, $shadow: 0 0 10px rgba(0,0,0,0.5), $color: #fff) {
+@mixin hexagon(
+  $width: 71px,
+  $borderWidth: 2px,
+  $borderColor: #000,
+  $shadow: 0 0 10px rgba(0, 0, 0, 0.5),
+  $color: #fff
+) {
   // $width works best with even numbers - browser rounding effs up with odds
 
   //calculated values
@@ -22,30 +28,33 @@
 
   $height: math.div($width, $root3);
   $capWidth: math.div($width, $root2); // caps = the top and bottom triangles
-  $capBorderWidth: $borderWidth*$root2;
-  $capBorderHeight: math.div($borderWidth*2, $root3); //needed to offset bg pos
+  $capBorderWidth: $borderWidth * $root2;
+  $capBorderHeight: math.div(
+    $borderWidth * 2,
+    $root3
+  ); //needed to offset bg pos
   $border: solid $borderWidth $borderColor;
   $capBorder: solid $capBorderWidth $borderColor;
-  $coverWidth: $width - $borderWidth*2; //the cover up rectangle
-  $coverHeight: $height - $borderWidth*$scaleFactor*2;
+  $coverWidth: $width - $borderWidth * 2; //the cover up rectangle
+  $coverHeight: $height - $borderWidth * $scaleFactor * 2;
   $capHeight: $height - $capBorderHeight;
-  $bgHeight: $capHeight*2;
-  $bgHeight: $height*2 - ($capBorderHeight*2);
-  $bgHeight: $height*2 - math.div($borderWidth*2, $root3)*2;
-  $bgHeight: $height*2 - math.div($borderWidth, $root3)*4;
-  $translateBG: -$height*0.5 + $capBorderHeight*0.5;
+  $bgHeight: $capHeight * 2;
+  $bgHeight: $height * 2 - ($capBorderHeight * 2);
+  $bgHeight: $height * 2 - math.div($borderWidth * 2, $root3) * 2;
+  $bgHeight: $height * 2 - math.div($borderWidth, $root3) * 4;
+  $translateBG: -$height * 0.5 + $capBorderHeight * 0.5;
 
   position: relative;
   width: $width;
   height: $height;
-  margin: $height*0.5 auto;
+  margin: $height * 0.5 auto;
   background-color: $color;
   background-size: auto $bgHeight; //fit to total height, minus borders
   background-position: center;
   border-left: $border;
   border-right: $border;
   box-shadow: $shadow;
-  text-align:left;
+  text-align: left;
 
   .hex1,
   .hex2 {
@@ -57,7 +66,7 @@
     overflow: hidden;
     transform: scaleY($scaleFactor) rotate(-45deg);
     background: inherit;
-    left: ($width - $capWidth)*0.5 - $borderWidth; //offset by half the difference in
+    left: ($width - $capWidth) * 0.5 - $borderWidth; //offset by half the difference in
   }
 
   //counter transform the bg image on the caps
@@ -76,7 +85,7 @@
 
   //send top to top and bottom to bottom
   .hex1 {
-    top: math.div(-$width, $root2)*0.5;  //half the rhombus height
+    top: math.div(-$width, $root2) * 0.5; //half the rhombus height
     border-top: $capBorder;
     border-right: $capBorder;
 
@@ -86,7 +95,7 @@
   }
 
   .hex2 {
-    bottom: math.div(-$width, $root2)*0.5; //half the rhombus height
+    bottom: math.div(-$width, $root2) * 0.5; //half the rhombus height
     border-bottom: $capBorder;
     border-left: $capBorder;
 
@@ -99,7 +108,7 @@
   &:after {
     content: "";
     position: absolute;
-    top: $borderWidth*$scaleFactor;
+    top: $borderWidth * $scaleFactor;
     left: 0;
     width: $coverWidth;
     height: $coverHeight;
@@ -110,14 +119,14 @@
   // Role
   .code {
     z-index: 10;
-    bottom:-$width*0.25;
-    right:math.div(-$width, 6);
+    bottom: -$width * 0.25;
+    right: math.div(-$width, 6);
     position: absolute;
-    width: $width*0.5;
-    height: $width*0.5;
-    border-radius:$width*0.5;
-    background-color: rgba(200,200,200,0.9);
-    color:#000;
+    width: $width * 0.5;
+    height: $width * 0.5;
+    border-radius: $width * 0.5;
+    background-color: rgba(200, 200, 200, 0.9);
+    color: #000;
     font-size: 1.2em;
     text-align: center;
     padding-top: 7px;

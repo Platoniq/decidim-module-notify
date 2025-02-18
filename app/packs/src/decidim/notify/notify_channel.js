@@ -8,11 +8,11 @@ const App = window.App = {
 jQuery.fn.reverse = [].reverse;
 
 const updateEmptyStatus = (selector) => {
-  $(selector).each(function() {
-    if ($(this).children().length == 0) {
-      $(this).addClass("empty");
+  document.querySelectorAll(selector).forEach((element) => {
+    if (element.children.length === 0) {
+      element.classList.add("empty");
     } else {
-      $(this).removeClass("empty");
+      element.classList.remove("empty");
     }
   });
 };
@@ -28,7 +28,7 @@ App.notifyNotesChannel = App.consumer.subscriptions.create({ channel: "Decidim::
       let $note = $(`#notify-note-${data.id}`);
       let $old = $note.closest(".notify-chapter-notes");
       let $new = $(`#notify-chapter-notes-${data.chapterId || "unclassified"}`);
-      if ($old[0] != $new[0]) {
+      if ($old[0] !== $new[0]) {
         /* eslint-disable */
         // FIXME: put it in the right place by time of creation
         /* eslint-enable */
@@ -76,7 +76,7 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
           $(`.toggle-chapter-active .switch-input:not(#chapter_active-${data.id})`).prop("checked", false);
           $chapter.closest("h3").addClass("active");
         }
-        let activate = $("#note_body").val() == "" && data.active;
+        let activate = $("#note_body").val() === "" && data.active;
         let newOption = new Option(data.update, data.update, activate, activate);
         $(`#note_chapter [value="${old}"]`).remove();
         $("#note_chapter").append(newOption).trigger("change");
@@ -88,8 +88,8 @@ App.notifyChaptersChannel = App.consumer.subscriptions.create({ channel: "Decidi
     if (data.destroy) {
       // Move notes to the unclassified
       let $unclassified = $("#notify-chapter-notes-unclassified");
-      $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each(function() {
-        $(this).detach().prependTo($unclassified);
+      $(`#notify-chapter-notes-${data.destroy} .notify-note`).reverse().each((index, note) => {
+        $(note).detach().prependTo($unclassified);
       });
 
       $(`#notify-chapter-${data.destroy}`).remove();

@@ -9,7 +9,7 @@ module Decidim::Notify
     controller Decidim::Notify::ConversationsController
 
     let(:my_cell) { cell("decidim/notify/chapter", chapter) }
-    let!(:chapter) { create(:notify_chapter, active: active) }
+    let!(:chapter) { create(:notify_chapter, active:) }
     let(:active) { false }
     let!(:note_taker) { create(:notify_author, :is_note_taker, :with_user, component: chapter.component) }
 
@@ -20,7 +20,7 @@ module Decidim::Notify
       end
 
       it "do not render the edit button" do
-        expect(subject).not_to have_css(".dropdown-pane")
+        expect(subject).not_to have_css(".flag-modal")
       end
 
       it "is not active" do
@@ -34,7 +34,7 @@ module Decidim::Notify
       end
 
       it "renders the edit button" do
-        expect(subject).to have_css(".dropdown-pane")
+        expect(subject).to have_css(".flag-modal")
       end
     end
 

@@ -3,15 +3,15 @@
 require "spec_helper"
 
 module Decidim::Notify
-  describe ConversationsController, type: :controller do
+  describe ConversationsController do
     routes { Decidim::Notify::Engine.routes }
 
-    let(:organization) { create :organization }
-    let(:user) { create(:user, :confirmed, :admin, organization: organization) }
-    let(:participatory_space) { create(:participatory_process, organization: organization) }
-    let(:component) { create :notify_component, participatory_space: participatory_space }
-    let!(:note) { create :notify_note, component: component }
-    let!(:author) { create :notify_author, :is_note_taker, component: component, user: user }
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, :confirmed, :admin, organization:) }
+    let(:participatory_space) { create(:participatory_process, organization:) }
+    let(:component) { create(:notify_component, participatory_space:) }
+    let!(:note) { create(:notify_note, component:) }
+    let!(:author) { create(:notify_author, :is_note_taker, component:, user:) }
 
     before do
       request.env["decidim.current_organization"] = organization
@@ -36,7 +36,7 @@ module Decidim::Notify
       end
 
       it "creates a new note" do
-        post :create, params: params
+        post(:create, params:)
         expect(response).to have_http_status(:success)
       end
     end
@@ -50,7 +50,7 @@ module Decidim::Notify
       end
 
       it "updates the note" do
-        patch :update, params: params
+        patch(:update, params:)
         expect(response).to have_http_status(:success)
         expect(Note.find_by(id: note.id).body).to eq(params[:body])
       end

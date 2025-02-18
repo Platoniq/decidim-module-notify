@@ -1,14 +1,10 @@
 <div class="card">
-  <div class="card-divider">
-    <h2 class="card-title">
+  <div class="item_show__header">
+    <h1 class="item_show__header-title">
       <%= t(".title") %>
-      <div class="button--title">
-        <%= link_to t("actions.configure", scope: "decidim.admin"), Decidim::EngineRouter.admin_proxy(current_component.participatory_space).edit_component_path(current_component.id), class: "button tiny button--simple" %>
-      </div>
-      <div class="button--title">
-        <%= link_to t(".chapters"), chapters_path, class: "button tiny button--simple" %>
-      </div>
-    </h2>
+      <%= link_to t(".chapters"), chapters_path, class: "button button__sm button__secondary" %>
+      <%= render partial: "decidim/admin/components/resource_action" %>
+    </h1>
   </div>
 
   <div class="card-section multiusers-select-container">
@@ -17,7 +13,7 @@
 
       <%= render partial: "form", object: f %>
 
-      <div class="button--double form-conversations-submit">
+      <div class="button button__sm button__secondary">
         <%= f.submit t(".save") %>
       </div>
     <% end %>
@@ -25,4 +21,4 @@
 </div>
 
 <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" %>
-<%= javascript_pack_tag "decidim_notify_selects" %>
+<%= append_javascript_pack_tag "decidim_notify_selects" %>

@@ -9,7 +9,7 @@ module Decidim
       property :title
 
       def show
-        @form = Decidim::Notify::ChapterForm.from_params(title: title)
+        @form = Decidim::Notify::ChapterForm.from_params(title:)
         render
       end
 

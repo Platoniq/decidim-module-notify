@@ -44,11 +44,11 @@ module Decidim
         def update_users
           @participants = []
           all_users.each_with_index do |id, idx|
-            user = Decidim::User.find_by(id: id, organization: current_organization)
+            user = Decidim::User.find_by(id:, organization: current_organization)
             next unless user
 
             author = Author.find_or_create_by(
-              user: user,
+              user:,
               component: current_component
             )
             author.code = idx + 1
@@ -63,7 +63,7 @@ module Decidim
         end
 
         def all_users
-          @all_users ||= (form.users + form.note_takers).uniq.reject(&:blank?)
+          @all_users ||= (form.users + form.note_takers).uniq.compact_blank
         end
       end
     end
