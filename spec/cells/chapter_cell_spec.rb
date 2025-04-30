@@ -20,11 +20,11 @@ module Decidim::Notify
       end
 
       it "do not render the edit button" do
-        expect(subject).not_to have_css(".flag-modal")
+        expect(subject).to have_no_css(".flag-modal")
       end
 
       it "is not active" do
-        expect(subject).not_to have_css(".active")
+        expect(subject).to have_no_css(".active")
       end
     end
 
