@@ -24,7 +24,7 @@ module Decidim::Notify
       end
 
       it "do not render the edit button" do
-        expect(subject).not_to have_css(".edit")
+        expect(subject).to have_no_css(".edit")
       end
     end
 

@@ -1,0 +1,3 @@
+FactoryBot/FactoryAssociationWithStrategy:
+  Exclude:
+    - 'lib/decidim/notify/test/factories.rb'

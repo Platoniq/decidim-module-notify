@@ -6,7 +6,7 @@ shared_examples "model component is notify" do
   end
 
   context "when component is not notify" do
-    let(:another_component) { create :dummy_component }
+    let(:another_component) { create(:dummy_component) }
 
     before do
       subject.component = another_component
