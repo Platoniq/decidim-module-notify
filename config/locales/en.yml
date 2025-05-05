@@ -88,7 +88,6 @@ en:
           participants: Participants
           send: Send
         placeholders:
-          author: Author, use the number or name
           chapter: Set the chapter
           statement: Write the statement...
         private:
