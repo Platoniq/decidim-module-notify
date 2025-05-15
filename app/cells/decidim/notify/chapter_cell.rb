@@ -20,7 +20,7 @@ module Decidim
       end
 
       def note_taker?
-        return unless current_user
+        return false unless current_user
 
         Author.for(model.component).note_takers.find_by(user: current_user)
       end
