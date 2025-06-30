@@ -11,7 +11,7 @@ on:
 
 env:
   CI: "true"
-  RUBY_VERSION: 3.2.6
+  RUBY_VERSION: 3.3.4
   NODE_VERSION: 18.17.1
 
 concurrency:
@@ -21,7 +21,7 @@ concurrency:
 jobs:
   main:
     name: Tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     services:
       postgres:
