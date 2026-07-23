@@ -24,3 +24,4 @@ development_app
 *.gem
 
 .rubocop-https*
+mise.toml

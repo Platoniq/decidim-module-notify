@@ -31,15 +31,16 @@
   },
   "prettier": "@decidim/prettier-config",
   "devDependencies": {
-    "@decidim/dev": "^0.30.0",
-    "@decidim/eslint-config": "^0.30.0",
-    "@decidim/prettier-config": "^0.30.0",
-    "@decidim/stylelint-config": "^0.30.0"
+    "@decidim/dev": "^0.31.0",
+    "@decidim/eslint-config": "^0.31.0",
+    "@decidim/prettier-config": "^0.31.0",
+    "@decidim/stylelint-config": "^0.31.0"
   },
   "dependencies": {
-    "@decidim/browserslist-config": "^0.30.0",
-    "@decidim/webpacker": "^0.30.0",
-    "@rails/actioncable": "6.1.7"
+    "@decidim/browserslist-config": "^0.31.0",
+    "@decidim/webpacker": "^0.31.0",
+    "@rails/actioncable": "6.1.7",
+    "tom-select": "2.2.2"
   },
   "browserslist": ["extends @decidim/browserslist-config"]
 }
