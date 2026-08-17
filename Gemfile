@@ -7,6 +7,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = "~> 0.31.0"
 
 gem "decidim", DECIDIM_VERSION
+gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-notify", path: "."
 
 gem "bootsnap", "~> 1.4"
