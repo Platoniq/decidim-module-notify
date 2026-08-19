@@ -4,8 +4,6 @@ require "spec_helper"
 
 module Decidim::Notify
   describe ConversationsController do
-    routes { Decidim::Notify::Engine.routes }
-
     let(:organization) { create(:organization) }
     let(:user) { create(:user, :confirmed, :admin, organization:) }
     let(:participatory_space) { create(:participatory_process, organization:) }

@@ -9,9 +9,13 @@ module Decidim
   # This namespace holds the logic of the `Notify` component. This component
   # allows users to create notify in a participatory space.
   module Notify
-    include ActiveSupport::Configurable
-
     class << self
+      def config = self
+
+      def configure
+        yield self
+      end
+
       def cable
         @cable || begin
           @cable = ActionCable::Server::Configuration.new
@@ -32,23 +36,15 @@ module Decidim
     end
 
     # Notify uses its custom ActionCable server, better not to use the default /cable route as it causes conflicts
-    config_accessor :cable_mount_path do
-      "/notify_cable"
-    end
+    mattr_accessor :cable_mount_path, default: "/notify_cable"
 
     # Not recommended to use "async", event for development
     # postgresql has a 8000 character limitation
-    config_accessor :cable_adapter do
-      "postgresql"
-    end
+    mattr_accessor :cable_adapter, default: "postgresql"
 
     # Next 2 values are only important if cable_adapter is "redis"
-    config_accessor :cable_url do
-      "redis://localhost:6379/1"
-    end
+    mattr_accessor :cable_url, default: "redis://localhost:6379/1"
 
-    config_accessor :cable_channel_prefix do
-      "notify_"
-    end
+    mattr_accessor :cable_channel_prefix, default: "notify_"
   end
 end
