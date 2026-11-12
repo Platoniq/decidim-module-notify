@@ -9,7 +9,8 @@ module Decidim
 
       helper_method :chapters, :active_chapter
 
-      def index
+      # Users without access get the private page instead of an error
+      def index # rubocop:disable Decidim/EnforcePermissionTo
         return render :private unless allowed_to? :index, :notes
 
         @unclassified = Chapter.new(notes: unclassified_notes)
@@ -30,7 +31,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.create.error", message:) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.create.error", message:) }, status: :unprocessable_content
           end
         end
       end
@@ -47,7 +48,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.update.error", message:) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.update.error", message:) }, status: :unprocessable_content
           end
         end
       end
@@ -61,7 +62,7 @@ module Decidim
             render json: { message: "✔" }
           end
           on(:invalid) do |message|
-            render json: { message: I18n.t("decidim.notify.conversations.destroy.error", message:) }, status: :unprocessable_entity
+            render json: { message: I18n.t("decidim.notify.conversations.destroy.error", message:) }, status: :unprocessable_content
           end
         end
       end

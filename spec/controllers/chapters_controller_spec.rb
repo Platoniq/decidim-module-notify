@@ -31,6 +31,16 @@ module Decidim::Notify
         patch(:update, params:)
         expect(response).to have_http_status(:success)
       end
+
+      context "when the chapter belongs to another component" do
+        let(:other_chapter) { create(:notify_chapter, title: "Other component") }
+
+        it "does not update it" do
+          patch :update, params: params.merge(id: other_chapter.id)
+          expect(response).to have_http_status(:unprocessable_content)
+          expect(other_chapter.reload.title).to eq("Other component")
+        end
+      end
     end
 
     describe "DELETE #destroy" do
