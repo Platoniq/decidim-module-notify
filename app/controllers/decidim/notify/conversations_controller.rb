@@ -9,7 +9,8 @@ module Decidim
 
       helper_method :chapters, :active_chapter
 
-      def index
+      # Users without access get the private page instead of an error
+      def index # rubocop:disable Decidim/EnforcePermissionTo
         return render :private unless allowed_to? :index, :notes
 
         @unclassified = Chapter.new(notes: unclassified_notes)

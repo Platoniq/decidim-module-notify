@@ -8,6 +8,8 @@ module Decidim
       extend ActiveSupport::Concern
 
       included do
+        private
+
         def broadcast_create_note(note)
           html = render_to_string(partial: "decidim/notify/conversations/note", locals: { note: })
           Decidim::Notify.server.broadcast("notify-notes-#{current_component.id}", { create: html, chapterId: note.chapter&.id })

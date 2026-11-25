@@ -20,7 +20,7 @@ module Decidim
         return broadcast(:invalid) if form.invalid?
 
         begin
-          @chapter = Chapter.find(form.id)
+          @chapter = Chapter.for(current_component).find(form.id)
 
           unset_actives
           update_chapter!
