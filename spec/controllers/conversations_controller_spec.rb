@@ -52,12 +52,31 @@ module Decidim::Notify
         expect(response).to have_http_status(:success)
         expect(Note.find_by(id: note.id).body).to eq(params[:body])
       end
+
+      context "when the note belongs to another component" do
+        let(:other_note) { create(:notify_note) }
+
+        it "does not update it" do
+          patch :update, params: params.merge(id: other_note.id)
+          expect(response).to have_http_status(:unprocessable_content)
+          expect(other_note.reload.body).not_to eq(params[:body])
+        end
+      end
     end
 
     describe "DELETE #destroy" do
       it "deletes the note" do
         delete :destroy, params: { id: note.id }
         expect(Note.find_by(id: note.id)).to be_nil
+      end
+
+      context "when the note belongs to another component" do
+        let!(:other_note) { create(:notify_note) }
+
+        it "does not delete it" do
+          delete :destroy, params: { id: other_note.id }
+          expect(Note.find_by(id: other_note.id)).to be_present
+        end
       end
     end
   end

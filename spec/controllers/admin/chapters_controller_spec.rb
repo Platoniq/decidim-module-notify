@@ -83,6 +83,15 @@ module Decidim::Notify::Admin
           expect(Decidim::Notify::Chapter.first.title).to eq(form[:title])
         end
       end
+
+      context "when the chapter belongs to another component" do
+        let!(:other_chapter) { create(:notify_chapter, title: "Other component") }
+
+        it "raises not found" do
+          expect { patch :update, params: params.merge(id: other_chapter.id) }.to raise_error(ActiveRecord::RecordNotFound)
+          expect(other_chapter.reload.title).to eq("Other component")
+        end
+      end
     end
 
     describe "DELETE #destroy" do

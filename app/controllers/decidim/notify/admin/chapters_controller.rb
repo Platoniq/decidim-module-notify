@@ -82,7 +82,7 @@ module Decidim
         end
 
         def current_chapter
-          @current_chapter ||= Chapter.find(params[:id])
+          @current_chapter ||= chapters.find(params[:id])
         end
       end
     end
